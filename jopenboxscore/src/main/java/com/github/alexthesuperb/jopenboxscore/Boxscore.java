@@ -36,6 +36,7 @@ public class Boxscore {
      */
     public static void printBoxscore(BufferedWriter writer, Team visitor, Team home, String date, char dayNight,
             int gmNumber, int timeOfGame, int attend, int outs) throws IOException {
+        
         // Print headline
         String headline = "Game of " + date + " -- " + visitor.getCity() + " at " + home.getCity() + " (" + dayNight
                 + ")";
@@ -75,18 +76,22 @@ public class Boxscore {
      * @throws IOException
      */
     private static void printLinescore(BufferedWriter writer, Team visitor, Team home, int outs) throws IOException {
+        
         String v = visitor.linescoreToString();
         String h = home.linescoreToString();
+        
         if (v.length() > h.length()) {
             while (v.length() - 1 > h.length())
                 h += " ";
             h += "x";
         }
+        
         writer.write(
                 String.format("%-17s", visitor.getCity()) + v + " --" + String.format("%3d", visitor.getTotalRuns()));
         writer.write("\n");
         writer.write(String.format("%-17s", home.getCity()) + h + " --" + String.format("%3d", home.getTotalRuns()));
         writer.write("\n");
+        
         if (outs < 3) {
             String outs_str = (outs == 1) ? "1 out" : outs + " outs";
             writer.write(String.format("%2s", ""));
@@ -97,6 +102,7 @@ public class Boxscore {
             }
             writer.write("\n");
         }
+        
         writer.write("\n");
         writer.flush();
     }
@@ -111,6 +117,7 @@ public class Boxscore {
      * @throws IOException
      */
     private static void printBatting(BufferedWriter writer, Team visitor, Team home) throws IOException {
+        
         LinkedList<String> visLineup = new LinkedList<>();
         LinkedList<String> homeLineup = new LinkedList<>();
 
@@ -119,32 +126,43 @@ public class Boxscore {
                 visLineup.add(getBoxscoreLine(p));
             }
         }
+        
         for (LinkedList<BxScrPositionPlayer> ar : home.getLineup()) {
             for (BxScrPositionPlayer p : ar) {
                 homeLineup.add(getBoxscoreLine(p));
             }
+        
         }
+        
         int max = (visLineup.size() >= homeLineup.size()) ? visLineup.size() : homeLineup.size();
+        
         LinkedList<String> battingLines = new LinkedList<>();
+        
         battingLines.add(String.format("%2s", "") + String.format("%-18s", visitor.getCity())
                 + String.format("%3s%3s%3s%4s", "AB", "R", "H", "RBI") + String.format("%4s", "")
                 + String.format("%-18s", home.getCity()) + String.format("%3s%3s%3s%4s", "AB", "R", "H", "RBI"));
-        for (int i = 0; i < max; i++) {
+        
+                for (int i = 0; i < max; i++) {
             String v = (i > visLineup.size() - 1) ? String.format("%35s", "")
                     : visLineup.get(i) + String.format("%3s", "");
             String h = (i > homeLineup.size() - 1) ? "" : homeLineup.get(i);
             battingLines.add(v + h);
         }
+        
         battingLines.add(String.format("%20s%3s%3s%3s%3s", "", "--", "--", "--", "--") + String.format("%3s", "")
-                + String.format("%20s%3s%3s%3s%3s", "", "--", "--", "--", "--"));
+            + String.format("%20s%3s%3s%3s%3s", "", "--", "--", "--", "--"));
+        
         int[] visStats = visitor.getLineupStats();
         int[] homeStats = home.getLineupStats();
+        
         battingLines.add(String.format("%20s%3d%3d%3d%3d", "", visStats[0], visStats[1], visStats[2], visStats[3], "")
                 + String.format("%3s", "")
                 + String.format("%20s%3d%3d%3d%3d", "", homeStats[0], homeStats[1], homeStats[2], homeStats[3]));
+        
         for (String s : battingLines) {
             writer.write(s + "\n");
         }
+
         writer.write("\n");
         writer.flush();
     }
@@ -161,7 +179,9 @@ public class Boxscore {
      * statistic.
      */
     private static String getSpecialStatString(String stat_code, Team visitor, Team home, boolean isBattingStat) {
+        
         String str = "";
+        
         if (isBattingStat || stat_code.equals("pb")) {
             for (LinkedList<BxScrPositionPlayer> ar : visitor.getLineup()) {
                 for (BxScrPositionPlayer p : ar) {
@@ -174,6 +194,7 @@ public class Boxscore {
                     }
                 }
             }
+
             for (LinkedList<BxScrPositionPlayer> ar : home.getLineup()) {
                 for (BxScrPositionPlayer p : ar) {
                     if (p.getStat(stat_code) > 0) {
@@ -185,11 +206,14 @@ public class Boxscore {
                     }
                 }
             }
+
         } else { // errors and pitching stats
+            
             if (stat_code.equals("e")) {
                 str = getSpecialStatString("e", visitor, home, true);
                 str += ", ";
             }
+            
             if (stat_code.equals("hp") || stat_code.equals("hbp")) {
                 for (BxScrPitcher p : visitor.getPitchingStaff()) {
                     if (p.getBattersHBP().size() > 0) {
@@ -247,6 +271,7 @@ public class Boxscore {
      * @throws IOException
      */
     private static void printAdditionalInfo(BufferedWriter writer, Team visitor, Team home) throws IOException {
+        
         String errorStr = getSpecialStatString("e", visitor, home, false);
         String doubleStr = getSpecialStatString("d", visitor, home, true);
         String tripleStr = getSpecialStatString("t", visitor, home, true);
@@ -274,6 +299,7 @@ public class Boxscore {
             }
             writer.write("DP -- " + dpStr + "\n");
         }
+
         /* Triple plays */
         if (visitor.get_double_triple_plays(false) > 0 || visitor.get_double_triple_plays(false) > 0) {
             String tpStr = "";
@@ -286,36 +312,46 @@ public class Boxscore {
             }
             writer.write("TP -- " + tpStr + "\n");
         }
+
         writer.write("LOB -- " + visitor.getCity() + " " + visitor.get_lob() + ", " + home.getCity() + " "
                 + home.get_lob() + "\n");
 
         if (doubleStr.length() > 0) {
             writer.write("2B -- " + doubleStr + "\n");
         }
+
         if (tripleStr.length() > 0) {
             writer.write("3B -- " + tripleStr + "\n");
         }
+
         if (hrStr.length() > 0) {
             writer.write("HR -- " + hrStr + "\n");
         }
+
         if (sbStr.length() > 0) {
             writer.write("SB -- " + sbStr + "\n");
         }
+
         if (csStr.length() > 0) {
             writer.write("CS -- " + csStr + "\n");
         }
+
         if (shStr.length() > 0) {
             writer.write("SH -- " + shStr + "\n");
         }
+
         if (sfStr.length() > 0) {
             writer.write("SF -- " + sfStr + "\n");
         }
+
         if (hbpStr.length() > 0) {
             writer.write("HBP -- " + hbpStr + "\n");
         }
+
         if (wpStr.length() > 0) {
             writer.write("WP -- " + wpStr + "\n");
         }
+
         if (pbStr.length() > 0) {
             writer.write("PB -- " + pbStr + "\n");
         }
@@ -329,6 +365,7 @@ public class Boxscore {
      * @throws IOException
      */
     private static void printPitching(BufferedWriter writer, Team visitor, Team home) throws IOException {
+        
         symbols.clear();
         pitching_info_strings.clear();
         symbols.push('~');
@@ -339,17 +376,24 @@ public class Boxscore {
         symbols.push('*');
 
         writer.write(String.format("%2s%-20s", "", visitor.getCity()) + pColumns + "\n");
-        for (BxScrPitcher p : visitor.getPitchingStaff())
+        
+        for (BxScrPitcher p : visitor.getPitchingStaff()) {
             writer.write(getBoxscoreLine(p) + "\n");
+        }
         writer.write("\n");
+        
         writer.write(String.format("%2s%-20s", "", home.getCity()) + pColumns + "\n");
-        for (BxScrPitcher p : home.getPitchingStaff())
+        
+        for (BxScrPitcher p : home.getPitchingStaff()) {
             writer.write(getBoxscoreLine(p) + "\n");
+        }
+
         for (String s : pitching_info_strings) {
             writer.write(String.format("%2s", ""));
             writer.write(s);
             writer.write("\n");
         }
+
         writer.write("\n");
         writer.flush();
     }
@@ -359,10 +403,14 @@ public class Boxscore {
      * @return input pitcher's boxscore line: name (decision), IP, H, R, ER, BB, SO
      */
     private static String getBoxscoreLine(BxScrPitcher p) {
+        
         String s1 = p.getName();
         char decision = p.getDecision();
-        if (decision != '\0')
+        
+        if (decision != '\0') {
             s1 += " (" + decision + ")";
+        }
+
         if (p.removedFromInningWithoutRecordingOut()) {
             String c = String.valueOf(symbols.pop());
             s1 += c;
@@ -380,12 +428,13 @@ public class Boxscore {
             }
             pitching_info_strings.add(tmp);
         }
+
         int[] pitching_stats = p.getBxScrStats();
-        int full_inng = pitching_stats[0] / 3;
-        int partial_inng = pitching_stats[0] % 3;
-        String inng = Integer.toString(full_inng) + "." + partial_inng;
+        String inng = BxScrPitcher.convertToIP(pitching_stats[0]);
+
         String s2 = String.format("%3s%3d%3d%3d%3d%3d", inng, pitching_stats[1], pitching_stats[2], pitching_stats[3],
-                pitching_stats[4], pitching_stats[5]);
+            pitching_stats[4], pitching_stats[5]);
+        
         return String.format("%-22s", s1) + s2;
     }
 
@@ -395,10 +444,14 @@ public class Boxscore {
      * @return input batter's boxscore line: name, AB, R, H, RBI
      */
     private static String getBoxscoreLine(BxScrPositionPlayer p) {
+
         String s1 = p.getName() + ", " + p.getPositionString();
+        
         int[] batting_stats = p.getBxScrStats();
+        
         String s2 = String.format("%3d%3d%3d%3d", batting_stats[0], batting_stats[1], batting_stats[2],
-                batting_stats[3]);
+            batting_stats[3]);
+        
         return String.format("%-20s", s1) + s2;
     }
 }
