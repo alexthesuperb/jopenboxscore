@@ -1,9 +1,6 @@
-
-/* 
-* File: game/Play.java
-* Description: read and record Retrosheet.org events (lines beginning
-* with 'play,' flag). 
-*/
+/*
+ * C-style comment with author/copyright information...
+ */
 
 package com.github.alexthesuperb.jopenboxscore;
 

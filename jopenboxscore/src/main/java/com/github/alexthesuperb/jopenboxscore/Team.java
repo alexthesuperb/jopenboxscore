@@ -1,3 +1,7 @@
+/*
+ * C-style comment with author/copyright information...
+ */
+
 package com.github.alexthesuperb.jopenboxscore;
 
 import java.util.ArrayList;
@@ -166,7 +170,6 @@ public class Team {
             }
         }
     }
-
 
     /**
      * Set earned runs. If player is found and charged with those earned runs,
@@ -416,7 +419,7 @@ public class Team {
      */
     public String linescoreToString() {
         String s = "";
-        
+
         // for (int r : linescore)
         //     s = s + r + " ";
         for (int i = 0; i < linescore.size(); i++) {

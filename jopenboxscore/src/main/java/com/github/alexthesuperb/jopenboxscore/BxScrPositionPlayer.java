@@ -1,13 +1,6 @@
-//////////////////////////////////////////////////////////////////////
-// Class: BxScrPositionPlayer
-// Author: Alexander Wimer
-// Version: 1.0.0
-// Since: 2020-4-17
-//
-// This file is completed open-source and free to use, distribute, and
-// alter.
-//
-//////////////////////////////////////////////////////////////////////
+/*
+ * C-style comment with author/copyright information...
+ */
 
 package com.github.alexthesuperb.jopenboxscore;
 
@@ -199,7 +192,7 @@ public class BxScrPositionPlayer extends BaseballPlayer {
         String[] kArr = {KEY_AB, KEY_R, KEY_H, KEY_RBI};
         return getStats(kArr);
     }
-    
+
 }
 
 // END OF FILE
