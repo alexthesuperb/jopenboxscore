@@ -4,157 +4,307 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Team {
-    private ArrayList<LinkedList<PositionPlayer>> lineup = new ArrayList<>(9);
-    private LinkedList<Pitcher> pitchers = new LinkedList<>();
+
+    private ArrayList<LinkedList<BxScrPositionPlayer>> lineup = new ArrayList<>(9);
+    private LinkedList<BxScrPitcher> pitchers = new LinkedList<>();
     private ArrayList<Integer> linescore = new ArrayList<>(30);
     private String teamID, city, name;
-    private int left_on_base, double_plays, triple_plays;
+    private int totLeftOnBase, totalDP, totalTP;
     private boolean homeTF;
 
+    /**
+     * 
+     * @param id
+     * @param city
+     * @param name
+     * @param home
+     */
     public Team(String id, String city, String name, boolean home){
         teamID = id;
         this.city = city;
         this.name = name;
         this.homeTF = home;
         for(int i = 0; i < 9; i++){
-            lineup.add(new LinkedList<PositionPlayer>());
+            lineup.add(new LinkedList<BxScrPositionPlayer>());
         }
     }
 
+    /**
+     * 
+     */
     public Team(){
         teamID = "";
         city = "";
         name = "";
         homeTF = false;
         for(int i = 0; i < 9; i++){
-            lineup.add(new LinkedList<PositionPlayer>());
+            lineup.add(new LinkedList<BxScrPositionPlayer>());
         }
     }
+
+    /**
+     * 
+     * @param id
+     * @param city
+     * @param name
+     * @param homeTF
+     */
     public void setTeamInfo(String id, String city, String name, boolean homeTF){
         setTeamID(id);
         setCity(city);
         setName(name);
         setHomeTF(homeTF);
     }
+
+    /**
+     * 
+     * @param id
+     */
     public void setTeamID(String id){
         teamID = id;
     }
+
+    /**
+     * 
+     * @param city
+     */
     public void setCity(String city){
         this.city = city;
     }
+
+    /**
+     * 
+     * @param name
+     */
     public void setName(String name){
         this.name = name;
     }
+
+    /**
+     * 
+     * @param home
+     */
     public void setHomeTF(boolean home){
         homeTF = home;
     }
 
     /* Double and triple plays block */
+    /**
+     * Add either a double or triple play to this object's stat trackers.
+     * 
+     * @param isDP <code>true</code> if adding a double play, <code>false</code>
+     * if adding a triple play.
+     * 
+     * @param n Number of plays to increment by.
+     */
     public void add_double_triple_plays(boolean isDP, int n){
         if(isDP)
-            double_plays += n;
+            totalDP += n;
         else
-            triple_plays += n;
+            totalTP += n;
     }
+
+    /**
+     * 
+     * @param isDP
+     * @return
+     */
     public int get_double_triple_plays(boolean isDP){
         if(isDP)
-            return double_plays;
+            return totalDP;
         else
-            return triple_plays;
+            return totalTP;
     }
     /* End double and triple play block */
 
     /* Left on base functions */
-    public void add_lob(int lob){
-        left_on_base += lob;
+    /**
+     * 
+     * @param lob
+     */
+    public void addLOB(int lob){
+        totLeftOnBase += lob;
     }
-    public void add_lob(int pa, int runs, int outs){
-        add_lob(pa-runs-outs);
+
+    /**
+     * Calculate runners left on base in team's half inning, then
+     * add to total for game.
+     * 
+     * @param pa Plate appearances in half-inning.
+     * @param runs Runs scored.
+     * @param outs Outs made (this should usually be 3).
+     */
+    public void addLOB(int pa, int runs, int outs){
+        addLOB(pa-runs-outs);
     }
+
+    /** @return Team stat runners left on base */
     public int get_lob(){
-        return left_on_base;
+        return totLeftOnBase;
     }
     /* END left on base functions */
 
+    /**
+     * 
+     * @param wpID
+     * @param lpID
+     * @param saveID
+     */
     public void setPitDecisions(String wpID, String lpID, String saveID){
-        for(Pitcher p : pitchers){
-            if(p.getID().equals(wpID))
-                p.award_decision('W');
-            if(p.getID().equals(lpID))
-                p.award_decision('L');
-            if(p.getID().equals(saveID))
-                p.award_decision('S');
+        for(BxScrPitcher p : pitchers){
+            if(p.getPlayerID().equals(wpID))
+                p.setDecision('W');
+            if(p.getPlayerID().equals(lpID))
+                p.setDecision('L');
+            if(p.getPlayerID().equals(saveID))
+                p.setDecision('S');
         }
     }
-    //Set earned runs. If player is found and charged with those earned runs,
-    //return true; if player is not found, return false.
+
+
+    /**
+     * Set earned runs. If player is found and charged with those earned runs,
+     * return true; if player is not found, return false.
+     * 
+     * @param pitcherID
+     * @param er
+     * @return
+     */
     public boolean setEarnedRuns(String pitcherID, int er){
-        for(Pitcher p : pitchers){
-            if(p.getID().equals(pitcherID)){
-                p.add_earned_runs(er);
+        for(BxScrPitcher p : pitchers){
+            if(p.getPlayerID().equals(pitcherID)){
+                p.incrementStats(BaseballPlayer.KEY_ER);
                 return true;
             }
         }
         return false;
     }
+
+    /**
+     * 
+     * @return
+     */
     public String getTeamID(){
         return teamID;
     }
+
+    /**
+     * 
+     * @return
+     */
     public String getCity(){
         return city;
     }
+
+    /**
+     * 
+     * @return
+     */
     public String getName(){
         return name;
     }
+
+    /**
+     * 
+     * @return
+     */
     public boolean getHomeTF(){
         return homeTF;
     }
+
+    /**
+     * 
+     * @return
+     */
     public int[] getLineupStats(){
+        
         int[] stats = {0,0,0,0};
-        for(LinkedList<PositionPlayer> ar : lineup){
-            for(PositionPlayer p : ar){
-                int[] pStats = p.getBattingStats();
+        
+        String[] keys = {
+            BaseballPlayer.KEY_AB, BaseballPlayer.KEY_R,
+            BaseballPlayer.KEY_H, BaseballPlayer.KEY_RBI
+        };
+        
+        for(LinkedList<BxScrPositionPlayer> ar : lineup){
+            for(BxScrPositionPlayer p : ar){
+                int[] pStats = p.getStats(keys);
                 for(int i = 0; i < 4; i++)
                     stats[i] += pStats[i];
             }
         }
         return stats;
     }
+
+    /**
+     * 
+     * @return
+     */
     public int[] getPitchingStats(){
+        
         int[] stats = {0,0,0,0,0,0};
-        for(Pitcher p : pitchers){
-            int[] pStats = p.getPitchingStats();
+        
+        String[] keys = {
+            BaseballPlayer.KEY_BATTERS_RETIRED,
+            BaseballPlayer.KEY_H,
+            BaseballPlayer.KEY_R,
+            BaseballPlayer.KEY_ER,
+            BaseballPlayer.KEY_BB,
+            BaseballPlayer.KEY_SO
+        };
+        
+        for(BxScrPitcher p : pitchers){
+            int[] pStats = p.getStats(keys);
             for(int i = 0; i < 6; i++)
                 stats[i] += pStats[i];
         }
+        
         return stats;
     }
 
-    //Award errors and passed balls.
+    /**
+     * Award errors and passed balls.
+     * 
+     * @param stat_code
+     * @param position
+     */
     public void award_fielding(String stat_code, int position){
+        
         stat_code = stat_code.toLowerCase();
+
         if(stat_code.equals("e")){
-            //To account for both dh and non-dh games, errors committed
-            //by pitchers are stored in the Pitcher objects, not in their
-            //PositionPlayer entities 
-            if(position == 1){ //pitcher
-                getCurrentPitcher().add_stat("e",1);
+            /* 
+             * To account for both dh and non-dh games, errors committed
+             * by pitchers are stored in the Pitcher objects, not in their
+             * BxScrPositionPlayer entities.  
+             */
+            if(position == BaseballPlayer.PITCHER) {
+                getCurrentPitcher().incrementStats(BaseballPlayer.KEY_E,1);
             } else {
-                for(LinkedList<PositionPlayer> ar : lineup){
+                for(LinkedList<BxScrPositionPlayer> ar : lineup){
                     if(ar.getLast().getCurrentPosition() == position){
-                        ar.getLast().add_stat("e",1);
+                        ar.getLast().incrementStats(BaseballPlayer.KEY_E,1);
                         return;
                     }
                 }
             }
         } else if(stat_code.equals("pb")){
-            for(LinkedList<PositionPlayer> ar : lineup){
-                if(ar.getLast().getCurrentPosition() == 2){
-                    ar.getLast().add_stat("pb",1);
+            for(LinkedList<BxScrPositionPlayer> ar : lineup){
+                if(ar.getLast().getCurrentPosition() == BaseballPlayer.CATCHER){
+                    ar.getLast().incrementStats(BaseballPlayer.KEY_PB,1);
                 }
             }
         }
     }
+
+    /**
+     * 
+     * @param start
+     * @param id
+     * @param first
+     * @param last
+     * @param spot
+     * @param pos
+     */
     public void addPlayer(boolean start, String id, String first, String last,
         String spot, String pos)
     {
@@ -162,7 +312,7 @@ public class Team {
         int int_pos = Integer.parseInt(pos);
 
         //Player already in lineup -- changing positions.
-        if(containsPositionPlayer(id)){
+        if(containsBxScrPositionPlayer(id)){
             lineup.get(int_spot-1).getLast().changePosition(int_pos);
         } 
         //Not in lineup
@@ -171,48 +321,79 @@ public class Team {
                 /* Account for the rare instance that a DH-rule pitcher moves to a position
                 after entering the game earlier as a pitcher */
                 if(containsPitcher(id)){
-                    PositionPlayer newB = 
-                        new PositionPlayer(id,first,last,int_spot,PositionPlayer.PITCHER);
+                    BxScrPositionPlayer newB = 
+                        new BxScrPositionPlayer(id,first,last,int_spot,BxScrPositionPlayer.PITCHER);
                     newB.changePosition(int_pos);
                     lineup.get(int_spot-1).add(newB);
                 } else {
-                    PositionPlayer newB = new PositionPlayer(id,first,last,int_spot,int_pos);
+                    BxScrPositionPlayer newB = new BxScrPositionPlayer(id,first,last,int_spot,int_pos);
                     lineup.get(int_spot-1).add(newB);
                 }
             }
         }
-        if(int_pos == PositionPlayer.PITCHER){
+        if(int_pos == BxScrPositionPlayer.PITCHER){
             //New pitcher entering the game -- add to game staff.
             if(!containsPitcher(id)){
-                if(!pitchers.isEmpty())
-                    this.getCurrentPitcher().set_inning_removed(Play.getInning());
-                Pitcher newP = new Pitcher(id, first, last);
+                if(!pitchers.isEmpty()) {
+                    this.getCurrentPitcher().setInningRemoved(Play.getInning());
+                }
+                BxScrPitcher newP = new BxScrPitcher(id, first, last);
                 pitchers.add(newP);
             }
         }
     }
+
+    /**
+     * 
+     * @param id A unique player ID to search team for.
+     * 
+     * @return <code>true</code> if this object includes a 
+     * <code>BxScrPitcher</code> whose <code>playerID</code> matches
+     * parameter <code>id</code>.
+     */
     public boolean containsPitcher(String id){
-        for(Pitcher p : pitchers){
-            if(p.getID().equals(id))
+        for(BxScrPitcher p : pitchers){
+            if(p.getPlayerID().equals(id))
                 return true;
         }
         return false;
     }
-    private boolean containsPositionPlayer(String id){
-        for(LinkedList<PositionPlayer> list : lineup){
-            for(PositionPlayer p : list){
-                if(p.getID().equals(id))
+
+    /**
+     * 
+     * @param id
+     * @return
+     */
+    private boolean containsBxScrPositionPlayer(String id){
+        for(LinkedList<BxScrPositionPlayer> list : lineup){
+            for(BxScrPositionPlayer p : list){
+                if(p.getPlayerID().equals(id))
                     return true;
             }
         }
         return false;
     }
+
+    /**
+     * 
+     * @return
+     */
     public ArrayList<Integer> getLinescore(){
         return linescore;
     }
+
+    /**
+     * 
+     * @param runs
+     */
     public void linescoreAdd(int runs){
         linescore.add(runs);
     }
+
+    /**
+     * 
+     * @return
+     */
     public int getTotalRuns(){
         int t = 0;
         for(int r : linescore){
@@ -220,6 +401,11 @@ public class Team {
         }
         return t;
     }
+
+    /**
+     * 
+     * @return
+     */
     public String linescoreToString(){
         String s = "";
         // for(int r : linescore)
@@ -231,32 +417,65 @@ public class Team {
         }
         return s.trim();
     }
-    public Pitcher getCurrentPitcher(){
+
+    /**
+     * 
+     * @return
+     */
+    public BxScrPitcher getCurrentPitcher(){
         return pitchers.getLast();
     }
-    public Pitcher getPitcher(String id){
-        for(Pitcher p : pitchers){
-            if(p.getID().equals(id))
+
+    /**
+     * 
+     * @param id
+     * @return
+     */
+    public BxScrPitcher getPitcher(String id){
+        for(BxScrPitcher p : pitchers){
+            if(p.getPlayerID().equals(id))
                 return p;
         }
         return null; 
     }
-    public PositionPlayer getLineupSpot(int spot){
+
+    /**
+     * 
+     * @param spot
+     * @return
+     */
+    public BxScrPositionPlayer getLineupSpot(int spot){
         return lineup.get(spot).getLast();
     }
-    public PositionPlayer getPositionPlayer(String id){
-        for(LinkedList<PositionPlayer> list : lineup){
-            for(PositionPlayer p : list){
-                if(p.getID().equals(id))
+
+    /**
+     * 
+     * @param id
+     * @return
+     */
+    public BxScrPositionPlayer getBxScrPositionPlayer(String id){
+        for(LinkedList<BxScrPositionPlayer> list : lineup){
+            for(BxScrPositionPlayer p : list){
+                if(p.getPlayerID().equals(id))
                     return p;
             }
         }
         return null;
     }
-    public ArrayList<LinkedList<PositionPlayer>> getLineup(){
+
+    /**
+     * 
+     * @return
+     */
+    public ArrayList<LinkedList<BxScrPositionPlayer>> getLineup(){
         return lineup;
     }
-    public LinkedList<Pitcher> getPitchingStaff(){
+
+    /**
+     * 
+     * @return
+     */
+    public LinkedList<BxScrPitcher> getPitchingStaff(){
         return pitchers;
     }
 }
