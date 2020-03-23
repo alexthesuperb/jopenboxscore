@@ -50,7 +50,7 @@ public class BxScrPitcher extends BaseballPlayer {
      * @param firstName Player's first name.
      * @param lastName Player's last name.
      */
-    public BxScrPitcher(String playerID, String firstName, String lastName){
+    public BxScrPitcher(String playerID, String firstName, String lastName) {
         super(playerID, firstName, lastName);
         battersHBP = new LinkedList<>();
         decision = DECISION_NONE;
@@ -76,7 +76,7 @@ public class BxScrPitcher extends BaseballPlayer {
      * 
      * @param inning The inning the pitcher was removed.
      */
-    public void setInningRemoved(int inning){
+    public void setInningRemoved(int inning) {
         inningRemoved = inning; 
     }
 
@@ -100,7 +100,7 @@ public class BxScrPitcher extends BaseballPlayer {
      * an inning before recording an out; <code>false</code>
      * otherwise.
      */
-    public boolean removedFromInningWithoutRecordingOut(){
+    public boolean removedFromInningWithoutRecordingOut() {
         return (inningOutsRecorded == 0 && inningBF > 0) ? true : false;
     }
 
@@ -122,7 +122,7 @@ public class BxScrPitcher extends BaseballPlayer {
         
         super.incrementStats(key,n);
         
-        if(key.equals(KEY_BATTERS_RETIRED)) {
+        if (key.equals(KEY_BATTERS_RETIRED)) {
             inningOutsRecorded += n;
         }
     }
@@ -178,7 +178,7 @@ public class BxScrPitcher extends BaseballPlayer {
      */
     public static String convertToIP(int outsRecorded) {
 
-        if(outsRecorded < 0) {
+        if (outsRecorded < 0) {
             return "NaN";
         } else {
             String wholeIP;
