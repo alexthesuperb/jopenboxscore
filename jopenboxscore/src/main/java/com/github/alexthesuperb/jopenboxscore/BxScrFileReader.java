@@ -58,8 +58,37 @@ public class BxScrFileReader implements EventFileReader {
     }
 
 
-    public void readAll() throws IOException {
+    public void readAll() throws FileNotFoundException, IOException, 
+            IllegalArgumentException {
+        String line;
+        BxScrGameAccount currGame = null;
+
+        /* 
+         * Read through the entire file, one line at a time.
+         * A line beginning with the field "id" signifies the 
+         * start of a new game -- add the previous BxScrGameAccount
+         * to this instance's gameAccounts list and initialize a new
+         * game. The local variable currGame points to this game object. 
+         */
+        while ((line = pbpReader.readLine()) != null) {
+            if (line.startsWith("id,")) {
+                if(currGame != null) {
+                    currGame.finalize();
+                    gameAccounts.add(currGame);
+                }
+                currGame = new BxScrGameAccount(line.substring(3), year, teamReader);
+            }
+            currGame.addLine(line);
+        }
         
+        /* 
+         * Since the file doesn't end on an "id" line, 
+         * add final game account to list.
+         */
+        if(currGame != null) {
+            currGame.finalize();
+            gameAccounts.add(currGame);
+        }
     }
     
     public void readGamesByID(List<String> gameIDs) throws IOException {
@@ -77,7 +106,8 @@ public class BxScrFileReader implements EventFileReader {
     }
     
     public String getInfoNextGame() throws IOException {
-        // TODO Auto-generated method stub
+        /* Implement here... */
+        
         return null;
     }
     
