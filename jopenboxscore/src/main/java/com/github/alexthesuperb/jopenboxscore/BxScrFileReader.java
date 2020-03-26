@@ -3,12 +3,10 @@
 package com.github.alexthesuperb.jopenboxscore;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
 import java.util.LinkedList;
 import java.util.List;
@@ -125,17 +123,17 @@ public class BxScrFileReader implements EventFileReader {
          * game. The local variable currGame points to this game object. 
          */
         while ((line = pbpReader.readLine()) != null) {
-            System.out.println(line);
+            lineNum++;
             if (line.startsWith("id,")) {
-                System.out.println("LINE STARTS WITH ID");
                 if (currGame != null) {
                     currGame.finalize();
                     gameAccounts.add(currGame);
                 }
-                currGame = new BxScrGameAccount(line.substring(3), year, teamReader);
+                currGame = new BxScrGameAccount(line.substring(3), year, fileName, 
+                    teamReader);
             }
             if (currGame != null) {
-                currGame.addLine(line);
+                currGame.addLine(line, lineNum);
             }
         }
 
@@ -172,6 +170,7 @@ public class BxScrFileReader implements EventFileReader {
          * is true.
          */
         while ((line = pbpReader.readLine()) != null) {
+            lineNum++;
             if (line.startsWith("id,")) {
                 if (currGame != null && readThisGame) {
                     currGame.finalize();
@@ -181,11 +180,12 @@ public class BxScrFileReader implements EventFileReader {
 
                 if (gameIDs.contains(line.substring(3))) {
                     readThisGame = true;
-                    currGame = new BxScrGameAccount(line.substring(3), year, teamReader);
+                    currGame = new BxScrGameAccount(line.substring(3), year, fileName, 
+                        teamReader);
                 }
             }
-            if (readThisGame) {
-                currGame.addLine(line);
+            if (readThisGame && currGame != null) {
+                currGame.addLine(line, lineNum);
             }
         }
 
@@ -230,6 +230,7 @@ public class BxScrFileReader implements EventFileReader {
 
         /* Read the file.  */
         while ((line = pbpReader.readLine()) != null) {
+            lineNum++;
             if (line.startsWith("id,")) {
                 if (currGame != null && readThisGame) {
                     currGame.finalize();
@@ -250,11 +251,11 @@ public class BxScrFileReader implements EventFileReader {
                 /* Check if game falls into range. If it does, read. */
                 if (gameDateInt >= startInt && gameDateInt <= endInt) {
                     readThisGame = true;
-                    currGame = new BxScrGameAccount(gameID, year, teamReader);
+                    currGame = new BxScrGameAccount(gameID, year, fileName, teamReader);
                 }   
             }
-            if (readThisGame) {
-                currGame.addLine(line);
+            if (readThisGame && currGame != null) {
+                currGame.addLine(line, lineNum);
             }
         }
 

@@ -141,15 +141,15 @@ public class Driver {
                 i++;
             }
         } catch (IllegalArgumentException iae) {
-            System.out.println("Query could not be understand as entered. Type " +
-                "-h or -help for help.");
+            System.out.println("[Query could not be understand as entered. Type " +
+                "-h or -help for help.]\n");
             System.exit(1);
         }
 
         /* Check that user has entered at least one file name. */
         if (inFileNames.isEmpty()) {
-            System.out.println("You must enter the names of 1 or more files. " + 
-                "Type -h or -help for help.");
+            System.out.println("\n[You must enter the names of 1 or more files. " + 
+                "Type -h or -help for help.]\n");
             System.exit(1);
         }
 
@@ -190,7 +190,7 @@ public class Driver {
                 } else if (queryType == QUERY_ASK_USER) {
                     
                     /* implement here... */
-                    System.out.println("Whoops! Not yet supported.");
+                    System.out.println("\n[Whoops! Not yet supported.]\n");
                     System.exit(0);
                 }
 
@@ -199,16 +199,15 @@ public class Driver {
                     game.printBoxscore(outWriter);
                 }
             }
-        } catch (FileNotFoundException fnfe) {
+        } catch (Exception e) {
+
+            /* Exception thrown from BxScrFileReader */
             System.out.println("\n[An error has occured in file " + 
-                currFile + ". Cause: " + fnfe.getMessage() + "]");
-        } catch (IOException ioe) {
-            System.out.println("\n[An error has occured in file " + 
-                currFile + ". Cause: " + ioe.getMessage() + "]");
-        } catch (IllegalArgumentException iae) {
-            System.out.println("\n[An error has occured in file " + 
-                currFile + ". Cause: " + iae.getMessage() + "]");
+                currFile + ". Cause: " + e.getMessage() + "]\n");
         }
+
+        /* Finish program. */
+        System.out.println("[Program terminated successfully.]");
     }
 
     /** Reset flags. */
@@ -223,6 +222,7 @@ public class Driver {
 
     /** Print a help message to the terminal. */
     static void printHelp() {
+        
         /* Implement here... */
         System.out.println("...Help message...");
     }

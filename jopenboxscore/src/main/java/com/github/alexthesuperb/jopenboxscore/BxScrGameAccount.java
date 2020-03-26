@@ -40,6 +40,8 @@ public class BxScrGameAccount implements GameAccount {
     private String homeRosFileName;
     
     private String currentLine;
+    private int lineNum;
+    private String fileName;
     
     private boolean homeBatting;
     private int inng = 0;
@@ -54,18 +56,21 @@ public class BxScrGameAccount implements GameAccount {
     //     return new Boxscore(this);
     // }
 
+    /** ...Temporary... */
     public void printBoxscore(BufferedWriter outWriter) throws IOException {
         Boxscore.printBoxscore(outWriter, visitor, home, date, daynight, gmNumber, 
             timeOfGame, attendance, Play.getOuts());
     }
 
     /** constructor */
-    public BxScrGameAccount(String gameID, String year, RandomAccessFile teamReader) {
+    public BxScrGameAccount(String gameID, String year, String fileName, 
+            RandomAccessFile teamReader) {
         
         /* Initialize game environment variables. */
         this.gameID = gameID;
         this.year = year;
         this.teamReader = teamReader;
+        this.fileName = fileName;
         /* 
          * Initialize game-state variables to reflect bottom 
          * of 1st inning.
@@ -118,13 +123,14 @@ public class BxScrGameAccount implements GameAccount {
      * @throws IllegalArgumentException if <code>pbpLine</code> does not match its expected
      *         format.
      */
-    public void addLine(String pbpLine) throws FileNotFoundException,
+    public void addLine(String pbpLine, int linNum) throws FileNotFoundException,
             IOException, IllegalArgumentException {
         /* 
          * Save the value of pbpLine so that it be retrieved if an 
          * exception is thrown.
          */
         currentLine = pbpLine;
+        this.lineNum = lineNum;
 
         if (pbpLine.startsWith("info,")) {
             /* 
@@ -134,7 +140,8 @@ public class BxScrGameAccount implements GameAccount {
 
             if (infoLineArr.length != 3) {
                 throw new IllegalArgumentException("Info lines must contain " +
-                    "2 fields. Line: " + currentLine);
+                    "2 fields. File  " + fileName + ", line " + 
+                    lineNum + ": " + currentLine);
             }
             setInfo(pbpLine.split(",")[1], pbpLine.split(",")[2]);
 
@@ -147,7 +154,7 @@ public class BxScrGameAccount implements GameAccount {
 
             if (idLineArr.length != 6) {
                 throw new IllegalArgumentException("Start/sub lines must " +
-                    "contain 5 fields. Line: " + currentLine);
+                    "contain 5 fields. File " + fileName + ", line " + lineNum + ": " + currentLine);
             }
 
             /* Make roster move. */
@@ -168,7 +175,7 @@ public class BxScrGameAccount implements GameAccount {
 
                 if (playLineArr.length != 7) {
                     throw new IllegalArgumentException("Play lines must " +
-                    "consist of 6 fields. Line: " + currentLine);
+                    "consist of 6 fields. File " + fileName + ", line " + lineNum + ": " + currentLine);
                 }
                 readPlay(playLineArr[3], playLineArr[6]);
             }
@@ -184,8 +191,8 @@ public class BxScrGameAccount implements GameAccount {
             /* Check that data is the appropriate length */
             if (dataLineArr.length != 4) {
                 throw new IllegalArgumentException("Data lines must " +
-                    "contain 3 fields (type, player ID, and value). Line: " +
-                    pbpLine);
+                    "contain 3 fields (type, player ID, and value). File " + fileName + 
+                    ", line " + lineNum + ": " + pbpLine);
             }
             setData(dataLineArr[1], dataLineArr[2], dataLineArr[3]);
         }
@@ -255,7 +262,7 @@ public class BxScrGameAccount implements GameAccount {
             valueInt = Integer.parseInt(value);
         } catch (NumberFormatException nfe) {
             throw new IllegalArgumentException("Data lines must end with an integer " +
-                "value. Line: " + currentLine);
+                "value. File " + fileName + ", line " + lineNum + ": " + currentLine);
         }
         
         if (key.equals("er")) {
@@ -384,7 +391,8 @@ public class BxScrGameAccount implements GameAccount {
         /* Check that playerTeam is a 1 or 0. */
         if (!playerTeam.equals("0") && !playerTeam.equals("1")) {
             throw new IllegalArgumentException("Illegal argument in start/sub line. " +
-                "Team field must be either 0 (visitor) or 1 (home). Line: " + currentLine);
+                "Team field must be either 0 (visitor) or 1 (home). File " + fileName + 
+                ", line " + lineNum + ": " + currentLine);
         }
 
         /* Check if batSpot is a valid number between 0 and 9. */
@@ -397,7 +405,7 @@ public class BxScrGameAccount implements GameAccount {
             throw new IllegalArgumentException("Illegal argument in start/sub line. " +
                 "Player's batting order spot must be an integer between 1-9 for " + 
                 "position players, or 0 for pitchers in games using the DH rule. " + 
-                "Line: " + currentLine);
+                "File " + fileName + ", line " + lineNum + ": " + currentLine);
         }
 
         /* Check if position is a valid number between 1 and 12. */
@@ -409,7 +417,7 @@ public class BxScrGameAccount implements GameAccount {
         } catch (NumberFormatException nfe) {
             throw new IllegalArgumentException("Illegal argument in start/sub line. " +
                 "Player's position must be an integer between 1 and 12. " + 
-                "Line: " + currentLine);
+                "File " + fileName + ", line " + lineNum + ": " + currentLine);
         }
 
         /* Get player's name. */
@@ -510,7 +518,7 @@ public class BxScrGameAccount implements GameAccount {
             }
         }
         throw new IOException("Team " + teamID + " could not be found in file " +
-        "TEAM" + year + ". Line: " + currentLine);
+        "TEAM" + year + "File " + fileName + ",  line " + lineNum + ": " + currentLine);
     }
 
     /** @return game's attendance. */
