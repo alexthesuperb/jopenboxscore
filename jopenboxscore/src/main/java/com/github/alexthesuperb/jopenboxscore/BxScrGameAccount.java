@@ -4,11 +4,11 @@
 
 package com.github.alexthesuperb.jopenboxscore;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-// import java.security.InvalidParameterException;
 
 /**
  * <code>BxScrGame</code> implements the interface <code>GameAccount</code>. It
@@ -40,25 +40,73 @@ public class BxScrGameAccount implements GameAccount {
     private String homeRosFileName;
     
     private String currentLine;
+    
+    private boolean homeBatting;
+    private int inng = 0;
+    private int outs = 0;
+    private int visSpot = 0;
+    private int homeSpot = 0;
+    private int inngRuns = 0;
+    private int inngPA = 0;
+    private int[] baserunnerSpots;
+
+    // public Boxscore getBoxscore() {
+    //     return new Boxscore(this);
+    // }
+
+    public void printBoxscore(BufferedWriter outWriter) throws IOException {
+        Boxscore.printBoxscore(outWriter, visitor, home, date, daynight, gmNumber, 
+            timeOfGame, attendance, Play.getOuts());
+    }
 
     /** constructor */
     public BxScrGameAccount(String gameID, String year, RandomAccessFile teamReader) {
+        
+        /* Initialize game environment variables. */
         this.gameID = gameID;
         this.year = year;
         this.teamReader = teamReader;
-    }
-
-    /** @return the last line read into this object. */
-    public String getLastLine() {
-        return currentLine;
+        /* 
+         * Initialize game-state variables to reflect bottom 
+         * of 1st inning.
+         */
+        inng = 0;
+        outs = 0;
+        visSpot = 0;
+        homeSpot = 0;
+        inngRuns = 0;
+        inngPA = 0;
+        homeBatting = false;
+        baserunnerSpots = new int[3];
+        
+        for (int i = 0; i < 3; i++) {
+            baserunnerSpots[i] = -1;
+        }
     }
 
     /** 
-     * Put the finishing touches on an account on a game. For best results,
+     * Put the finishing touches on an account of a game. For best results,
      * make sure to call this after all lines have been read.
      */
     public void finalize() {
-        
+        /*
+         * Update linescore, LOB, and final game's pitcher with 
+         * information from last inning played.
+         */
+        if (homeBatting){
+            home.linescoreAdd(inngRuns);
+            home.addLOB(inngPA,inngRuns,outs);
+            visitor.getCurrentPitcher().setInningRemoved(inng);
+        }
+        else{
+            visitor.linescoreAdd(inngRuns);
+            visitor.addLOB(inngPA,inngRuns,outs);
+            home.getCurrentPitcher().setInningRemoved(inng);
+        }
+
+        /* Check both teams to award pitching decisions. */
+        visitor.setPitDecisions(wpID, lpID, saveID);
+        home.setPitDecisions(wpID, lpID, saveID);
     }
 
     /**
@@ -83,34 +131,47 @@ public class BxScrGameAccount implements GameAccount {
              * Information on game environment 
              */
             String infoLineArr[] = pbpLine.split(",");
+
             if (infoLineArr.length != 3) {
                 throw new IllegalArgumentException("Info lines must contain " +
                     "2 fields. Line: " + currentLine);
             }
             setInfo(pbpLine.split(",")[1], pbpLine.split(",")[2]);
 
-        } else if (pbpLine.startsWith("start,")) {
+        } else if (pbpLine.startsWith("start,") || pbpLine.startsWith("sub,")) {
             /* 
-             * For starting lineup assignment, check that line 
-             * contains five fields. 
-             */
+            * For lineup assignment, check that line 
+            * contains five fields (excluding start/sub flag)
+            */
             String idLineArr[] = pbpLine.split(",");
+
             if (idLineArr.length != 6) {
                 throw new IllegalArgumentException("Start/sub lines must " +
                     "contain 5 fields. Line: " + currentLine);
             }
-            makeRosterMove(true, idLineArr[1], idLineArr[2], 
-                idLineArr[3], idLineArr[4], idLineArr[5]);
 
-        } else if (pbpLine.startsWith("play,")) {
-            /* Action on the field */
-            
-            if (!pbpLine.endsWith(",NP")) {
-
+            /* Make roster move. */
+            if (pbpLine.startsWith("start,")) {
+                makeRosterMove(true, idLineArr[1], idLineArr[2], 
+                    idLineArr[3], idLineArr[4], idLineArr[5]);
+            } else {
+                makeRosterMove(false, idLineArr[1], idLineArr[2], 
+                    idLineArr[3], idLineArr[4], idLineArr[5]);
             }
-        } else if (pbpLine.startsWith("sub,")) {
-            /* Roster substitution */
+        } else if (pbpLine.startsWith("play,")) {
+            /* 
+             * Action on the field. Lines ending with NP
+             * precede lineup moves and should be ignored. 
+             */
+            if (!pbpLine.endsWith(",NP")) {
+                String[] playLineArr = pbpLine.split(",");
 
+                if (playLineArr.length != 7) {
+                    throw new IllegalArgumentException("Play lines must " +
+                    "consist of 6 fields. Line: " + currentLine);
+                }
+                readPlay(playLineArr[3], playLineArr[6]);
+            }
         } else if (pbpLine.startsWith("ladj,")) {
             /*
              * Lineup adjustment, in the case of a team 
@@ -118,7 +179,95 @@ public class BxScrGameAccount implements GameAccount {
              */
 
         } else if (pbpLine.startsWith("data,")) {
-            // setData(pbpLine.split(","));
+            String dataLineArr[] = pbpLine.split(",");
+            
+            /* Check that data is the appropriate length */
+            if (dataLineArr.length != 4) {
+                throw new IllegalArgumentException("Data lines must " +
+                    "contain 3 fields (type, player ID, and value). Line: " +
+                    pbpLine);
+            }
+            setData(dataLineArr[1], dataLineArr[2], dataLineArr[3]);
+        }
+    }
+
+    /**
+     * If the conditions to start a new inning have been met,
+     * reset inning state variables.
+     */
+    private void newInning(){
+        /* If third out was previously made, new inning has begun. */
+        if (outs == 3){
+
+            /* Add previous inning's stats to batting team object. */
+            if (homeBatting){
+                home.linescoreAdd(inngRuns);
+                home.addLOB(inngPA-inngRuns-outs);
+            }
+            else{
+                visitor.linescoreAdd(inngRuns);
+                visitor.addLOB(inngPA-inngRuns-outs);
+            }
+
+            /* Reverse homeBatting and reset inning state. */
+            homeBatting = !homeBatting;
+
+            for (int i = 0; i < 3; i++) {
+                baserunnerSpots[i] = -1;
+            }
+            outs = 0;
+            inngRuns = 0;
+            inngPA = 0;
+
+            /* If visitor is batting, a new inning has begun. */
+            if (!homeBatting) {
+                inng++;
+            }
+
+            /* Reset pitcher-innings. */
+            home.getCurrentPitcher().startNewInning();
+            visitor.getCurrentPitcher().startNewInning();
+        }
+    }
+
+    /**
+     * 
+     * @param playerID
+     * @param event
+     */
+    private void readPlay(String playerID, String event) {
+
+    }
+
+    /**
+     * Award end-of-game data such as earned runs.
+     * 
+     * @param key The type of data. Currently, this should always be "er".
+     * @param playerID The player's ID.
+     * @param value The data's value.
+     */
+    public void setData(String key, String playerID, String value){
+        int valueInt;
+        BxScrPitcher tmpPitcher;
+
+        /* Check that value is an integer */
+        try {
+            valueInt = Integer.parseInt(value);
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException("Data lines must end with an integer " +
+                "value. Line: " + currentLine);
+        }
+        
+        if (key.equals("er")) {
+            /* Check each team for player. When found, award earned runs. */
+            tmpPitcher = visitor.getPitcher(playerID);
+            if (tmpPitcher != null) {
+                tmpPitcher.incrementStats(BaseballPlayer.KEY_ER, valueInt);
+            }
+            tmpPitcher = home.getPitcher(playerID);
+            if (tmpPitcher != null) {
+                tmpPitcher.incrementStats(BaseballPlayer.KEY_ER, valueInt);
+            }
         }
     }
 
@@ -131,8 +280,16 @@ public class BxScrGameAccount implements GameAccount {
      * @throws IOException if a team's city/name cannot be found in TEAM file.
      */
     private void setInfo(String key, String value) throws FileNotFoundException,
-        IOException {
-        if (key.equals("visteam,")) {
+            IOException {
+        /* 
+        * Check key for the type of information stored. Note that 
+        * with the exception of visteam and hometeam fields, this 
+        * data is purely situation-describing, and has no impact on
+        * the running of this class.
+        */
+        String[] cityAndName;
+
+        if (key.equals("visteam")) {
             /* 
              * Initialize visiting team's roster reader, 
              * check TEAM file for team's name. Initialize
@@ -140,9 +297,10 @@ public class BxScrGameAccount implements GameAccount {
              */
             visRosFileName = value + year + ".ROS";
             visRosReader = new RandomAccessFile(new File(visRosFileName), "r");
-            String[] cityAndName = findTeamCityAndName(value);
+            cityAndName = findTeamCityAndName(value);
             visitor = new Team(value, cityAndName[0], cityAndName[1], false);
-        } else if (key.equals("hometeam,")) {
+
+        } else if (key.equals("hometeam")) {
             /* 
              * Initialize visiting team's roster reader,
              * check TEAM file for team's city/name.
@@ -150,22 +308,33 @@ public class BxScrGameAccount implements GameAccount {
              */
             homeRosFileName = value + year + ".ROS";
             homeRosReader = new RandomAccessFile(new File(homeRosFileName), "r");
-            String[] cityAndName = findTeamCityAndName(value);
+            cityAndName = findTeamCityAndName(value);
             home = new Team(value, cityAndName[0], cityAndName[1], true);
-        } else if (key.equals("data")) {
+
+        } else if (key.equals("date")) {
+            
             /* Set game's date. */
             String[] dateArr = value.split("/");
-            date = dateArr[1] + "/" + dateArr[2] + "/" + dateArr[0];
+            try {
+                date = dateArr[1] + "/" + dateArr[2] + "/" + dateArr[0];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                date = "??/??/????";
+            }
+
         } else if (key.equals("daynight")){
-            if (key.equals("day")) {
-                daynight = 'D';
-            } else {
+            /* 
+             * Check if game was played during day or 
+             * at night. If value is unreadable, default to day.
+             */
+            if (key.equals("night")) {
                 daynight = 'N';
+            } else {
+                daynight = 'D';
             }
         } else if (key.equals("number")){
             /* 
-             * If value == 0: single game on date.
-             * If value == 1 or 2: part of double-header.
+             * If value equals 0: single game on date.
+             * If value equals 1 or 2: part of double-header.
              * If NumberFormatException occurs, assume single-game. 
              */
             try {
@@ -174,9 +343,17 @@ public class BxScrGameAccount implements GameAccount {
                 gmNumber = 0;
             }
         } else if (key.equals("attendance")){
-            attendance = Integer.parseInt(value);
+            try {
+                attendance = Integer.parseInt(value);
+            } catch (NumberFormatException nfe) {
+                attendance = 0;
+            }
         } else if (key.equals("timeofgame")){
-            timeOfGame = Integer.parseInt(value);
+            try {
+                timeOfGame = Integer.parseInt(value);
+            } catch (NumberFormatException nfe) {
+                timeOfGame = 0;
+            }
         } else if (key.equals("wp")){
             wpID = value;
         } else if (key.equals("lp")){
@@ -197,6 +374,7 @@ public class BxScrGameAccount implements GameAccount {
      * @param  position Player's position (1-12).
      * @throws IllegalArgumentException Thrown if any argument does not conform to 
      *         specifications.
+     * @throws IOException if a player's name is not found in corresponding roster file.
      */
     private void makeRosterMove(boolean isStarter, String playerID, String playerName,
             String playerTeam, String batSpot, String position)
@@ -333,6 +511,47 @@ public class BxScrGameAccount implements GameAccount {
         }
         throw new IOException("Team " + teamID + " could not be found in file " +
         "TEAM" + year + ". Line: " + currentLine);
+    }
+
+    /** @return game's attendance. */
+    public int getAttendance() {
+        return attendance;
+    }
+
+    /**  
+     * @return game's number. <code>0</code> for single-game, 
+     * <code>1</code> or <code>2</code> if part of double-header.
+     */
+    public int getGameNumber() {
+        return gmNumber;
+    }
+
+    /** 
+     * @return <code>'D'</code> for day game, <code>'N'</code> 
+     * for night day. 
+     */
+    public char getDayNight() {
+        return daynight;
+    }
+
+    /** @return time of game in minutes. */
+    public int getTimeOfGame() {
+        return timeOfGame;
+    }
+
+    /** @return date on which game occurred. */
+    public String getDate() {
+        return date;
+    }
+
+    /** @return game's unique Retrosheet ID. */
+    public String getGameID() {
+        return gameID;
+    }
+
+    /** @return the last line read into this object. */
+    public String getLastLine() {
+        return currentLine;
     }
 
 }
