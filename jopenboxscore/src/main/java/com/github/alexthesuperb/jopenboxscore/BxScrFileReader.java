@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,86 +19,37 @@ public class BxScrFileReader implements EventFileReader {
     /** The number of lines read by <code>pbpReader</code>. */
     private int lineNum;
 
-    /** Name of TEAM file. */
-    private String teamFileName;
-
     /** Look for team and roster files containing this year. */
     private String year;
 
     /** <code>BufferedReader</code> to read file. */
     private BufferedReader pbpReader;
 
-    /** to read TEAM file, which contains team name information. */
-    private RandomAccessFile teamReader;
-
     /** A list of the games processed by this instance. */
     private List<BxScrGameAccount> gameAccounts;
 
-    /**
-     * Open a new object of type <code>BxScrReader</code>.
-     * 
-     * @param fileName Name of event file from which to read.
-     * @param year The year of the query, for team and roster files.
-     * @param teamReader <code>RandomAccessFile</code> for reading team information.
-     * @throws FileNotFoundException if either main file reader or TEAM file reader
-     *         fail to initialize.
+    /** 
+     * A directory containing TEAM and roster files. This object is
+     * passed into each <code>BxScrGameAccount</code> instance.
      */
-    public BxScrFileReader(String fileName, String year, RandomAccessFile teamReader) 
-            throws FileNotFoundException {
-        teamFileName = "TEAM" + year;
+    private File teamRosDir;
 
-        setup(fileName, year, teamReader);
-    }
-    
-    /**
-     * Construct a new <code>BxScrFileReader</code> for 
-     * <code>File(fileName)</code>.
-     * 
-     * @param fileName The name of the file to read from.
-     * @param year The year of the query, for team and roster files.
-     * @throws FileNotFoundException if file <code>new File("TEAM" + year), "r")</code>
-     *         fails to open or if <code>BufferedReader</code> cannot be created.
-     */
-    public BxScrFileReader(String fileName, String year) throws FileNotFoundException {
-        teamFileName = "TEAM" + year;
-        
-        /* Check if team file exists. If not, throw exception. */
-        File tempFile = new File(teamFileName);
-        if (!tempFile.exists()) {
-            throw new FileNotFoundException("File " + teamFileName + " could not " +
-                "be found or opened.");
-        }
-        setup(fileName, year, new RandomAccessFile(tempFile, "r"));
-    }
-
-    /**
-     * Private helper method for constructors, allowing both
-     * <code>BxScrFileReader(String fileName, String year)</code> and 
-     * <code>BxScrFileReader(String fileName, String year, RandomAccessFile
-     * teamReader)</code> access to the same operations in as few lines as possible.
-     * 
-     * @param fileName The name of the main file, which initializes a BufferedReader.
-     * @param year The year of the query, for team and roster file names.
-     * @param teamReader <code>RandomAccessFile</code> for reading team information.
-     * @throws FileNotFoundException if <code>BufferedReader</code> fails to initialize.
-     */
-    private void setup(String fileName, String year, RandomAccessFile teamReader)
-            throws FileNotFoundException {
-        this.fileName = fileName;
+    public BxScrFileReader(String eveFileName, String year, File teamRosDir)
+            throws IOException {
+        gameAccounts = new LinkedList<BxScrGameAccount>();
+        this.fileName = eveFileName;
         this.year = year;
-        this.teamReader = teamReader;
+        this.teamRosDir = teamRosDir;
         lineNum = 0;
 
         /* Check if file with name fileName exists. If it does not, throw
         a new FileNotFoundException. */
-        File tempFile = new File(fileName);
+        File tempFile = new File(eveFileName);
         if (tempFile.exists()) {
-            pbpReader = new BufferedReader(new FileReader(fileName));
+            pbpReader = new BufferedReader(new FileReader(eveFileName));
         } else {
-            throw new FileNotFoundException("File " + fileName + " not found.");
+            throw new FileNotFoundException("Event file " + eveFileName + " not found.");
         }
-        
-        gameAccounts = new LinkedList<BxScrGameAccount>();
     }
 
     /**
@@ -130,7 +80,7 @@ public class BxScrFileReader implements EventFileReader {
                     gameAccounts.add(currGame);
                 }
                 currGame = new BxScrGameAccount(line.substring(3), year, fileName, 
-                    teamReader);
+                    teamRosDir);
             }
             if (currGame != null) {
                 currGame.addLine(line, lineNum);
@@ -181,7 +131,7 @@ public class BxScrFileReader implements EventFileReader {
                 if (gameIDs.contains(line.substring(3))) {
                     readThisGame = true;
                     currGame = new BxScrGameAccount(line.substring(3), year, fileName, 
-                        teamReader);
+                        teamRosDir);
                 }
             }
             if (readThisGame && currGame != null) {
@@ -251,7 +201,8 @@ public class BxScrFileReader implements EventFileReader {
                 /* Check if game falls into range. If it does, read. */
                 if (gameDateInt >= startInt && gameDateInt <= endInt) {
                     readThisGame = true;
-                    currGame = new BxScrGameAccount(gameID, year, fileName, teamReader);
+                    currGame = new BxScrGameAccount(gameID, year, fileName, 
+                        teamRosDir);
                 }   
             }
             if (readThisGame && currGame != null) {

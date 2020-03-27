@@ -3,7 +3,8 @@
 package com.github.alexthesuperb.jopenboxscore;
 
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
+import java.io.File;
+// import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -18,6 +19,7 @@ public class Driver {
     static boolean readEndDate;
     static boolean readOutFile;
     static boolean readGameID;
+    static boolean readInRosDir;
 
     /** If <code>false</code>, output to terminal. */
     static boolean hasOutFile;
@@ -30,14 +32,31 @@ public class Driver {
     static LinkedList<String> inFileNames;
     static LinkedList<String> gameIDs;
 
+    /* Query flags */
     static final int QUERY_ALL_GAMES = 1;
     static final int QUERY_BY_ID = 2;
     static final int QUERY_BY_DATES = 3;
     static final int QUERY_ASK_USER = 4; 
 
+    /* Query chosen by user */
     static int queryType;
 
+    /* Writes output */
     static BufferedWriter outWriter;
+
+    /** Directory containing TEAM and roster files. */
+    static File rosDir;
+
+    /** Reset flags. */
+    static void resetFlags() {
+        readInFile = false;
+        readYear = false;
+        readStartDate = false;
+        readEndDate = false;
+        readOutFile = false;
+        readGameID = false;
+        readInRosDir = false;
+    }
 
     /**
      * Javadoc comment...
@@ -48,6 +67,9 @@ public class Driver {
         year = "";
         inFileNames = new LinkedList<>();
         gameIDs = new LinkedList<>();
+
+        /* If a path is not specified, default to current directory. */
+        rosDir = new File(".");
         
         int argc = args.length;
         int i = 0;
@@ -63,8 +85,11 @@ public class Driver {
                     System.exit(0);
                 } else if (args[i].equals("-y") || args[i].equals("-year")) {
                     resetFlags();
-                    readYear = true;    
-                } else if (args[i].equals("-i") || args[i].equals("-id")) {
+                    readYear = true;  
+                } else if (args[i].equals("-p") || args[i].equals("-path")) {
+                    resetFlags();
+                    readInRosDir = true;
+                }  else if (args[i].equals("-i") || args[i].equals("-id")) {
                     /* 
                      * If queryType is not the default, user has already entered
                      * another flag. Conflicting flags throws an exception. 
@@ -93,7 +118,7 @@ public class Driver {
                     resetFlags();
                     readEndDate = true;
                     queryType = QUERY_BY_DATES;
-                } else if (args[i].equals("-d") || args[i].equals("-destination")) {
+                } else if (args[i].equals("-d") || args[i].equals("-dest")) {
                     hasOutFile = true;
                     resetFlags();
                     readOutFile = true;
@@ -109,6 +134,14 @@ public class Driver {
                     if(readYear) {
                         year = args[i];
                         readYear = false;
+                    } else if (readInRosDir) {
+                        rosDir = new File(args[i]);
+                        readInRosDir = false;
+
+                        /* ...Debug... */
+                        for (String s : rosDir.list()) {
+                            System.out.println(s);
+                        }
                     } else if (readStartDate) {
                         startDate = args[i];
                         readStartDate = false;
@@ -179,7 +212,7 @@ public class Driver {
         try {
             for (String s : inFileNames) {
                 currFile = s;
-                BxScrFileReader boxReader = new BxScrFileReader(s, year);
+                BxScrFileReader boxReader = new BxScrFileReader(s, year, rosDir);
 
                 if (queryType == QUERY_ALL_GAMES) {
                     boxReader.readAll();
@@ -201,30 +234,43 @@ public class Driver {
             }
         } catch (Exception e) {
 
-            /* Exception thrown from BxScrFileReader */
-            System.out.println("\n[An error has occured in file " + 
-                currFile + ". Cause: " + e.getMessage() + "]\n");
+            /* Exception thrown by BxScrFileReader */
+            System.out.println("\nAn error has occured in file while processing " +
+                "file " + currFile + ". Cause: \n");
+            e.printStackTrace();
+            System.exit(0);
         }
 
         /* Finish program. */
         System.out.println("[Program terminated successfully.]");
     }
 
-    /** Reset flags. */
-    static void resetFlags() {
-        readInFile = false;
-        readYear = false;
-        readStartDate = false;
-        readEndDate = false;
-        readOutFile = false;
-        readGameID = false;
-    }
-
     /** Print a help message to the terminal. */
     static void printHelp() {
-        
-        /* Implement here... */
-        System.out.println("...Help message...");
+        System.out.println("\n\nJBoxscore is an open-source alternative to " +
+            "Retrosheet.org's BOX.EXE boxscore-generating software. It converts " +
+            "Retrosheet play-by-play files (ending in .EVE, .EVA, or .EVN) into " +
+            "classic newspaper boxscores. This program must be run from a directory " +
+            "containing the roster (.ROS) and TEAM files required by the requested " +
+            "event files. Arguments must end with a series of Event files to read. " +
+            "By default, the entirety of the requested files will be read. However, " +
+            "the breadth of that search may be manipulated with the following flags.\n");
+
+        System.out.println(String.format("%10s%10s%10s", "-h", "-help", "") + 
+            "Print this help to terminal.");
+        System.out.println(String.format("%10s%10s%10s", "-y", "-year", "") + 
+            "Set the year of inquiry.");
+        System.out.println(String.format("%10s%10s%10s", "-i", "-id", "") + 
+            "Read only games specified by their IDs. This flag must be followed by " +
+            "one or more 12-character Retrosheet game IDs.");
+        System.out.println(String.format("%10s%10s%10s", "-s", "-start", "") + 
+            "Specify the date of the earliest game to read. This flag must be " +
+            "followed by a 4-digit (MMDD) date.");
+        System.out.println(String.format("%10s%10s%10s", "-e", "-end", "") + 
+            "Specify the date of the last game to read. This flag must be followed by " +
+            "a 4-digit (MMDD) date.");
+        System.out.println(String.format("%10s%10s%10s", "-d", "-dest", "") + 
+            "Specify output file. By default, output prints to console.");
     }
 
     /* Print query in plain English to terminal. */
