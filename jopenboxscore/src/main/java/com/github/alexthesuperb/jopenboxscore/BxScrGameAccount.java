@@ -110,7 +110,10 @@ public class BxScrGameAccount implements GameAccount {
              /* Find filereader */
             for (String s : rosDir.list()) {
                 if (s.contains(teamFileName)) {
-                    teamReader = new RandomAccessFile(s, "r");
+                    teamReader = new RandomAccessFile(
+                        new File(rosDir.getPath(), teamFileName),
+                        "r"
+                    );
                     openedTeamFile = true;
                     break;
                 }
@@ -775,43 +778,6 @@ public class BxScrGameAccount implements GameAccount {
         }
     }
 
-    // /** 
-    //  * <p><code>Called from BxScrGameAccount.setInfo(String key, String value)</code>,
-    //  * this method searches the directory <code>rosDir</code> for its corresponding
-    //  * roster file.</p>
-    //  * 
-    //  * <p>Note that this method requires global members <code>homeRosFileName</code>
-    //  * and <code>visRosFileName</code> to already be initialized.
-    //  * 
-    //  * @return <code>true</code> if file is found and successfully opened, or 
-    //  *         <code>false</code> otherwise.
-    //  * @throws IOException if file cannot be opened.
-    //  */
-    // private boolean assignRosFile(boolean isHome) throws IOException {
-    //     boolean openedRosFile = false;
-    //     String rosFileName;
-    //     RandomAccessFile rosReader;
-    //     String[] rosDirList = rosDir.list();
-
-    //     if (isHome) {
-    //         rosFileName = homeRosFileName;
-    //         rosReader = homeRosReader;
-    //     } else {
-    //         rosFileName = visRosFileName;
-    //         rosReader = visRosReader;
-    //     }
-
-    //     for (String f : rosDirList) {
-    //         if (f.contains(rosFileName)) {
-    //             rosReader = new RandomAccessFile(new File(rosFileName), "r");
-    //             openedRosFile = true;
-    //             break;
-    //         }
-    //     }
-
-    //     return openedRosFile;
-    // }
-
     /**
      * Set game enviroment information.
      * 
@@ -842,8 +808,11 @@ public class BxScrGameAccount implements GameAccount {
             
             /* Try to open visitor's roster file */
             for (String s : rosDirList) {
-                if (s.contains(visRosFileName)) {
-                    visRosReader = new RandomAccessFile(new File(visRosFileName), "r");       
+                if (s.contains(visRosFileName)) {       
+                    visRosReader = new RandomAccessFile(
+                        new File(rosDir.getPath(), visRosFileName),
+                        "r"
+                    );
                     openedRosFile = true;
                     break;
                 }
@@ -872,7 +841,10 @@ public class BxScrGameAccount implements GameAccount {
             /* Try to open visitor's roster file */
             for (String s : rosDirList) {
                 if (s.contains(homeRosFileName)) {
-                    homeRosReader = new RandomAccessFile(new File(homeRosFileName), "r");
+                    homeRosReader = new RandomAccessFile(
+                        new File(rosDir.getPath(), homeRosFileName),
+                        "r"
+                    );
                     openedRosFile = true;
                     break;
                 }

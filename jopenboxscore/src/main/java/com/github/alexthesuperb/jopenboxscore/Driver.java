@@ -137,11 +137,6 @@ public class Driver {
                     } else if (readInRosDir) {
                         rosDir = new File(args[i]);
                         readInRosDir = false;
-
-                        /* ...Debug... */
-                        for (String s : rosDir.list()) {
-                            System.out.println(s);
-                        }
                     } else if (readStartDate) {
                         startDate = args[i];
                         readStartDate = false;
@@ -250,9 +245,8 @@ public class Driver {
         System.out.println("\n\nJBoxscore is an open-source alternative to " +
             "Retrosheet.org's BOX.EXE boxscore-generating software. It converts " +
             "Retrosheet play-by-play files (ending in .EVE, .EVA, or .EVN) into " +
-            "classic newspaper boxscores. This program must be run from a directory " +
-            "containing the roster (.ROS) and TEAM files required by the requested " +
-            "event files. Arguments must end with a series of Event files to read. " +
+            "classic newspaper boxscores. Arguments must end with a series of Event " +
+            "files to read. " +
             "By default, the entirety of the requested files will be read. However, " +
             "the breadth of that search may be manipulated with the following flags.\n");
 
@@ -271,6 +265,9 @@ public class Driver {
             "a 4-digit (MMDD) date.");
         System.out.println(String.format("%10s%10s%10s", "-d", "-dest", "") + 
             "Specify output file. By default, output prints to console.");
+        System.out.println(String.format("%10s%10s%10s", "-p", "-path", "") + 
+            "Specify the directory containg TEAM and .ROS files. By default, " +
+            "this is assumed to be the directory from which this program is executed.");
     }
 
     /* Print query in plain English to terminal. */
