@@ -76,7 +76,7 @@ class CommandLineMain {
      * Print a method explaining the program's various useage flags to
      * terminal.
      */
-    public static void printHelp(){
+    public static void printHelp() {
         System.out.println("\nJBOX is an open-source recreation of Retrosheet.org's " +
             "BOX.EXE software written by Alex Wimer. All queries must begin by specifying " +
             "a year. Optionally, the scope of a query may be limited with additional flags.\n");
@@ -110,16 +110,16 @@ class CommandLineMain {
         
         int argc = args.length;
 
-        try{
+        try {
 
             /* If user inputs -h, print help message and exit program. */
-            if(args[0].equals("-h")){
+            if (args[0].equals("-h")) {
                 printHelp();
                 System.exit(0);
             }
 
             /* If user does not specify year, exit system. */
-            if(!args[0].equals("-y")){
+            if (!args[0].equals("-y")) {
                 System.out.println("Please begin argument by specifying a year." + 
                 "Enter -h for help.");
                 System.exit(1);
@@ -129,25 +129,25 @@ class CommandLineMain {
 
             /* Check for TEAM file */
             File tmp = new File("TEAM" + year);
-            try{
+            try {
                 teamReader = new RandomAccessFile(tmp,"r");
-            } catch (FileNotFoundException e){
+            } catch (FileNotFoundException e) {
                 System.out.println("[Can't find file TEAM" + year +".]");
                 System.exit(1);
             }
 
             /* Case 1: No other modifiers, print all games in file */
-            if(args[2].endsWith(".EVE") || args[2].endsWith(".EVA") 
+            if (args[2].endsWith(".EVE") || args[2].endsWith(".EVA") 
                 || args[2].endsWith(".EVN"))
             {
                 query = QUERY_ALL_GAMES;
                 getFileNames(args, 2, argc);
             } 
             /* Case 2: Search for games by ID */
-            else if(args[2].equals("-i")){
+            else if (args[2].equals("-i")) {
                 query = QUERY_BY_ID;
-                for(int i = 3; i < argc; i++){
-                    if(args[i].endsWith(".EVE") || args[i].endsWith(".EVA") 
+                for (int i = 3; i < argc; i++) {
+                    if (args[i].endsWith(".EVE") || args[i].endsWith(".EVA") 
                         || args[i].endsWith(".EVN"))
                     {
                         getFileNames(args, i, argc);
@@ -158,18 +158,18 @@ class CommandLineMain {
                 }
             } 
             /* Case 3: Ask user about each game */
-            else if(args[2].equals("-q")){
+            else if (args[2].equals("-q")) {
                 query = QUERY_ASK_USER;
                 getFileNames(args, 3, argc);
             } 
             /* Case 4: Search for games between two dates */
-            else if(args[2].equals("-s")){
+            else if (args[2].equals("-s")) {
                 query = QUERY_DATE_RANGE;
                 /* Check if next argument is a valid MMDD date. */
-                if(args[3].length() == 4){
+                if (args[3].length() == 4) {
                     startDate = args[3];
-                    if(args[4].equals("-e")){
-                        if(args[5].length() == 4){
+                    if (args[4].equals("-e")) {
+                        if (args[5].length() == 4) {
                             endDate = args[5];
                             getFileNames(args,6,argc);
                         } else {
@@ -197,24 +197,24 @@ class CommandLineMain {
         /* End input validation block */
         
         /* For each file name provided, create a File object */
-        for(String s : readFileNames){
+        for (String s : readFileNames) {
             readFiles.add(new File(s));
         }
 
         /* Initialize output stream */
-        try{
-            if(!writeFileName.equals("")){
+        try {
+            if (!writeFileName.equals("")) {
                 outWriter = new BufferedWriter(new FileWriter(writeFileName));
             } else {
                 outWriter = new BufferedWriter(new OutputStreamWriter(System.out));
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             outWriter = new BufferedWriter(new OutputStreamWriter(System.out));
         }
 
         /* For each file, read based on query requested */
-        for(File f : readFiles){
-            switch(query){
+        for (File f : readFiles) {
+            switch(query) {
                 case QUERY_ALL_GAMES:
                     ReadRetrosheetFile.readPBPFile(f, outWriter, teamReader, year);
                     break;
@@ -242,7 +242,7 @@ class CommandLineMain {
      * @param type The type of error. As currently written, this parameter
      * goes unused by the method.  
      */
-    public static void printError(int type){
+    public static void printError(int type) {
         System.out.println("Argument could not be understood as entered.");
         System.out.println("Enter -h for help.");
     }
@@ -253,16 +253,16 @@ class CommandLineMain {
      * @param i_start
      * @param argc
      */
-    static void getFileNames(String[] args, int i_start, int argc){
+    static void getFileNames(String[] args, int i_start, int argc) {
 
         /* After modifiers, all other arguments should be file names. */
-        for(int i = i_start; i < argc; i++){
+        for (int i = i_start; i < argc; i++) {
             /* 
              * Argument following -p modifier is output file
              * Any arguments after that output file are ignored 
              */
-            if(args[i].equals("-p")){
-                if(i+1 <= argc-1)
+            if (args[i].equals("-p")) {
+                if (i+1 <= argc-1)
                     writeFileName = args[i+1]; 
                 break;
             } else {

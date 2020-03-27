@@ -1,9 +1,14 @@
 /Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/Boxscore.java
-/Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/BxScrPitcher.java
 /Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/BaseballPlayer.java
+/Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/EventFileReader.java
 /Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/ReadGame.java
-/Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/ReadRetrosheetFile.java
 /Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/Team.java
 /Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/CommandLineMain.java
-/Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/BxScrPositionPlayer.java
 /Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/Play.java
+/Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/Driver.java
+/Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/GameAccount.java
+/Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/BxScrFileReader.java
+/Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/BxScrPitcher.java
+/Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/ReadRetrosheetFile.java
+/Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/BxScrPositionPlayer.java
+/Users/alexander/Documents/GitHub/baseball-boxscore-v1/jopenboxscore/src/main/java/com/github/alexthesuperb/jopenboxscore/BxScrGameAccount.java

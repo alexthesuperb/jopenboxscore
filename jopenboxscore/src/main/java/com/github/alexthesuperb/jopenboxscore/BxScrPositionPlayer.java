@@ -1,13 +1,6 @@
-//////////////////////////////////////////////////////////////////////
-// Class: BxScrPositionPlayer
-// Author: Alexander Wimer
-// Version: 1.0.0
-// Since: 2020-4-17
-//
-// This file is completed open-source and free to use, distribute, and
-// alter.
-//
-//////////////////////////////////////////////////////////////////////
+/*
+ * C-style comment with author/copyright information...
+ */
 
 package com.github.alexthesuperb.jopenboxscore;
 
@@ -67,7 +60,6 @@ public class BxScrPositionPlayer extends BaseballPlayer {
         posList = new LinkedList<>();
         this.lineupSpot = lineupSpot;
         posList.add(position);
-
     }
 
     /**
@@ -75,12 +67,12 @@ public class BxScrPositionPlayer extends BaseballPlayer {
      * reaching base.
      * @param pitcher The pitcher charged.
      */
-    public void setPitcherCharged(BxScrPitcher pitcher){
+    public void setPitcherCharged(BxScrPitcher pitcher) {
         pitcherCharged = pitcher;
     }
 
     /** Set <code>pitcherCharged</code> to <code>null</code>. */
-    public void clearPitcherCharged(){
+    public void clearPitcherCharged() {
         setPitcherCharged(null);
     }
 
@@ -89,7 +81,7 @@ public class BxScrPositionPlayer extends BaseballPlayer {
      * 
      * @return The pitcher charged. This value may be <code>null</code>.
      */
-    public BxScrPitcher getPitcherCharged(){
+    public BxScrPitcher getPitcherCharged() {
         return pitcherCharged;
     }
 
@@ -98,7 +90,7 @@ public class BxScrPositionPlayer extends BaseballPlayer {
      * 
      * @param newPos The new position.
      */
-    public void changePosition(String newPos){
+    public void changePosition(String newPos) {
         changePosition(Integer.valueOf(newPos));
     }
 
@@ -107,7 +99,7 @@ public class BxScrPositionPlayer extends BaseballPlayer {
      * 
      * @param newPos The new position.
      */
-    public void changePosition(int newPos){
+    public void changePosition(int newPos) {
         posList.add(newPos);
     }
 
@@ -116,7 +108,7 @@ public class BxScrPositionPlayer extends BaseballPlayer {
      * 
      * @return <code>posList.getLast()</code>
      */
-    public int getCurrentPosition(){
+    public int getCurrentPosition() {
         return posList.getLast();
     }
 
@@ -147,45 +139,46 @@ public class BxScrPositionPlayer extends BaseballPlayer {
      * 
      * @return The positions manned by the player.
      */
-    public String getPositionString(){
+    public String getPositionString() {
         String str = "";
-        for(Integer i : posList){
-            switch(i){
-                case PITCHER:
-                    str += "p-";
-                    break;
-                case CATCHER:
-                    str += "c-";
-                    break;
-                case FIRST_BASEMAN:
-                    str += "1b-";
-                    break;
-                case SECOND_BASEMAN:
-                    str += "2b-";
-                    break;
-                case THIRD_BASEMAN:
-                    str += "3b-";
-                    break;
-                case SHORT_STOP:
-                    str +="ss-";
-                    break;
-                case LEFT_FIELDER:
-                    str += "lf-";
-                    break;
-                case CENTER_FIELDER:
-                    str += "cf-";
-                    break;
-                case RIGHT_FIELDER:
-                    str += "rf-";
-                    break;
-                case DESIGNATED_HITTER:
-                    str += "dh-";
-                    break;
-                case PINCH_HITTER:
-                    str += "ph-";
-                    break;
-                case PINCH_RUNNER:
-                    str += "pr-";
+
+        for (Integer i : posList) {
+            switch(i) {
+            case PITCHER:
+                str += "p-";
+                break;
+            case CATCHER:
+                str += "c-";
+                break;
+            case FIRST_BASEMAN:
+                str += "1b-";
+                break;
+            case SECOND_BASEMAN:
+                str += "2b-";
+                break;
+            case THIRD_BASEMAN:
+                str += "3b-";
+                break;
+            case SHORT_STOP:
+                str +="ss-";
+                break;
+            case LEFT_FIELDER:
+                str += "lf-";
+                break;
+            case CENTER_FIELDER:
+                str += "cf-";
+                break;
+            case RIGHT_FIELDER:
+                str += "rf-";
+                break;
+            case DESIGNATED_HITTER:
+                str += "dh-";
+                break;
+            case PINCH_HITTER:
+                str += "ph-";
+                break;
+            case PINCH_RUNNER:
+                str += "pr-";
             }
         }
         return (str.length() > 0) ? str.substring(0,str.length()-1) : str;
@@ -200,26 +193,6 @@ public class BxScrPositionPlayer extends BaseballPlayer {
         return getStats(kArr);
     }
 
-    // /**
-    //  * Returns a <code>String</code> of whitespace-delimited 
-    //  * traditional boxscore statistics (at-bats, runs, hits, and
-    //  * rbi), specifically formatted for use in the
-    //  * <code>com.alexwimer.bsblib.BxScrSingleGame</code> class.
-    //  * 
-    //  * @return <code>String</code> of classic batting
-    //  * boxscore statistics.
-    //  */
-    // public String statsToString() {
-
-    //     int depth = 3;
-    //     String str = "";
-    //     int[] statsArr = getBxScrStats();
-        
-    //     for(int i = 0; i < statsArr.length; i++) {
-    //         str += String.format("%" + depth + "d", statsArr[i]);
-    //     }
-    //     return str;    
-    // }
 }
 
 // END OF FILE

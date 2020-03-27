@@ -1,13 +1,6 @@
-//////////////////////////////////////////////////////////////////////
-// Class: BaseballPlayer
-// Author: Alexander Wimer
-// Version: 1.0.0
-// Since: 2020-4-17
-//
-// This file is completed open-source and free to use, distribute, and
-// alter.
-//
-//////////////////////////////////////////////////////////////////////
+/*
+ * C-style comment with author/copyright information...
+ */
 
 package com.github.alexthesuperb.jopenboxscore;
 
@@ -202,7 +195,7 @@ public abstract class BaseballPlayer {
      */
     public void incrementStats(String key, int n) {
         
-        if(stats.containsKey(key)) {
+        if (stats.containsKey(key)) {
             Integer update = stats.get(key) + n;
             stats.put(key, update);
         } else {
@@ -216,7 +209,7 @@ public abstract class BaseballPlayer {
      * @param key The key of the stat to be increment.
      */
     public void incrementStats(String key) {
-        if(stats.containsKey(key)) {
+        if (stats.containsKey(key)) {
             Integer update = stats.get(key) + 1;
             stats.put(key, update);
         } else {
@@ -246,7 +239,7 @@ public abstract class BaseballPlayer {
         
         int[] arr = new int[keys.length];
 
-        for(int i = 0; i < keys.length; i++) {
+        for (int i = 0; i < keys.length; i++) {
             arr[i] = getStat(keys[i]);
         }
 
@@ -258,7 +251,7 @@ public abstract class BaseballPlayer {
        
         HashMap<String,Integer> copy = new HashMap<>();
         
-        for(String k : stats.keySet()) {
+        for (String k : stats.keySet()) {
             copy.put(k, stats.get(k));
         }
         return copy;

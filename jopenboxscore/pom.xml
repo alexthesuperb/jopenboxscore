@@ -6,7 +6,7 @@
 
   <groupId>com.github.alexthesuperb.jopenboxscore</groupId>
   <artifactId>jopenboxscore</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <name>jopenboxscore</name>
   <!-- FIXME change it to the project's website -->
@@ -38,8 +38,8 @@
           <configuration>
             <archive>
               <manifest>
-              <!-- give full qualified name of your main class-->
-                <mainClass>com.github.alexthesuperb.jopenboxscore.CommandLineMain</mainClass>
+                <!-- give full qualified name of your main class-->
+                <mainClass>com.github.alexthesuperb.jopenboxscore.Driver</mainClass>
               </manifest>
             </archive>
           </configuration>
