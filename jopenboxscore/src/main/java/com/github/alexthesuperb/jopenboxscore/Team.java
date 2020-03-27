@@ -345,9 +345,9 @@ public class Team {
 
             /* New pitcher entering the game -- add to game staff. */
             if (!containsPitcher(id)) {
-                if (!pitchers.isEmpty()) {
-                    this.getCurrentPitcher().setInningRemoved(Play.getInning());
-                }
+                // if (!pitchers.isEmpty()) {
+                //     this.getCurrentPitcher().setInningRemoved(Play.getInning());
+                // }
                 BxScrPitcher newP = new BxScrPitcher(id, first, last);
                 pitchers.add(newP);
             }

@@ -329,6 +329,7 @@ public class BxScrGameAccount implements GameAccount {
         batter.setPitcherCharged(pitcher); 
         boolean involvesBatter = true;      //Marked false for SB, WP, etc.
         int bAdvance = 0;                   //Bases taken by the batter
+        pitcher.setInningRemoved(inng+1);   //+1 because inng is an index.
 
         /* Award errors on both plate and baserunning events */
         for (int i = 0; i < plateEvent.length()-1; i++) {
