@@ -45,12 +45,12 @@ public class BxScrGameAccount implements GameAccount {
     private String eveFileName;
     
     private boolean homeBatting;
-    private int inng = 0;
-    private int outs = 0;
-    private int visSpot = 0;
-    private int homeSpot = 0;
-    private int inngRuns = 0;
-    private int inngPA = 0;
+    private int inng;
+    private int outs;
+    private int visSpot;
+    private int homeSpot;
+    private int inngRuns;
+    private int inngPA;
     private int[] baserunnerSpots;
 
     /** ...Temporary... */
@@ -639,7 +639,7 @@ public class BxScrGameAccount implements GameAccount {
         if (involvesBatter) {
             inngPA++;                       //For inning LOB calculation
             incrementSpot();
-            pitcher.incrementInningBF();    
+            pitcher.incrementInningBF();  
         }
     }
 

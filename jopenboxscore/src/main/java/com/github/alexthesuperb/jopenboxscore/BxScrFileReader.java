@@ -178,7 +178,7 @@ public class BxScrFileReader implements EventFileReader {
             "the 4-digit integer code MMDD, where MM is a month and DD is a date.");
         }
 
-        /* Read the file.  */
+        /* Read the file. */
         while ((line = pbpReader.readLine()) != null) {
             lineNum++;
             if (line.startsWith("id,")) {
