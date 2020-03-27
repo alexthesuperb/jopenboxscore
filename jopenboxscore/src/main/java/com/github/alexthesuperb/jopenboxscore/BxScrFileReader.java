@@ -222,7 +222,7 @@ public class BxScrFileReader implements EventFileReader {
     
     public void readNexGame() throws IOException {
         /* Implement here... */
-
+        
     }
     
     public String getInfoNextGame() throws IOException {
