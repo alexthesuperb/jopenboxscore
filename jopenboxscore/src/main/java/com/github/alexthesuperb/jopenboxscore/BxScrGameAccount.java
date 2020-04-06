@@ -179,13 +179,27 @@ public class BxScrGameAccount implements GameAccount {
              */
             String infoLineArr[] = pbpLine.split(",");
 
+            /* 
+             * Special case: for pitching decisions, info line
+             * may contain a key but not a value.
+             */
+            if (infoLineArr.length == 2 && 
+                    (infoLineArr[1].equals("wp") || 
+                    infoLineArr[1].equals("lp") ||
+                    infoLineArr[1].equals("save"))) {
+                
+                /* Do nothing */
+                return;
+            }
+
             /* Check that line is valid input */
             if (infoLineArr.length != 3) {
                 throw new IllegalArgumentException("Info lines must contain " +
                     "2 fields. File  " + eveFileName + ", line " + 
                     lineNum + ": " + currentLine);
             }
-            setInfo(pbpLine.split(",")[1], pbpLine.split(",")[2]);
+            // setInfo(pbpLine.split(",")[1], pbpLine.split(",")[2]);
+            setInfo(infoLineArr[1], infoLineArr[2]);
 
         } else if (pbpLine.startsWith("start,") || pbpLine.startsWith("sub,")) {
             /* 
