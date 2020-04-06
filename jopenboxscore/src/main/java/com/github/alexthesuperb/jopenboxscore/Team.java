@@ -93,24 +93,17 @@ public class Team {
     }
 
     /**
-     * Check team's pitchers to award win/loss/save. If a pitcher's
-     * ID matches one of the three arguments, award him with that 
-     * statistic.
-     * 
-     * @param wpID winning pitcher's ID.
-     * @param lpID losing pitcher's ID.
-     * @param saveID save ID.
+     * Set decision <code>decKey</code> for player with ID <code>playerID</code>,
+     * if <code>Team</code> contains that play.
+     * @param decKey <code>BaseballPlayer.DECISION_WIN</code>,
+     *        <code>BaseballPlayer.DECISION_LOSS</code>, or <code>
+     *        BaseballPlayer.DECISION_SAVE</code>.
+     * @param playerID The pitcher's ID.
      */
-    public void setPitDecisions(String wpID, String lpID, String saveID) {
+    public void setPitDecision(char decKey, String playerID) {
         for (BxScrPitcher p : pitchers) {
-            if (p.getPlayerID().equals(wpID)) {
-                p.setDecision('W');
-            }
-            if (p.getPlayerID().equals(lpID)) {
-                p.setDecision('L');
-            }
-            if (p.getPlayerID().equals(saveID)) {
-                p.setDecision('S');
+            if (p.getPlayerID().equals(playerID)) {
+                p.setDecision(decKey);
             }
         }
     }
@@ -344,16 +337,46 @@ public class Team {
         return t;
     }
 
+    // /**
+    //  * @return a <code>String</code> of team's inning-by-inning run
+    //  * totals, with a space every three innings.
+    //  */
+    // public String linescoreToString() {
+    //     String s = "";
+
+    //     for (int i = 0; i < linescore.size(); i++) {
+    //         if (i > 0 && i%3 == 0)
+    //             s += " ";
+    //         s += linescore.get(i);
+    //     }
+    //     return s.trim();
+    // }
+
     /**
-     * @return a <code>String</code> of team's inning-by-inning run
-     * totals, with a space every three innings.
+     * <p>Return a <code>String</code> representing the team's linescore, with a 
+     * space ever <code>interval</code> innings or <code>spaces</code> spaces long.</p>
+     * 
+     * <p><b>Note:</b> The <code>String</code> produced by this method only reflects
+     * the innings added to this particular team's linescore list, not the innings
+     * played in the game. Therefore, calling this method for a home team leading
+     * at the end of a game will result in a <code>String</code> one character shorter
+     * than the visitor's.</p>
+     * @param interval The interval at which spacing is added.
+     * @param spaces The number of spaces added at the specified interval.
+     * @return a <code>String</code> representation of the team's linescore.
      */
-    public String linescoreToString() {
+    public String linescoreToString(int interval, int spaces) 
+            throws IllegalArgumentException {
         String s = "";
+        if (interval < 0 || spaces < 0) {
+            throw new IllegalArgumentException("interval and spaces must be " +
+                "positive integers.");
+        }
 
         for (int i = 0; i < linescore.size(); i++) {
-            if (i > 0 && i%3 == 0)
-                s += " ";
+            if (i > 0 && i%interval == 0)
+                // s += " ";
+                s += String.format("%" + spaces + "s", "");
             s += linescore.get(i);
         }
         return s.trim();

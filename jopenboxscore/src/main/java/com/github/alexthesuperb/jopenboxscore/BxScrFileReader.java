@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /** */
-public class BxScrFileReader implements EventFileReader {
+public class BxScrFileReader/*  implements EventFileReader */ {
 
     /** Name of file to be read. */
     private String fileName;
@@ -220,17 +220,17 @@ public class BxScrFileReader implements EventFileReader {
         }
     }
     
-    public void readNexGame() throws IOException {
-        /* Implement here... */
+    // public void readNexGame() throws IOException {
+    //     /* Implement here... */
         
-    }
+    // }
     
-    public String getInfoNextGame() throws IOException {
-        /* Implement here... */
+    // public String getInfoNextGame() throws IOException {
+    //     /* Implement here... */
         
-        /* Return a String describing the next unread game... */
-        return null;
-    }
+    //     /* Return a String describing the next unread game... */
+    //     return null;
+    // }
     
     /**
      * <code>BxScrFileReader</code>'s only output: a <code>List</code>

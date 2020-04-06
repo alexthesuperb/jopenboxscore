@@ -150,9 +150,20 @@ public class BxScrGameAccount implements GameAccount {
             home.getCurrentPitcher().setInningRemoved(inng);
         }
 
-        /* Check both teams to award pitching decisions. */
-        visitor.setPitDecisions(wpID, lpID, saveID);
-        home.setPitDecisions(wpID, lpID, saveID);
+        /* Award pitching decisions */
+        if (visitor.containsPitcher(wpID)) {
+            /* 
+             * If visitor contains winning pitcher, then home must
+             * contain losing pitcher.
+             */
+            visitor.setPitDecision(BaseballPlayer.DECISION_WIN, wpID);
+            home.setPitDecision(BaseballPlayer.DECISION_LOSS, lpID);
+            visitor.setPitDecision(BaseballPlayer.DECISION_SAVE, saveID);
+        } else {
+            home.setPitDecision(BaseballPlayer.DECISION_WIN, wpID);
+            visitor.setPitDecision(BaseballPlayer.DECISION_LOSS, lpID);
+            home.setPitDecision(BaseballPlayer.DECISION_SAVE, saveID);
+        }
     }
 
     /**

@@ -85,8 +85,8 @@ public class Boxscore {
      */
     private static void printLinescore(BufferedWriter writer, Team visitor, Team home, 
             int outs) throws IOException {
-        String v = visitor.linescoreToString();
-        String h = home.linescoreToString();
+        String v = visitor.linescoreToString(3, 1);
+        String h = home.linescoreToString(3, 1);
         
         if (v.length() > h.length()) {
             while (v.length() - 1 > h.length())
