@@ -185,7 +185,7 @@ public class Boxscore {
     /**
      * Return a boxscore-ready <code>String</code> displaying the players who earned
      * a special statistic. 
-     * @param stat_code The statistical category.
+     * @param statKey The statistical category.
      * @param visitor Visiting team.
      * @param home Home team.
      * @param isBattingStat <code>true</code> for batting statistics, <code>false</code>
@@ -193,18 +193,18 @@ public class Boxscore {
      * @return a boxscore-style <code>String</code> of players who garnered some
      * statistic.
      */
-    private static String getSpecialStatString(String stat_code, 
+    private static String getSpecialStatString(String statKey, 
             Team visitor, Team home, boolean isBattingStat) {
         String str = "";
         
-        if (isBattingStat || stat_code.equals("pb")) {
+        if (isBattingStat || statKey.equals(BaseballPlayer.KEY_PB)) {
             for (LinkedList<BxScrPositionPlayer> ar : visitor.getLineup()) {
                 for (BxScrPositionPlayer p : ar) {
-                    if (p.getStat(stat_code) > 0) {
-                        if (p.getStat(stat_code) == 1)
+                    if (p.getStat(statKey) > 0) {
+                        if (p.getStat(statKey) == 1)
                             str += p.getName();
                         else
-                            str += p.getName() + " " + p.getStat(stat_code);
+                            str += p.getName() + " " + p.getStat(statKey);
                         str += ", ";
                     }
                 }
@@ -212,11 +212,11 @@ public class Boxscore {
 
             for (LinkedList<BxScrPositionPlayer> ar : home.getLineup()) {
                 for (BxScrPositionPlayer p : ar) {
-                    if (p.getStat(stat_code) > 0) {
-                        if (p.getStat(stat_code) == 1)
+                    if (p.getStat(statKey) > 0) {
+                        if (p.getStat(statKey) == 1)
                             str += p.getName();
                         else
-                            str += p.getName() + " " + p.getStat(stat_code);
+                            str += p.getName() + " " + p.getStat(statKey);
                         str += ", ";
                     }
                 }
@@ -224,12 +224,12 @@ public class Boxscore {
 
         } else { // errors and pitching stats
             
-            if (stat_code.equals("e")) {
+            if (statKey.equals("e")) {
                 str = getSpecialStatString("e", visitor, home, true);
                 str += ", ";
             }
             
-            if (stat_code.equals("hp") || stat_code.equals("hbp")) {
+            if (statKey.equals(BaseballPlayer.KEY_HBP)) {
                 for (BxScrPitcher p : visitor.getPitchingStaff()) {
                     if (p.getBattersHBP().size() > 0) {
                         str += "by " + p.getName() + " (";
@@ -252,20 +252,20 @@ public class Boxscore {
                 }
             } else {
                 for (BxScrPitcher p : visitor.getPitchingStaff()) {
-                    if (p.getStat(stat_code) > 0) {
-                        if (p.getStat(stat_code) == 1)
+                    if (p.getStat(statKey) > 0) {
+                        if (p.getStat(statKey) == 1)
                             str += p.getName();
                         else
-                            str += p.getName() + " " + p.getStat(stat_code);
+                            str += p.getName() + " " + p.getStat(statKey);
                         str += ", ";
                     }
                 }
                 for (BxScrPitcher p : home.getPitchingStaff()) {
-                    if (p.getStat(stat_code) > 0) {
-                        if (p.getStat(stat_code) == 1)
+                    if (p.getStat(statKey) > 0) {
+                        if (p.getStat(statKey) == 1)
                             str += p.getName();
                         else
-                            str += p.getName() + " " + p.getStat(stat_code);
+                            str += p.getName() + " " + p.getStat(statKey);
                         str += ", ";
                     }
                 }
@@ -288,17 +288,17 @@ public class Boxscore {
     private static void printAdditionalInfo(BufferedWriter writer, 
             Team visitor, Team home) throws IOException {
 
-        String errorStr = getSpecialStatString("e", visitor, home, false);
-        String doubleStr = getSpecialStatString("d", visitor, home, true);
-        String tripleStr = getSpecialStatString("t", visitor, home, true);
-        String hrStr = getSpecialStatString("hr", visitor, home, true);
-        String sbStr = getSpecialStatString("sb", visitor, home, true);
-        String csStr = getSpecialStatString("cs", visitor, home, true);
-        String shStr = getSpecialStatString("sh", visitor, home, true);
-        String sfStr = getSpecialStatString("sf", visitor, home, true);
-        String hbpStr = getSpecialStatString("hp", visitor, home, false);
-        String wpStr = getSpecialStatString("wp", visitor, home, false);
-        String pbStr = getSpecialStatString("pb", visitor, home, false);
+        String errorStr = getSpecialStatString(BaseballPlayer.KEY_E, visitor, home, false);
+        String doubleStr = getSpecialStatString(BaseballPlayer.KEY_2B, visitor, home, true);
+        String tripleStr = getSpecialStatString(BaseballPlayer.KEY_3B, visitor, home, true);
+        String hrStr = getSpecialStatString(BaseballPlayer.KEY_HR, visitor, home, true);
+        String sbStr = getSpecialStatString(BaseballPlayer.KEY_SB, visitor, home, true);
+        String csStr = getSpecialStatString(BaseballPlayer.KEY_CS, visitor, home, true);
+        String shStr = getSpecialStatString(BaseballPlayer.KEY_SH, visitor, home, true);
+        String sfStr = getSpecialStatString(BaseballPlayer.KEY_SF, visitor, home, true);
+        String hbpStr = getSpecialStatString(BaseballPlayer.KEY_HBP, visitor, home, false);
+        String wpStr = getSpecialStatString(BaseballPlayer.KEY_WP, visitor, home, false);
+        String pbStr = getSpecialStatString(BaseballPlayer.KEY_PB, visitor, home, false);
 
         if (errorStr.length() > 0) {
             writer.write("E -- " + errorStr + "\n");
