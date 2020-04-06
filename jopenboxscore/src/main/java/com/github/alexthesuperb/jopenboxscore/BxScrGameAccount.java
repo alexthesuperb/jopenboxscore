@@ -335,13 +335,13 @@ public class BxScrGameAccount implements GameAccount {
         for (int i = 0; i < plateEvent.length()-1; i++) {
             if (plateEvent.charAt(i) == 'E') {
                 int pos = Integer.parseInt(String.valueOf(plateEvent.charAt(i+1)));
-                pitTeam.award_fielding("E", pos);
+                pitTeam.awardFieldingStats("E", pos);
             }
         }
         for (int i = 0; i < bsrEvent.length()-1; i++) {
             if (bsrEvent.charAt(i) == 'E') {
                 int pos = Integer.parseInt(String.valueOf(bsrEvent.charAt(i+1)));
-                pitTeam.award_fielding("E", pos);
+                pitTeam.awardFieldingStats("E", pos);
             }
         }
 
@@ -374,7 +374,7 @@ public class BxScrGameAccount implements GameAccount {
                     BaseballPlayer.KEY_WP,1);
                 involvesBatter = false;
             } else if (s.startsWith("PB")) {    //Passed ball
-                pitTeam.award_fielding(
+                pitTeam.awardFieldingStats(
                     BaseballPlayer.KEY_PB, 1);
                 involvesBatter = false;
             } else if (s.startsWith("OA")) {    //Catch-all for other events.

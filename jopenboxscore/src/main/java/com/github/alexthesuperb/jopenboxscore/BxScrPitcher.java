@@ -153,7 +153,7 @@ public class BxScrPitcher extends BaseballPlayer {
      * @return The array of stats.
      */
     public int[] getBxScrStats() {
-        String[] kArr = {KEY_BATTERS_RETIRED, KEY_H, KEY_ER, KEY_R, KEY_BB, KEY_SO};
+        String[] kArr = {KEY_BATTERS_RETIRED, KEY_H, KEY_R, KEY_ER, KEY_BB, KEY_SO};
         return getStats(kArr);
     }
 

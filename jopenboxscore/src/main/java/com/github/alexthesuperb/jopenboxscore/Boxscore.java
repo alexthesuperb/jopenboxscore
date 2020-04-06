@@ -11,7 +11,8 @@ import java.io.IOException;
 public class Boxscore {
     
     /** Formatted <code>String</code> of pitching stat labels. */
-    private static String pColumns = String.format("%3s%3s%3s%3s%3s%3s", "IP", "H", "R", "ER", "BB", "SO");
+    private static String pColumns = String.format(
+        "%3s%3s%3s%3s%3s%3s", "IP", "H", "R", "ER", "BB", "SO");
     
     /** 
      * A <code>LinkedList</code> of symbols to display beside the names of
@@ -38,12 +39,14 @@ public class Boxscore {
      * @param outs
      * @throws IOException
      */
-    public static void printBoxscore(BufferedWriter writer, Team visitor, Team home, String date, char dayNight,
-            int gmNumber, int timeOfGame, int attend, int outs) throws IOException {
+    public static void printBoxscore(BufferedWriter writer, Team visitor, 
+            Team home, String date, char dayNight, int gmNumber, int timeOfGame, 
+            int attend, int outs) throws IOException {
         
         // Print headline
-        String headline = "Game of " + date + " -- " + visitor.getCity() + " at " + home.getCity() + " (" + dayNight
-                + ")";
+        String headline = "Game of " + date + " -- " + visitor.getCity() + 
+            " at " + home.getCity() + " (" + dayNight + ")";
+
         if (gmNumber > 0)
             headline += " -- game " + gmNumber;
         writer.write(String.format("%5s", "") + headline + "\n\n");
@@ -61,7 +64,8 @@ public class Boxscore {
         printAdditionalInfo(writer, visitor, home);
 
         // Print additional information
-        String timeFormatted = Integer.toString(timeOfGame / 60) + ":" + String.format("%02d", timeOfGame % 60);
+        String timeFormatted = Integer.toString(timeOfGame / 60) + 
+            ":" + String.format("%02d", timeOfGame % 60);
         writer.write("T -- " + timeFormatted + "\n");
         writer.write("A -- " + Integer.toString(attend) + "\n\n");
 
@@ -79,8 +83,8 @@ public class Boxscore {
      * @param outs
      * @throws IOException
      */
-    private static void printLinescore(BufferedWriter writer, Team visitor, Team home, int outs) throws IOException {
-        
+    private static void printLinescore(BufferedWriter writer, Team visitor, Team home, 
+            int outs) throws IOException {
         String v = visitor.linescoreToString();
         String h = home.linescoreToString();
         
@@ -90,16 +94,17 @@ public class Boxscore {
             h += "x";
         }
         
-        writer.write(
-                String.format("%-17s", visitor.getCity()) + v + " --" + String.format("%3d", visitor.getTotalRuns()));
+        writer.write(String.format("%-17s", visitor.getCity()) + 
+            v + " --" + String.format("%3d", visitor.getTotalRuns()));
         writer.write("\n");
-        writer.write(String.format("%-17s", home.getCity()) + h + " --" + String.format("%3d", home.getTotalRuns()));
+        writer.write(String.format("%-17s", home.getCity()) + 
+            h + " --" + String.format("%3d", home.getTotalRuns()));
         writer.write("\n");
         
         if (outs < 3) {
             String outs_str = (outs == 1) ? "1 out" : outs + " outs";
             writer.write(String.format("%2s", ""));
-            if (visitor.getLinescore().size() > home.getLinescore().size()) {
+            if (visitor.getLinescore().length > home.getLinescore().length) {
                 writer.write(outs_str + " when game ended.");
             } else {
                 writer.write(outs_str + " when winning run scored.");
@@ -120,8 +125,8 @@ public class Boxscore {
      * @param home
      * @throws IOException
      */
-    private static void printBatting(BufferedWriter writer, Team visitor, Team home) throws IOException {
-        
+    private static void printBatting(BufferedWriter writer, Team visitor, Team home) 
+            throws IOException {
         LinkedList<String> visLineup = new LinkedList<>();
         LinkedList<String> homeLineup = new LinkedList<>();
 
@@ -138,30 +143,36 @@ public class Boxscore {
         
         }
         
-        int max = (visLineup.size() >= homeLineup.size()) ? visLineup.size() : homeLineup.size();
+        int max = (visLineup.size() >= homeLineup.size()) ? 
+            visLineup.size() : homeLineup.size();
         
         LinkedList<String> battingLines = new LinkedList<>();
         
-        battingLines.add(String.format("%2s", "") + String.format("%-18s", visitor.getCity())
-                + String.format("%3s%3s%3s%4s", "AB", "R", "H", "RBI") + String.format("%4s", "")
-                + String.format("%-18s", home.getCity()) + String.format("%3s%3s%3s%4s", "AB", "R", "H", "RBI"));
+        battingLines.add(
+            String.format("%2s", "") + String.format("%-18s", visitor.getCity()) + 
+            String.format("%3s%3s%3s%4s", "AB", "R", "H", "RBI") + String.format("%4s", "") + 
+            String.format("%-18s", home.getCity()) + 
+            String.format("%3s%3s%3s%4s", "AB", "R", "H", "RBI"));
         
-                for (int i = 0; i < max; i++) {
+        for (int i = 0; i < max; i++) {
             String v = (i > visLineup.size() - 1) ? String.format("%35s", "")
                     : visLineup.get(i) + String.format("%3s", "");
             String h = (i > homeLineup.size() - 1) ? "" : homeLineup.get(i);
             battingLines.add(v + h);
         }
         
-        battingLines.add(String.format("%20s%3s%3s%3s%3s", "", "--", "--", "--", "--") + String.format("%3s", "")
-            + String.format("%20s%3s%3s%3s%3s", "", "--", "--", "--", "--"));
+        battingLines.add(String.format("%20s%3s%3s%3s%3s", "", "--", "--", "--", "--") + 
+            String.format("%3s", "") + 
+            String.format("%20s%3s%3s%3s%3s", "", "--", "--", "--", "--"));
         
         int[] visStats = visitor.getLineupStats();
         int[] homeStats = home.getLineupStats();
         
-        battingLines.add(String.format("%20s%3d%3d%3d%3d", "", visStats[0], visStats[1], visStats[2], visStats[3], "")
-                + String.format("%3s", "")
-                + String.format("%20s%3d%3d%3d%3d", "", homeStats[0], homeStats[1], homeStats[2], homeStats[3]));
+        battingLines.add(String.format("%20s%3d%3d%3d%3d", 
+            "", visStats[0], visStats[1], visStats[2], visStats[3], "") + 
+            String.format("%3s", "") +
+            String.format("%20s%3d%3d%3d%3d", 
+                "", homeStats[0], homeStats[1], homeStats[2], homeStats[3]));
         
         for (String s : battingLines) {
             writer.write(s + "\n");
@@ -182,8 +193,8 @@ public class Boxscore {
      * @return a boxscore-style <code>String</code> of players who garnered some
      * statistic.
      */
-    private static String getSpecialStatString(String stat_code, Team visitor, Team home, boolean isBattingStat) {
-        
+    private static String getSpecialStatString(String stat_code, 
+            Team visitor, Team home, boolean isBattingStat) {
         String str = "";
         
         if (isBattingStat || stat_code.equals("pb")) {
@@ -274,8 +285,9 @@ public class Boxscore {
      * @param home
      * @throws IOException
      */
-    private static void printAdditionalInfo(BufferedWriter writer, Team visitor, Team home) throws IOException {
-        
+    private static void printAdditionalInfo(BufferedWriter writer, 
+            Team visitor, Team home) throws IOException {
+
         String errorStr = getSpecialStatString("e", visitor, home, false);
         String doubleStr = getSpecialStatString("d", visitor, home, true);
         String tripleStr = getSpecialStatString("t", visitor, home, true);
@@ -292,12 +304,17 @@ public class Boxscore {
             writer.write("E -- " + errorStr + "\n");
         }
         /* Double plays */
-        if (visitor.get_double_triple_plays(true) > 0 || visitor.get_double_triple_plays(true) > 0) {
+        if (visitor.get_double_triple_plays(true) > 0 || 
+                visitor.get_double_triple_plays(true) > 0) {
             String dpStr = "";
-            if (visitor.get_double_triple_plays(true) > 0)
+            if (visitor.get_double_triple_plays(true) > 0) {
                 dpStr += visitor.getCity() + " " + visitor.get_double_triple_plays(true);
-            if (visitor.get_double_triple_plays(true) > 0 && home.get_double_triple_plays(true) > 0)
+            }
+            if (visitor.get_double_triple_plays(true) > 0 && 
+                    home.get_double_triple_plays(true) > 0) {
                 dpStr += ", ";
+
+            }
             if (home.get_double_triple_plays(true) > 0) {
                 dpStr += home.getCity() + " " + home.get_double_triple_plays(true);
             }
@@ -305,20 +322,25 @@ public class Boxscore {
         }
 
         /* Triple plays */
-        if (visitor.get_double_triple_plays(false) > 0 || visitor.get_double_triple_plays(false) > 0) {
+        if (visitor.get_double_triple_plays(false) > 0 ||
+                visitor.get_double_triple_plays(false) > 0) {
             String tpStr = "";
-            if (visitor.get_double_triple_plays(false) > 0)
+            if (visitor.get_double_triple_plays(false) > 0) {
                 tpStr += visitor.getCity() + " " + visitor.get_double_triple_plays(false);
-            if (visitor.get_double_triple_plays(false) > 0 && home.get_double_triple_plays(false) > 0)
+
+            }
+            if (visitor.get_double_triple_plays(false) > 0 &&
+                     home.get_double_triple_plays(false) > 0) {
                 tpStr += ", ";
+            }
             if (home.get_double_triple_plays(false) > 0) {
                 tpStr += home.getCity() + " " + home.get_double_triple_plays(false);
             }
             writer.write("TP -- " + tpStr + "\n");
         }
 
-        writer.write("LOB -- " + visitor.getCity() + " " + visitor.get_lob() + ", " + home.getCity() + " "
-                + home.get_lob() + "\n");
+        writer.write("LOB -- " + visitor.getCity() + " " + visitor.get_lob() + 
+            ", " + home.getCity() + " " + home.get_lob() + "\n");
 
         if (doubleStr.length() > 0) {
             writer.write("2B -- " + doubleStr + "\n");
@@ -368,8 +390,8 @@ public class Boxscore {
      * @param home
      * @throws IOException
      */
-    private static void printPitching(BufferedWriter writer, Team visitor, Team home) throws IOException {
-        
+    private static void printPitching(BufferedWriter writer, Team visitor, Team home) 
+            throws IOException {
         symbols.clear();
         pitching_info_strings.clear();
         symbols.push('~');
@@ -379,14 +401,16 @@ public class Boxscore {
         symbols.push('#');
         symbols.push('*');
 
-        writer.write(String.format("%2s%-20s", "", visitor.getCity()) + pColumns + "\n");
+        writer.write(String.format("%2s%-20s", 
+            "", visitor.getCity()) + pColumns + "\n");
         
         for (BxScrPitcher p : visitor.getPitchingStaff()) {
             writer.write(getBoxscoreLine(p) + "\n");
         }
         writer.write("\n");
         
-        writer.write(String.format("%2s%-20s", "", home.getCity()) + pColumns + "\n");
+        writer.write(String.format("%2s%-20s", 
+            "", home.getCity()) + pColumns + "\n");
         
         for (BxScrPitcher p : home.getPitchingStaff()) {
             writer.write(getBoxscoreLine(p) + "\n");
@@ -436,7 +460,8 @@ public class Boxscore {
         int[] pitching_stats = p.getBxScrStats();
         String inng = BxScrPitcher.convertToIP(pitching_stats[0]);
 
-        String s2 = String.format("%3s%3d%3d%3d%3d%3d", inng, pitching_stats[1], pitching_stats[2], pitching_stats[3],
+        String s2 = String.format("%3s%3d%3d%3d%3d%3d", 
+            inng, pitching_stats[1], pitching_stats[2], pitching_stats[3],
             pitching_stats[4], pitching_stats[5]);
         
         return String.format("%-22s", s1) + s2;
@@ -453,7 +478,8 @@ public class Boxscore {
         
         int[] batting_stats = p.getBxScrStats();
         
-        String s2 = String.format("%3d%3d%3d%3d", batting_stats[0], batting_stats[1], batting_stats[2],
+        String s2 = String.format("%3d%3d%3d%3d", 
+            batting_stats[0], batting_stats[1], batting_stats[2],
             batting_stats[3]);
         
         return String.format("%-20s", s1) + s2;

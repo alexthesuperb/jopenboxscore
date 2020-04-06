@@ -9,90 +9,35 @@ import java.util.LinkedList;
 
 public class Team {
 
-    private ArrayList<LinkedList<BxScrPositionPlayer>> lineup = new ArrayList<>(9);
-    private LinkedList<BxScrPitcher> pitchers = new LinkedList<>();
-    private ArrayList<Integer> linescore = new ArrayList<>(30);
+    private ArrayList<LinkedList<BxScrPositionPlayer>> lineup;
+    private LinkedList<BxScrPitcher> pitchers;
+    private ArrayList<Integer> linescore;
     private String teamID, city, name;
     private int totLeftOnBase, totalDP, totalTP;
     private boolean homeTF;
 
     /**
-     * 
-     * @param id
-     * @param city
-     * @param name
-     * @param home
+     * Construct a new <code>Team</code>.
+     * @param id Team's three-character ID (i.e., <code>"NYA"</code>).
+     * @param city The name of this team's city (i.e. <code>"New York"</code>).
+     * @param name This team's name (i.e. <code>"Yankees"</code>).
+     * @param home <code>true</code> if this is the home team, <code>false</code>
+     *        if this is the visitor.
      */
     public Team(String id, String city, String name, boolean home) {
         teamID = id;
         this.city = city;
         this.name = name;
         this.homeTF = home;
+        lineup = new ArrayList<>(9);
+        pitchers = new LinkedList<>();
+        linescore = new ArrayList<>(30);
+
         for (int i = 0; i < 9; i++) {
             lineup.add(new LinkedList<BxScrPositionPlayer>());
         }
     }
 
-    /**
-     * 
-     */
-    public Team() {
-        teamID = "";
-        city = "";
-        name = "";
-        homeTF = false;
-        for (int i = 0; i < 9; i++) {
-            lineup.add(new LinkedList<BxScrPositionPlayer>());
-        }
-    }
-
-    /**
-     * 
-     * @param id
-     * @param city
-     * @param name
-     * @param homeTF
-     */
-    public void setTeamInfo(String id, String city, String name, boolean homeTF) {
-        setTeamID(id);
-        setCity(city);
-        setName(name);
-        setHomeTF(homeTF);
-    }
-
-    /**
-     * 
-     * @param id
-     */
-    public void setTeamID(String id) {
-        teamID = id;
-    }
-
-    /**
-     * 
-     * @param city
-     */
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    /**
-     * 
-     * @param name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * 
-     * @param home
-     */
-    public void setHomeTF(boolean home) {
-        homeTF = home;
-    }
-
-    /* Double and triple plays block */
     /**
      * Add either a double or triple play to this object's stat trackers.
      * 
@@ -119,12 +64,12 @@ public class Team {
         else
             return totalTP;
     }
-    /* End double and triple play block */
 
-    /* Left on base functions */
     /**
+     * Increment team's LOB total. This method should be called
+     * at the end of each inning.
      * 
-     * @param lob
+     * @param lob Runners left on base in a single inning.
      */
     public void addLOB(int lob) {
         totLeftOnBase += lob;
@@ -146,7 +91,6 @@ public class Team {
     public int get_lob() {
         return totLeftOnBase;
     }
-    /* END left on base functions */
 
     /**
      * Check team's pitchers to award win/loss/save. If a pitcher's
@@ -189,42 +133,27 @@ public class Team {
         return false;
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** @return team's ID. */
     public String getTeamID() {
         return teamID;
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** @return team's city. */
     public String getCity() {
         return city;
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** @return team's nickname. */
     public String getName() {
         return name;
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** @return <code>true</code> for home team, <code>false</code> for visitor. */
     public boolean getHomeTF() {
         return homeTF;
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** @return team's total at-bats, runs, hits, and RBI. */
     public int[] getLineupStats() {
         
         int[] stats = {0,0,0,0};
@@ -244,9 +173,9 @@ public class Team {
         return stats;
     }
 
-    /**
-     * 
-     * @return
+    /** 
+     * @return team's total batters retired, hits, runs, earned runs,
+     * walks, and strikeouts.
      */
     public int[] getPitchingStats() {
         int[] stats = {0,0,0,0,0,0};
@@ -271,14 +200,13 @@ public class Team {
     /**
      * Award errors and passed balls.
      * 
-     * @param stat_code
-     * @param position
+     * @param statKey The statistical category
+     * @param position The position of the player charged.
      */
-    public void award_fielding(String stat_code, int position) {
+    public void awardFieldingStats(String statKey, int position) {
+        statKey = statKey.toLowerCase();
 
-        stat_code = stat_code.toLowerCase();
-
-        if (stat_code.equals("e")) {
+        if (statKey.equals(BaseballPlayer.KEY_E)) {
             /* 
              * To account for both dh and non-dh games, errors committed
              * by pitchers are stored in the Pitcher objects, not in their
@@ -294,7 +222,7 @@ public class Team {
                     }
                 }
             }
-        } else if (stat_code.equals("pb")) {
+        } else if (statKey.equals(BaseballPlayer.KEY_PB)) {
             for (LinkedList<BxScrPositionPlayer> ar : lineup) {
                 if (ar.getLast().getCurrentPosition() == BaseballPlayer.CATCHER) {
                     ar.getLast().incrementStats(BaseballPlayer.KEY_PB,1);
@@ -304,50 +232,49 @@ public class Team {
     }
 
     /**
+     * Add a player to team's lineup. If that lineup spot is already filled, the
+     * new player created will be a substitution.
      * 
-     * @param start
-     * @param id
-     * @param first
-     * @param last
-     * @param spot
-     * @param pos
+     * @param start <code>true</code> 
+     * @param id Player's unique ID.
+     * @param first Player's first name.
+     * @param last Player's last name.
+     * @param spot Player's lineup spot (<code>1</code> through <code>9</code>, or
+     *        <code>0</code> for pitchers in DH games).
+     * @param pos Player's position.
      */
     public void addPlayer(boolean start, String id, String first, String last,
-            String spot, String pos) {
-        int int_spot = Integer.parseInt(spot);
-        int int_pos = Integer.parseInt(pos);
-
+            String spot, String pos) throws IllegalArgumentException {
+        int spotInt = Integer.parseInt(spot);
+        int posInt = Integer.parseInt(pos);
         /* 
          * If player is already in lineup, then he is changing positions.
          * If he is not in lineup, he is entering the game and must be added.
          */
         if (containsBxScrPositionPlayer(id)) {
-            lineup.get(int_spot-1).getLast().changePosition(int_pos);
+            lineup.get(spotInt-1).getLast().changePosition(posInt);
         } else {
-            if (int_spot > 0) {
-                
+            if (spotInt > 0) {
                 /* 
                  * Account for the rare instance that a DH-rule pitcher moves to 
                  * a position after entering the game earlier as a pitcher. 
                  */
                 if (containsPitcher(id)) {
-                    BxScrPositionPlayer newB = 
-                        new BxScrPositionPlayer(id,first,last,int_spot,BxScrPositionPlayer.PITCHER);
-                    newB.changePosition(int_pos);
-                    lineup.get(int_spot-1).add(newB);
+                    BxScrPositionPlayer newB = new BxScrPositionPlayer(
+                        id,first,last,spotInt,BxScrPositionPlayer.PITCHER);
+                    newB.changePosition(posInt);
+                    lineup.get(spotInt-1).add(newB);
                 } else {
-                    BxScrPositionPlayer newB = new BxScrPositionPlayer(id,first,last,int_spot,int_pos);
-                    lineup.get(int_spot-1).add(newB);
+                    BxScrPositionPlayer newB = new BxScrPositionPlayer(
+                        id,first,last,spotInt,posInt);
+                    lineup.get(spotInt-1).add(newB);
                 }
             }
         }
-        if (int_pos == BxScrPositionPlayer.PITCHER) {
+        if (posInt == BxScrPositionPlayer.PITCHER) {
 
             /* New pitcher entering the game -- add to game staff. */
             if (!containsPitcher(id)) {
-                // if (!pitchers.isEmpty()) {
-                //     this.getCurrentPitcher().setInningRemoved(Play.getInning());
-                // }
                 BxScrPitcher newP = new BxScrPitcher(id, first, last);
                 pitchers.add(newP);
             }
@@ -371,40 +298,44 @@ public class Team {
     }
 
     /**
+     * Check if this team contains <code>BxScrPositionPlayer</code> matching
+     * <code>playerId</code>.
      * 
-     * @param id
-     * @return
+     * @param playerID Player's ID.
+     * @return <code>true</code> if this team contains player, <code>false</code>
+     * otherwise.
      */
-    private boolean containsBxScrPositionPlayer(String id) {
+    private boolean containsBxScrPositionPlayer(String playerID) {
         for (LinkedList<BxScrPositionPlayer> list : lineup) {
             for (BxScrPositionPlayer p : list) {
-                if (p.getPlayerID().equals(id))
+                if (p.getPlayerID().equals(playerID))
                     return true;
             }
         }
         return false;
     }
 
-    /**
-     * 
-     * @return
-     */
-    public ArrayList<Integer> getLinescore() {
-        return linescore;
+    /** @return team's inning linescore. */
+    public int[] getLinescore() {
+        int[] lsArr = new int[linescore.size()];
+        
+        for(int i = 0; i < linescore.size(); i++) {
+            lsArr[i] = linescore.get(i);
+        }
+
+        return lsArr;
     }
 
     /**
+     * At the end of an inning, add runs scored in inning to team's linescore.
      * 
-     * @param runs
+     * @param runs The runs scored by this team in the current inning.
      */
     public void linescoreAdd(int runs) {
         linescore.add(runs);
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** @return total runs scored by the team. */
     public int getTotalRuns() {
         int t = 0;
         for (int r : linescore) {
@@ -414,14 +345,12 @@ public class Team {
     }
 
     /**
-     * 
-     * @return
+     * @return a <code>String</code> of team's inning-by-inning run
+     * totals, with a space every three innings.
      */
     public String linescoreToString() {
         String s = "";
 
-        // for (int r : linescore)
-        //     s = s + r + " ";
         for (int i = 0; i < linescore.size(); i++) {
             if (i > 0 && i%3 == 0)
                 s += " ";
@@ -430,10 +359,7 @@ public class Team {
         return s.trim();
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** @return pitcher currently in the game for this team. */
     public BxScrPitcher getCurrentPitcher() {
         return pitchers.getLast();
     }
@@ -475,18 +401,12 @@ public class Team {
         return null;
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** @return the team's lineup. */
     public ArrayList<LinkedList<BxScrPositionPlayer>> getLineup() {
         return lineup;
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** @return a list of all pitchers who played for team in game */
     public LinkedList<BxScrPitcher> getPitchingStaff() {
         return pitchers;
     }
