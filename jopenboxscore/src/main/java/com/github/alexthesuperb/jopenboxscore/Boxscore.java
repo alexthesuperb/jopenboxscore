@@ -427,7 +427,7 @@ public class Boxscore {
     }
 
     /**
-     * @param p
+     * @param p A pitcher.
      * @return input pitcher's boxscore line: name (decision), IP, H, R, ER, BB, SO
      */
     private static String getBoxscoreLine(BxScrPitcher p) {
@@ -469,7 +469,7 @@ public class Boxscore {
 
     /**
      * 
-     * @param p
+     * @param p A position player
      * @return input batter's boxscore line: name, AB, R, H, RBI
      */
     private static String getBoxscoreLine(BxScrPositionPlayer p) {
