@@ -1,10 +1,10 @@
 com/github/alexthesuperb/jopenboxscore/Driver.class
-com/github/alexthesuperb/jopenboxscore/EventFileReader.class
-com/github/alexthesuperb/jopenboxscore/Team.class
-com/github/alexthesuperb/jopenboxscore/BxScrFileReader.class
 com/github/alexthesuperb/jopenboxscore/BxScrPositionPlayer.class
 com/github/alexthesuperb/jopenboxscore/Boxscore.class
 com/github/alexthesuperb/jopenboxscore/BaseballPlayer.class
 com/github/alexthesuperb/jopenboxscore/GameAccount.class
+com/github/alexthesuperb/jopenboxscore/EventFileReader.class
+com/github/alexthesuperb/jopenboxscore/Team.class
 com/github/alexthesuperb/jopenboxscore/BxScrGameAccount.class
+com/github/alexthesuperb/jopenboxscore/BxScrFileReader.class
 com/github/alexthesuperb/jopenboxscore/BxScrPitcher.class

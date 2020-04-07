@@ -305,7 +305,7 @@ public class Boxscore {
         }
         /* Double plays */
         if (visitor.get_double_triple_plays(true) > 0 || 
-                visitor.get_double_triple_plays(true) > 0) {
+                home.get_double_triple_plays(true) > 0) {
             String dpStr = "";
             if (visitor.get_double_triple_plays(true) > 0) {
                 dpStr += visitor.getCity() + " " + visitor.get_double_triple_plays(true);
@@ -323,7 +323,7 @@ public class Boxscore {
 
         /* Triple plays */
         if (visitor.get_double_triple_plays(false) > 0 ||
-                visitor.get_double_triple_plays(false) > 0) {
+                home.get_double_triple_plays(false) > 0) {
             String tpStr = "";
             if (visitor.get_double_triple_plays(false) > 0) {
                 tpStr += visitor.getCity() + " " + visitor.get_double_triple_plays(false);

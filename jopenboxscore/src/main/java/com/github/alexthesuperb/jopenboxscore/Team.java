@@ -368,6 +368,7 @@ public class Team {
     public String linescoreToString(int interval, int spaces) 
             throws IllegalArgumentException {
         String s = "";
+        
         if (interval < 0 || spaces < 0) {
             throw new IllegalArgumentException("interval and spaces must be " +
                 "positive integers.");
