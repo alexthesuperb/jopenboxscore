@@ -434,10 +434,9 @@ public class BxScrGameAccount implements GameAccount {
                         batTeam.getLineupSpot(baserunnerSpots[2]).incrementStats(BaseballPlayer.KEY_CS);
                         baserunnerSpots[2] = -1;
                     } else {
-                        int strtBase = Integer.parseInt(
-                            String.valueOf(s.charAt(2)))-1;
-                        batTeam.getLineupSpot(strtBase).incrementStats(
-                            BaseballPlayer.KEY_CS);
+                        int strtBase = Integer.parseInt(String.valueOf(s.charAt(2)))-1;
+
+                        batTeam.getLineupSpot(strtBase).incrementStats(BaseballPlayer.KEY_CS);
                         baserunnerSpots[strtBase] = -1;
                     }
                     outs++;
@@ -559,8 +558,7 @@ public class BxScrGameAccount implements GameAccount {
                  * outs as usual.
                  */
                 if (s.contains("+")) {
-                    readPlateEvent(batTeam,pitTeam,
-                        s.split("[+]")[1],bsrEvent);
+                    readPlateEvent(batTeam, pitTeam, s.split("[+]")[1], bsrEvent);
                     bsrEvent = "";
                     /* 
                      * If the batter does not reach base,
@@ -568,13 +566,11 @@ public class BxScrGameAccount implements GameAccount {
                      */
                     if (!bsrEvent.contains("B-")) {
                         outs++;
-                        pitcher.incrementStats(
-                            BaseballPlayer.KEY_BATTERS_RETIRED);
+                        pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
                     }
                 } else {
                     outs++;
-                    pitcher.incrementStats(
-                        BaseballPlayer.KEY_BATTERS_RETIRED);
+                    pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
                 }
             } else if (s.startsWith("FC")) {                        //Fielder's choice
                 batter.incrementStats(BaseballPlayer.KEY_AB);
@@ -584,34 +580,31 @@ public class BxScrGameAccount implements GameAccount {
                 batter.incrementStats(BaseballPlayer.KEY_AB);
                 batter.setPitcherCharged(pitcher);
                 bAdvance = 1;
+
                 for (int i = 0; i < s.length()-2; i++) {
                     if (s.charAt(i) == '(' && s.charAt(i+2) == ')') {
                         if (s.charAt(i+1) != 'B') {
-                            int oldBase = Integer.parseInt(
-                                String.valueOf(s.charAt(i+1)))-1;
+                            int oldBase = Integer.parseInt(String.valueOf(s.charAt(i+1)))-1;
                             baserunnerSpots[oldBase] = -1;
                         }
                         outs++;
-                        pitcher.incrementStats(
-                            BaseballPlayer.KEY_BATTERS_RETIRED);
+                        pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
                     }
                 }
             } else if (s.contains("SH")) {                          //Sac hit (bunt)
                 batter.incrementStats(BaseballPlayer.KEY_SH);
                 if (!bsrEvent.contains("B-")) { //Temporary fix
                     outs++;
-                    pitcher.incrementStats(
-                        BaseballPlayer.KEY_BATTERS_RETIRED);
+                    pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
                 }
             } else if (s.contains("SF")) {                          //Sac fly
                 batter.incrementStats(BaseballPlayer.KEY_SF);
                 outs++;
-                pitcher.incrementStats(
-                    BaseballPlayer.KEY_BATTERS_RETIRED);
+                pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
             } else if (Character.isDigit(s.charAt(0))) {            //Fielded out
                 batter.incrementStats(BaseballPlayer.KEY_AB);
-                if (s.contains("GDP") || s.contains("GTP") || s.contains("/G/DP/")) {
-                    
+                
+                if (s.contains("GDP") || s.contains("GTP") || s.contains("/G/DP/")) {    
                     //THIS WHOLE THING COULD USE SOME WORK!
                     for (int i = 0; i < s.length()-2; i++) {
                         if (s.charAt(i) == '(' && s.charAt(i+2) == ')') {
@@ -901,7 +894,7 @@ public class BxScrGameAccount implements GameAccount {
              * Check if game was played during day or 
              * at night. If value is unreadable, default to day.
              */
-            if (key.equals("night")) {
+            if (value.equals("night")) {
                 daynight = 'N';
             } else {
                 daynight = 'D';
