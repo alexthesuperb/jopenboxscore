@@ -624,18 +624,21 @@ public class BxScrGameAccount implements GameAccount {
                     int outs_on_play = 0;
                     for (int i = 0; i < s.length()-2; i++) {
                         if (s.charAt(i) == '(' && s.charAt(i+2) == ')') {
-                            int oldBase = Integer.parseInt(String.valueOf(s.charAt(i+1)))-1;
-                            baserunnerSpots[oldBase] = -1;
-                            // outs++;
+                            if (s.charAt(i+1) != 'B') {
+                                int oldBase = Integer.parseInt(String.valueOf(s.charAt(i+1)))-1;
+                                baserunnerSpots[oldBase] = -1;
+                            }
                             outs_on_play++;
                             pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
                         }
                     }
                     outs += outs_on_play;
-                    if (outs_on_play == 2)
+                    if (outs_on_play == 2) {
                         pitTeam.add_double_triple_plays(true, 1); //temp
-                    else
+                    }
+                    else {
                         pitTeam.add_double_triple_plays(false, 1); //temp
+                    }
                 } else if (s.contains("E")) { //Error made by some subsequent fielder
                     batter.setPitcherCharged(pitcher);
                     bAdvance = 1;
