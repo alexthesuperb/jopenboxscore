@@ -633,12 +633,6 @@ public class BxScrGameAccount implements GameAccount {
                         }
                     }
                     outs += outs_on_play;
-                    // if (outs_on_play == 2) {
-                    //     pitTeam.add_double_triple_plays(true, 1); //temp
-                    // }
-                    // else {
-                    //     pitTeam.add_double_triple_plays(false, 1); //temp
-                    // }
                 } else if (s.contains("E")) { //Error made by some subsequent fielder
                     batter.setPitcherCharged(pitcher);
                     bAdvance = 1;

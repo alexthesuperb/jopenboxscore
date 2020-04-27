@@ -4,7 +4,6 @@ package com.github.alexthesuperb.jopenboxscore;
 
 import java.io.BufferedWriter;
 import java.io.File;
-// import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -242,35 +241,56 @@ public class Driver {
 
     /** Print a help message to the terminal. */
     static void printHelp() {
-        System.out.println("\n\nJBoxscore is an open-source alternative to " +
-            "Retrosheet.org's BOX.EXE boxscore-generating software. It converts " +
-            "Retrosheet play-by-play files (ending in .EVE, .EVA, or .EVN) into " +
-            "classic newspaper boxscores. Arguments must end with a series of Event " +
-            "files to read. " +
-            "By default, the entirety of the requested files will be read. However, " +
-            "the breadth of that search may be manipulated with the following flags.\n");
 
-        System.out.println(String.format("%10s%10s%10s", "-h", "-help", "") + 
-            "Print this help to terminal.");
-        System.out.println(String.format("%10s%10s%10s", "-y", "-year", "") + 
-            "Set the year of inquiry.");
-        System.out.println(String.format("%10s%10s%10s", "-i", "-id", "") + 
-            "Read only games specified by their IDs. This flag must be followed by " +
-            "one or more 12-character Retrosheet game IDs.");
-        System.out.println(String.format("%10s%10s%10s", "-s", "-start", "") + 
-            "Specify the date of the earliest game to read. This flag must be " +
-            "followed by a 4-digit (MMDD) date.");
-        System.out.println(String.format("%10s%10s%10s", "-e", "-end", "") + 
-            "Specify the date of the last game to read. This flag must be followed by " +
-            "a 4-digit (MMDD) date.");
-        System.out.println(String.format("%10s%10s%10s", "-d", "-dest", "") + 
-            "Specify output file. By default, output prints to console.");
-        System.out.println(String.format("%10s%10s%10s", "-p", "-path", "") + 
-            "Specify the directory containg TEAM and .ROS files. By default, " +
-            "this is assumed to be the directory from which this program is executed.");
+        System.out.println(
+            "\njopenboxscore is an open-source alternative to Retrosheet.org's\n" +
+            "BOX.EXE boxscore-generating software. It converts Retrosheet\n" +
+            "play-by-play files (written in the Project Scoresheet format and\n" +
+            "ending with file extension .EVA, .EVE, or .EVN) into classic\n" +
+            "newspaper-style boxscores.\n"
+        );
+
+        System.out.println(
+            "Usage: jopenboxscore [options] [files...]\n"
+        );
+
+        System.out.println(
+            " where options include:\n" +
+            "    -y <year>\n" +
+            "    -year <year>\n" +
+            "                  The year included in the names of .ROS and TEAM\n" +
+            "                  files necessary to process the requested files.\n" +
+            "    -i [game IDs...]\n" +
+            "    -id [game IDs...]\n" +
+            "                  A whitespace-delimitted list of specific game IDs\n" +
+            "                  to process within the requested files.\n"+
+            "    -s <start date>\n" +
+            "    -start <start date>\n" +
+            "                  The start date (MMDD) of a range through which games\n" +
+            "                  should be processed. If no end date is specified, games\n" +
+            "                  will be processed from this start date to the end of each.\n" +
+            "                  file.\n" +
+            "    -e [<end date>]\n" +
+            "    -end <end date>\n" +
+            "                  The end date (MMDD) of a range through which games should\n" +
+            "                  be processed. If no start date is specified, games will be\n" +
+            "                  processed from the start of each file through this end date.\n" +
+            "    -d <file name>\n" +
+            "    -dest <file name>\n" +
+            "                  Specify a file to which results will be printed. By default,\n" +
+            "                  results are printed to this terminal.\n" +
+            "    -p <directory>\n" +
+            "    -path <directory>\n" +
+            "                  Specify a directory containing the necessary .ROS and TEAM\n" +
+            "                  files. By default, this is assumed to be the directory from\n" +
+            "                  which this program is executed.\n" +
+            "    -h\n" +
+            "    -help\n" +
+            "                  Print this message.\n"
+        );
     }
 
-    /* Print query in plain English to terminal. */
+    /* Print query in plain English to terminal. (DEBUGGING) */
     static void printQuery() {
         System.out.println("Year: " + year);
         System.out.print("Query Type: ");
