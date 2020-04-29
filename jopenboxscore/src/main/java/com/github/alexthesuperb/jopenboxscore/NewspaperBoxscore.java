@@ -33,7 +33,7 @@ public class NewspaperBoxscore implements Boxscore {
         this.writer = writer;
         visitor = game.getTeam(false, this);
         home = game.getTeam(true, this);
-        date = game.getDate();
+        date = game.getUsaDateString();
         dayNight = game.getDayNight();
         gameNumber = game.getGameNumber();
         timeOfGame = game.getTimeOfGame();

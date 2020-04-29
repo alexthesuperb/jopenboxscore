@@ -1,5 +1,5 @@
 /*
- * C-style comment with author/copyright information...
+ * C-Style comment containing author/copyright info...
  */
 
 package com.github.alexthesuperb.jopenboxscore;
@@ -16,11 +16,17 @@ import java.io.RandomAccessFile;
  * to track a game's state, using only simple statistics, to create
  * human-readable boxscores.
  */
-public class BxScrGameAccount implements GameAccount {
+public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccount> {
 
     private String gameID;
     private String year;
-    private String date;
+
+    /** MM/DD/YYYY */
+    private String usaDateString;
+
+    /** YYYY/MM/DD */
+    private String stdDateString;
+
     private char daynight;
     private int gmNumber;
     private int attendance;
@@ -64,6 +70,22 @@ public class BxScrGameAccount implements GameAccount {
     public void printBoxscore(BufferedWriter outWriter) throws IOException {
         NewspaperBoxscore boxscore = new NewspaperBoxscore(this, outWriter);
         boxscore.write();
+    }
+
+    @Override
+    public int compareTo(BxScrGameAccount anotherGame) {
+        int compare = stdDateString.compareTo(anotherGame.getStdDateString());
+        if (compare == 0) {
+            if (daynight == anotherGame.getDayNight()) {
+                return 0;
+            } else if ((daynight == 'N') && (anotherGame.getDayNight() == 'D')) {
+                return 1;
+            } else {
+                return -1;
+            }
+        } else {
+            return compare;
+        }
     }
 
     /**
@@ -906,11 +928,12 @@ public class BxScrGameAccount implements GameAccount {
         } else if (key.equals("date")) {
             
             /* Set game's date. */
+            stdDateString = value;
             String[] dateArr = value.split("/");
             try {
-                date = dateArr[1] + "/" + dateArr[2] + "/" + dateArr[0];
+                usaDateString = dateArr[1] + "/" + dateArr[2] + "/" + dateArr[0];
             } catch (ArrayIndexOutOfBoundsException e) {
-                date = "??/??/????";
+                usaDateString = "??/??/????";
             }
 
         } else if (key.equals("daynight")) {
@@ -1132,9 +1155,13 @@ public class BxScrGameAccount implements GameAccount {
         return timeOfGame;
     }
 
-    /** @return date on which game occurred. */
-    public String getDate() {
-        return date;
+    /** @return date (MM/DD/YYYY) on which game occurred. */
+    public String getUsaDateString() {
+        return usaDateString;
+    }
+
+    public String getStdDateString() {
+        return stdDateString;
     }
 
     /** @return game's unique Retrosheet ID. */

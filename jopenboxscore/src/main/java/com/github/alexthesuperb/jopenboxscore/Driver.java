@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class Driver {
@@ -19,6 +20,9 @@ public class Driver {
     static boolean readOutFile;
     static boolean readGameID;
     static boolean readInRosDir;
+
+    /** If <code>true</code>, print boxscores in ascending order by date.*/
+    static boolean writeInOrder;
 
     /** If <code>false</code>, output to terminal. */
     static boolean hasOutFile;
@@ -62,6 +66,7 @@ public class Driver {
      */
     public static void main(String[] args) {
         queryType = QUERY_ALL_GAMES;
+        writeInOrder = false;
         hasOutFile = false;
         year = "";
         inFileNames = new LinkedList<>();
@@ -84,7 +89,10 @@ public class Driver {
                     System.exit(0);
                 } else if (args[i].equals("-y") || args[i].equals("-year")) {
                     resetFlags();
-                    readYear = true;  
+                    readYear = true;
+                } else if (args[i].equals("-o") || args[i].equals("-order")) {
+                    resetFlags();
+                    writeInOrder = true;
                 } else if (args[i].equals("-p") || args[i].equals("-path")) {
                     resetFlags();
                     readInRosDir = true;
@@ -203,6 +211,7 @@ public class Driver {
 
         /* Read files */
         String currFile = inFileNames.getFirst();
+        LinkedList<BxScrGameAccount> games = new LinkedList<>();
         try {
             for (String s : inFileNames) {
                 currFile = s;
@@ -221,16 +230,39 @@ public class Driver {
                     System.exit(0);
                 }
 
-                /* Print boxscores of games read from this file. */
-                for (BxScrGameAccount game: boxReader.getGameAccounts()) {
-                    game.printBoxscore(outWriter);
+                // /* Print boxscores of games read from this file. */
+                // for (BxScrGameAccount game: boxReader.getGameAccounts()) {
+                //     game.printBoxscore(outWriter);
+                // }
+
+                /* Add game accounts produced by file to master list. */
+                for (BxScrGameAccount game : boxReader.getGameAccounts()) {
+                    games.add(game);
                 }
+
             }
         } catch (Exception e) {
 
             /* Exception thrown by BxScrFileReader */
             System.out.println("\nAn error has occured in file while processing " +
                 "file " + currFile + ". Cause: \n");
+            e.printStackTrace();
+            System.exit(0);
+        }
+
+        /* 
+         * Sort games so that they can be printed in ascending order, regardless 
+         * of the file from which they originated. 
+         */
+        if (writeInOrder) {
+            Collections.sort(games);
+        }
+        try {
+            for (BxScrGameAccount g : games) {
+                g.printBoxscore(outWriter);
+            }
+        } catch (IOException e) {
+            System.out.println("\nAn error occured while printing boxscores.\n");
             e.printStackTrace();
             System.exit(0);
         }
@@ -270,7 +302,7 @@ public class Driver {
             "                  should be processed. If no end date is specified, games\n" +
             "                  will be processed from this start date to the end of each.\n" +
             "                  file.\n" +
-            "    -e [<end date>]\n" +
+            "    -e <end date>\n" +
             "    -end <end date>\n" +
             "                  The end date (MMDD) of a range through which games should\n" +
             "                  be processed. If no start date is specified, games will be\n" +
@@ -284,9 +316,9 @@ public class Driver {
             "                  Specify a directory containing the necessary .ROS and TEAM\n" +
             "                  files. By default, this is assumed to be the directory from\n" +
             "                  which this program is executed.\n" +
-            "    -h\n" +
-            "    -help\n" +
-            "                  Print this message.\n"
+            "    -o -order     Print boxscores ordered by date. By default, results are\n" +
+            "                  printed in the order in which they were read.\n" + 
+            "    -h -help      Print this message.\n"
         );
     }
 
