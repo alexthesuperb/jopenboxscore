@@ -53,17 +53,33 @@ public class BxScrGameAccount implements GameAccount {
     private int inngPA;
     private int[] baserunnerSpots;
 
-    /** ...Temporary... */
+    /**
+     * Summarize the events of this game account in a concise, human-readable
+     * boxscore format.
+     * 
+     * @param outWriter a <code>BufferedWriter</code>
+     * @throws IOException if an I/O exception originating from the 
+     * <code>BufferedWriter</code> occurs.
+     */
     public void printBoxscore(BufferedWriter outWriter) throws IOException {
-        // Boxscore.printBoxscore(outWriter, visitor, home, date, daynight, gmNumber, 
-        //     timeOfGame, attendance, outs);
-        TextBoxscore boxscore = new TextBoxscore(this, outWriter);
+        NewspaperBoxscore boxscore = new NewspaperBoxscore(this, outWriter);
         boxscore.write();
     }
 
+    /**
+     * Returns a <code>Team</code> object containing the statistics counted by this
+     * game account. As a precaution, the caller should be sent as an argument so
+     * that this method is only accessible to classes that implement 
+     * <code>Boxscore</code>.
+     * @param isHome <code>true</code> to receive home team, <code>false</code> to
+     * receive visiting team.
+     * @param obj an object that implements <code>Boxscore</code>.
+     * @return a <code>Team</code> if <code>obj</code> implements <code>Boxscore</code>,
+     * or <code>null</code> otherwise.
+     */
     public Team getTeam(boolean isHome, Object obj) {
 
-        if (obj instanceof BaseballBoxscore) {
+        if (obj instanceof Boxscore) {
             return (isHome) ?  home : visitor;
         } else {
             return null;

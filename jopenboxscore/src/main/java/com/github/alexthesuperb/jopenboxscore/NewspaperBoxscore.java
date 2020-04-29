@@ -4,10 +4,14 @@ import java.util.LinkedList;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-public class TextBoxscore implements BaseballBoxscore {
+/**
+ * <code>NewspaperBoxscore</code> is an implementation of <code>Boxscore</code>
+ * used to write a classic, human-readable newspaper-style boxscore to a <code>
+ * BufferedWriter</code>.
+ */
+public class NewspaperBoxscore implements Boxscore {
 
     private BufferedWriter writer;
-    // private BxScrGameAccount game;
     private Team visitor;
     private Team home;
     private String date;
@@ -25,9 +29,8 @@ public class TextBoxscore implements BaseballBoxscore {
     private static final String battingStatColumns = 
             String.format("%3s%3s%3s%4s", "AB", "R", "H", "RBI");
 
-    public TextBoxscore(BxScrGameAccount game, BufferedWriter writer) {
+    public NewspaperBoxscore(BxScrGameAccount game, BufferedWriter writer) {
         this.writer = writer;
-        // this.game = game;
         visitor = game.getTeam(false, this);
         home = game.getTeam(true, this);
         date = game.getDate();
@@ -38,7 +41,6 @@ public class TextBoxscore implements BaseballBoxscore {
         outs = game.getOuts();
         symbols = new LinkedList<Character>();
         pitching_info_strings = new LinkedList<String>();
-        
 
         symbols.push('~');
         symbols.push('^');
@@ -48,25 +50,30 @@ public class TextBoxscore implements BaseballBoxscore {
         symbols.push('*');
     }
 
+    /**
+     * Write the boxscore game account to the provided <code>BufferedWriter</code>.
+     * @throws IOException if an I/O exception occurs.
+     */
     public void write() throws IOException {
 
         writeHeadline();
 
-        // Print lineups
+        /* Print lineups */
         printBatting();
 
-        // Print linescore
+        /* Print linescore */
         printLinescore();
 
-        // Print pitching lines
+        /* Print pitching lines */
         printPitching();
 
-        // Print additional statistical information
+        /* Print additional statistical information */
         printAdditionalInfo();
 
-        // Print additional information
+        /* Print attendance and time (in hours). */
         String timeFormatted = Integer.toString(timeOfGame / 60) + 
                 ":" + String.format("%02d", timeOfGame % 60);
+
         writer.write("T -- " + timeFormatted + "\n");
         writer.write("A -- " + Integer.toString(attendance) + "\n\n");
 
@@ -83,14 +90,12 @@ public class TextBoxscore implements BaseballBoxscore {
     }
 
     private String getBoxscoreLine(BxScrPositionPlayer p) {
-
         String s1 = p.getName() + ", " + p.getPositionString();
-        
         int[] batting_stats = p.getBxScrStats();
-        
+
         String s2 = String.format("%3d%3d%3d%3d", 
-            batting_stats[0], batting_stats[1], batting_stats[2],
-            batting_stats[3]);
+                batting_stats[0], batting_stats[1], batting_stats[2],
+                batting_stats[3]);
         
         return String.format("%-20s", s1) + s2;
     }
