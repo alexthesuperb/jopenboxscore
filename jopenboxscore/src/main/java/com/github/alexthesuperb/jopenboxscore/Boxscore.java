@@ -21,7 +21,7 @@ public class Boxscore {
     private static LinkedList<Character> symbols = new LinkedList<>();
     
     /**
-     * A <code>LinkedList</code> of information nothing the inning and number of
+     * A <code>LinkedList</code> of information noting the inning and number of
      * batters faced by pitchers removed from an inning before recording an out.
      */
     private static LinkedList<String> pitching_info_strings = new LinkedList<>();

@@ -29,8 +29,8 @@ public class BxScrGameAccount implements GameAccount {
     private String lpID;
     private String saveID;
 
-    Team visitor;
-    Team home;
+    private Team visitor;
+    private Team home;
     
     private RandomAccessFile teamReader;
     private RandomAccessFile visRosReader;
@@ -55,8 +55,19 @@ public class BxScrGameAccount implements GameAccount {
 
     /** ...Temporary... */
     public void printBoxscore(BufferedWriter outWriter) throws IOException {
-        Boxscore.printBoxscore(outWriter, visitor, home, date, daynight, gmNumber, 
-            timeOfGame, attendance, outs);
+        // Boxscore.printBoxscore(outWriter, visitor, home, date, daynight, gmNumber, 
+        //     timeOfGame, attendance, outs);
+        TextBoxscore boxscore = new TextBoxscore(this, outWriter);
+        boxscore.write();
+    }
+
+    public Team getTeam(boolean isHome, Object obj) {
+
+        if (obj instanceof BaseballBoxscore) {
+            return (isHome) ?  home : visitor;
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -1118,6 +1129,10 @@ public class BxScrGameAccount implements GameAccount {
     /** @return the last line read into this object. */
     public String getLastLine() {
         return currentLine;
+    }
+
+    public int getOuts() {
+        return outs;
     }
 
 }

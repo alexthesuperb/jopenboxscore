@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Team {
-
     private ArrayList<LinkedList<BxScrPositionPlayer>> lineup;
     private LinkedList<BxScrPitcher> pitchers;
     private ArrayList<Integer> linescore;
@@ -32,7 +31,7 @@ public class Team {
         lineup = new ArrayList<>(9);
         pitchers = new LinkedList<>();
         linescore = new ArrayList<>(30);
-
+        
         for (int i = 0; i < 9; i++) {
             lineup.add(new LinkedList<BxScrPositionPlayer>());
         }
@@ -336,21 +335,6 @@ public class Team {
         }
         return t;
     }
-
-    // /**
-    //  * @return a <code>String</code> of team's inning-by-inning run
-    //  * totals, with a space every three innings.
-    //  */
-    // public String linescoreToString() {
-    //     String s = "";
-
-    //     for (int i = 0; i < linescore.size(); i++) {
-    //         if (i > 0 && i%3 == 0)
-    //             s += " ";
-    //         s += linescore.get(i);
-    //     }
-    //     return s.trim();
-    // }
 
     /**
      * <p>Return a <code>String</code> representing the team's linescore, with a 
