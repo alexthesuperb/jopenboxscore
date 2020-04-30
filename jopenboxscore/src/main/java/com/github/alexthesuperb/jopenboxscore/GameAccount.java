@@ -4,29 +4,36 @@
 
 package com.github.alexthesuperb.jopenboxscore;
 
-// import java.io.FileNotFoundException;
-// import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
- * An interface describing how information is sent to and received from classes
- * designed to parse <a href=https://www.retrosheet.org/eventfile.htm>
- * Retrosheet play-by-play data</a>.
+ * <p>
+ * This interface describes an account of a game transcribed in a play-by-play
+ * text file. Implementations of this interface should only accept input in the
+ * form of single play-by-play lines through the method <code>addLine(String pbpLine,
+ *  int lineNum)</code>.
+ * </p><p>
+ * Its original implementation, <code>BoxscoreGameAccount</code>, reads through
+ * Retrosheet.org's play-by-play accounts of baseball games (called <i>event files</i>),
+ * and through its method <code>printBoxscore(BufferedWriter outWriter)</code>, creates
+ * human-readable newspaper-style boxscores.
  */
 public interface GameAccount {
 
-    // /**
-    //  * This method is <code>GameAccount</code>'s single entry point.
-    //  * A <code>String</code> containing play-by-play information
-    //  * is given to this instance and is internally parsed by its various
-    //  * private methods to update the instance's game-state, statistics, and
-    //  * other private members.
-    //  * 
-    //  * @param pbpLine A play-by-play line.
-    //  * @throws FileNotFoundException
-    //  * @throws ArrayIndexOutOfBoundsException
-    //  */
-    // public void addLine(String pbpLine) throws FileNotFoundException, 
-    //                                            ArrayIndexOutOfBoundsException,
-    //                                            IOException;
+    /**
+     * This interface was designed to encourage a single point of entry to the 
+     * classes that implement it.
+     * @param pbpLine a line describing an event in a game.
+     * @param lineNum the number of the line within the file from which it originates.
+     * @throws FileNotFoundException if some required supplementary file (for example,
+     * a file containing player or team names) cannot be found.
+     * @throws IOException if an I/O exception occurs while reading from a supplementary
+     * file.
+     * @throws IllegalArgumentException if <code>pbpLine</code> does not follow the
+     * correct syntax.
+     */
+    public void addLine(String pbpLine, int lineNum) throws FileNotFoundException,
+            IOException, IllegalArgumentException;
     
 }

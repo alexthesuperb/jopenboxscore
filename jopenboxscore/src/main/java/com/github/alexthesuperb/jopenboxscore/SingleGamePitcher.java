@@ -17,13 +17,13 @@ import java.util.LinkedList;
  * @version 1.0.0
  * @author Alexander C. Wimer
  */
-public class BxScrPitcher extends BaseballPlayer {
+public class SingleGamePitcher extends BaseballPlayer {
 
     /** Pitching decision. */
     private char decision;
 
     /** List of the players hit by pitches. */
-    private LinkedList<BxScrPositionPlayer> battersHBP;
+    private LinkedList<SingleGamePositionPlayer> battersHBP;
 
     /** Numbers of outs recorded in the current inning */
     private int inningOutsRecorded;
@@ -43,7 +43,7 @@ public class BxScrPitcher extends BaseballPlayer {
      * @param firstName Player's first name.
      * @param lastName Player's last name.
      */
-    public BxScrPitcher(String playerID, String firstName, String lastName) {
+    public SingleGamePitcher(String playerID, String firstName, String lastName) {
         super(playerID, firstName, lastName);
         battersHBP = new LinkedList<>();
         decision = DECISION_NONE;
@@ -126,7 +126,7 @@ public class BxScrPitcher extends BaseballPlayer {
      * 
      * @param batter <code>BxScrPositionPlayer</code> hit by pitch.
      */
-    public void addBattersHBP(BxScrPositionPlayer batter) {
+    public void addBattersHBP(SingleGamePositionPlayer batter) {
         battersHBP.add(batter);
     }
 
@@ -135,7 +135,7 @@ public class BxScrPitcher extends BaseballPlayer {
      * 
      * @return The batters hit.
      */
-    public LinkedList<BxScrPositionPlayer> getBattersHBP() {
+    public LinkedList<SingleGamePositionPlayer> getBattersHBP() {
         return battersHBP;
     }
 

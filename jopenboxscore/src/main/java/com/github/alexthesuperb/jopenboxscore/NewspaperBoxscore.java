@@ -9,11 +9,11 @@ import java.io.IOException;
  * used to write a classic, human-readable newspaper-style boxscore to a <code>
  * BufferedWriter</code>.
  */
-public class NewspaperBoxscore implements Boxscore {
+public class NewspaperBoxscore implements BaseballBoxscore {
 
     private BufferedWriter writer;
-    private Team visitor;
-    private Team home;
+    private SingleGameTeam visitor;
+    private SingleGameTeam home;
     private String date;
     private char dayNight;
     private int gameNumber;
@@ -29,7 +29,7 @@ public class NewspaperBoxscore implements Boxscore {
     private static final String battingStatColumns = 
             String.format("%3s%3s%3s%4s", "AB", "R", "H", "RBI");
 
-    public NewspaperBoxscore(BxScrGameAccount game, BufferedWriter writer) {
+    public NewspaperBoxscore(BoxscoreGameAccount game, BufferedWriter writer) {
         this.writer = writer;
         visitor = game.getTeam(false, this);
         home = game.getTeam(true, this);
@@ -89,7 +89,7 @@ public class NewspaperBoxscore implements Boxscore {
         writer.write(String.format("%5s", "") + headline + "\n\n");
     }
 
-    private String getBoxscoreLine(BxScrPositionPlayer p) {
+    private String getBoxscoreLine(SingleGamePositionPlayer p) {
         String s1 = p.getName() + ", " + p.getPositionString();
         int[] batting_stats = p.getBxScrStats();
 
@@ -100,7 +100,7 @@ public class NewspaperBoxscore implements Boxscore {
         return String.format("%-20s", s1) + s2;
     }
 
-    private  String getBoxscoreLine(BxScrPitcher p) {
+    private  String getBoxscoreLine(SingleGamePitcher p) {
         
         String s1 = p.getName();
         char decision = p.getDecision();
@@ -128,7 +128,7 @@ public class NewspaperBoxscore implements Boxscore {
         }
 
         int[] pitching_stats = p.getBxScrStats();
-        String inng = BxScrPitcher.convertToIP(pitching_stats[0]);
+        String inng = SingleGamePitcher.convertToIP(pitching_stats[0]);
 
         String s2 = String.format("%3s%3d%3d%3d%3d%3d", 
             inng, pitching_stats[1], pitching_stats[2], pitching_stats[3],
@@ -141,14 +141,14 @@ public class NewspaperBoxscore implements Boxscore {
         LinkedList<String> visLineup = new LinkedList<>();
         LinkedList<String> homeLineup = new LinkedList<>();
 
-        for (LinkedList<BxScrPositionPlayer> ar : visitor.getLineup()) {
-            for (BxScrPositionPlayer p : ar) {
+        for (LinkedList<SingleGamePositionPlayer> ar : visitor.getLineup()) {
+            for (SingleGamePositionPlayer p : ar) {
                 visLineup.add(getBoxscoreLine(p));
             }
         }
         
-        for (LinkedList<BxScrPositionPlayer> ar : home.getLineup()) {
-            for (BxScrPositionPlayer p : ar) {
+        for (LinkedList<SingleGamePositionPlayer> ar : home.getLineup()) {
+            for (SingleGamePositionPlayer p : ar) {
                 homeLineup.add(getBoxscoreLine(p));
             }
         
@@ -237,7 +237,7 @@ public class NewspaperBoxscore implements Boxscore {
         writer.write(String.format("%2s%-20s", 
             "", visitor.getCity()) + pitchingStatColumns + "\n");
         
-        for (BxScrPitcher p : visitor.getPitchingStaff()) {
+        for (SingleGamePitcher p : visitor.getPitchingStaff()) {
             writer.write(getBoxscoreLine(p) + "\n");
         }
         writer.write("\n");
@@ -245,7 +245,7 @@ public class NewspaperBoxscore implements Boxscore {
         writer.write(String.format("%2s%-20s", 
             "", home.getCity()) + pitchingStatColumns + "\n");
         
-        for (BxScrPitcher p : home.getPitchingStaff()) {
+        for (SingleGamePitcher p : home.getPitchingStaff()) {
             writer.write(getBoxscoreLine(p) + "\n");
         }
 
@@ -357,12 +357,12 @@ public class NewspaperBoxscore implements Boxscore {
     }
 
     private String getSpecialStatString(String statKey, 
-            Team visitor, Team home, boolean isBattingStat) {
+            SingleGameTeam visitor, SingleGameTeam home, boolean isBattingStat) {
         String str = "";
         
         if (isBattingStat || statKey.equals(BaseballPlayer.KEY_PB)) {
-            for (LinkedList<BxScrPositionPlayer> ar : visitor.getLineup()) {
-                for (BxScrPositionPlayer p : ar) {
+            for (LinkedList<SingleGamePositionPlayer> ar : visitor.getLineup()) {
+                for (SingleGamePositionPlayer p : ar) {
                     if (p.getStat(statKey) > 0) {
                         if (p.getStat(statKey) == 1)
                             str += p.getName();
@@ -373,8 +373,8 @@ public class NewspaperBoxscore implements Boxscore {
                 }
             }
 
-            for (LinkedList<BxScrPositionPlayer> ar : home.getLineup()) {
-                for (BxScrPositionPlayer p : ar) {
+            for (LinkedList<SingleGamePositionPlayer> ar : home.getLineup()) {
+                for (SingleGamePositionPlayer p : ar) {
                     if (p.getStat(statKey) > 0) {
                         if (p.getStat(statKey) == 1)
                             str += p.getName();
@@ -393,20 +393,20 @@ public class NewspaperBoxscore implements Boxscore {
             }
             
             if (statKey.equals(BaseballPlayer.KEY_HBP)) {
-                for (BxScrPitcher p : visitor.getPitchingStaff()) {
+                for (SingleGamePitcher p : visitor.getPitchingStaff()) {
                     if (p.getBattersHBP().size() > 0) {
                         str += "by " + p.getName() + " (";
-                        for (BxScrPositionPlayer batter : p.getBattersHBP()) {
+                        for (SingleGamePositionPlayer batter : p.getBattersHBP()) {
                             str += batter.getName() + ", ";
                         }
                         str = str.substring(0, str.length() - 2);
                         str += "), ";
                     }
                 }
-                for (BxScrPitcher p : home.getPitchingStaff()) {
+                for (SingleGamePitcher p : home.getPitchingStaff()) {
                     if (p.getBattersHBP().size() > 0) {
                         str += "by " + p.getName() + " (";
-                        for (BxScrPositionPlayer batter : p.getBattersHBP()) {
+                        for (SingleGamePositionPlayer batter : p.getBattersHBP()) {
                             str += batter.getName() + ", ";
                         }
                         str = str.substring(0, str.length() - 2);
@@ -414,7 +414,7 @@ public class NewspaperBoxscore implements Boxscore {
                     }
                 }
             } else {
-                for (BxScrPitcher p : visitor.getPitchingStaff()) {
+                for (SingleGamePitcher p : visitor.getPitchingStaff()) {
                     if (p.getStat(statKey) > 0) {
                         if (p.getStat(statKey) == 1)
                             str += p.getName();
@@ -423,7 +423,7 @@ public class NewspaperBoxscore implements Boxscore {
                         str += ", ";
                     }
                 }
-                for (BxScrPitcher p : home.getPitchingStaff()) {
+                for (SingleGamePitcher p : home.getPitchingStaff()) {
                     if (p.getStat(statKey) > 0) {
                         if (p.getStat(statKey) == 1)
                             str += p.getName();

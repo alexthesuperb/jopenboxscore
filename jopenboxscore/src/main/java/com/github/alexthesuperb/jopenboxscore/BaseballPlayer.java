@@ -159,16 +159,6 @@ public abstract class BaseballPlayer {
     /** The number of instances of this class. */
     protected static int numObj;
 
-    // /**
-    //  * The default <code>BaseballPlayer</code> constructor should only
-    //  * be called when initializing placeholder or temporary objects. It 
-    //  * initializes the object with generic <code>lastName</code>, <code>
-    //  * firstName</code>, and <code>playerID</code>.
-    //  */
-    // public BaseballPlayer() {
-    //     this("playu" + String.format("%03d",numObj+1), "Player", "Unknown");
-    // }
-
     /**
      * Overloaded constructor initializes <code>stats</code> and sets player
      * identification information. Static <code>numObj</code> is incremented

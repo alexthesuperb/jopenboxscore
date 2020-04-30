@@ -16,7 +16,7 @@ import java.io.RandomAccessFile;
  * to track a game's state, using only simple statistics, to create
  * human-readable boxscores.
  */
-public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccount> {
+public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGameAccount> {
 
     private String gameID;
     private String year;
@@ -35,8 +35,8 @@ public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccoun
     private String lpID;
     private String saveID;
 
-    private Team visitor;
-    private Team home;
+    private SingleGameTeam visitor;
+    private SingleGameTeam home;
     
     private RandomAccessFile teamReader;
     private RandomAccessFile visRosReader;
@@ -67,13 +67,15 @@ public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccoun
      * @throws IOException if an I/O exception originating from the 
      * <code>BufferedWriter</code> occurs.
      */
-    public void printBoxscore(BufferedWriter outWriter) throws IOException {
-        NewspaperBoxscore boxscore = new NewspaperBoxscore(this, outWriter);
+    public void printBoxscore(BufferedWriter outWriter, String type) throws IOException {
+        BoxscoreFactory boxscoreFactory = BoxscoreFactory.getInstance();
+        BaseballBoxscore boxscore = boxscoreFactory.getBoxscore(this, 
+                outWriter, type);
         boxscore.write();
     }
 
     @Override
-    public int compareTo(BxScrGameAccount anotherGame) {
+    public int compareTo(BoxscoreGameAccount anotherGame) {
         int compare = stdDateString.compareTo(anotherGame.getStdDateString());
         if (compare == 0) {
             if (daynight == anotherGame.getDayNight()) {
@@ -99,9 +101,9 @@ public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccoun
      * @return a <code>Team</code> if <code>obj</code> implements <code>Boxscore</code>,
      * or <code>null</code> otherwise.
      */
-    public Team getTeam(boolean isHome, Object obj) {
+    public SingleGameTeam getTeam(boolean isHome, Object obj) {
 
-        if (obj instanceof Boxscore) {
+        if (obj instanceof BaseballBoxscore) {
             return (isHome) ?  home : visitor;
         } else {
             return null;
@@ -127,7 +129,7 @@ public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccoun
      * @throws FileNotFoundException if TEAM file can not be found in <code>rosDir</code>.
      * @throws IOException if TEAM file cannot be opened.
      */
-    public BxScrGameAccount(String gameID, String year, String fileName, File rosDir)
+    public BoxscoreGameAccount(String gameID, String year, String fileName, File rosDir)
             throws FileNotFoundException, IOException {
         
         /* Initialize game environment variables. */
@@ -395,11 +397,11 @@ public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccoun
      *        wild pitch, etc, baserunners not reacting to a play made by the batter).
      * @param bsrEvent Event involving baserunners, occuring after <code>plateEvent</code>.
      */
-    private void readPlateEvent(Team batTeam, Team pitTeam, String plateEvent, 
+    private void readPlateEvent(SingleGameTeam batTeam, SingleGameTeam pitTeam, String plateEvent, 
             String bsrEvent) { 
         int spot = (homeBatting) ? homeSpot : visSpot;
-        BxScrPitcher pitcher = pitTeam.getCurrentPitcher();
-        BxScrPositionPlayer batter = batTeam.getLineupSpot(spot); 
+        SingleGamePitcher pitcher = pitTeam.getCurrentPitcher();
+        SingleGamePositionPlayer batter = batTeam.getLineupSpot(spot); 
         batter.setPitcherCharged(pitcher); 
         boolean involvesBatter = true;      //Marked false for SB, WP, etc.
         int bAdvance = 0;                   //Bases taken by the batter
@@ -500,7 +502,7 @@ public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccoun
                  * from the third base element. 
                  */
                 if (s.charAt(2) == 'H') { //Stole home -- increment runs.
-                    BxScrPositionPlayer r = batTeam.getLineupSpot(baserunnerSpots[2]);
+                    SingleGamePositionPlayer r = batTeam.getLineupSpot(baserunnerSpots[2]);
                     inngRuns++;
                     r.incrementStats(BaseballPlayer.KEY_R);
                     r.getPitcherCharged().incrementStats(BaseballPlayer.KEY_R);
@@ -708,8 +710,8 @@ public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccoun
         }
     }
 
-    private void readBaserunning(Team battingTeam, Team pitchingTeam, 
-        BxScrPositionPlayer batter, BxScrPitcher pitcher, String bsrEvent, int bAdvance)
+    private void readBaserunning(SingleGameTeam battingTeam, SingleGameTeam pitchingTeam, 
+        SingleGamePositionPlayer batter, SingleGamePitcher pitcher, String bsrEvent, int bAdvance)
     {
         if (bsrEvent.equals("")) {
             if (bAdvance == 4) {
@@ -743,7 +745,7 @@ public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccoun
                 }
             } else { //All other runners (1-, 2-, 3-)
                 int startBase = Integer.parseInt(String.valueOf(s.charAt(0)))-1;
-                BxScrPositionPlayer r;
+                SingleGamePositionPlayer r;
                 try{ //TEMPORARY FIX.
                     r  = battingTeam.getLineupSpot(baserunnerSpots[startBase]);
                 } catch (IndexOutOfBoundsException e) {
@@ -820,7 +822,7 @@ public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccoun
      */
     public void setData(String key, String playerID, String value) {
         int valueInt;
-        BxScrPitcher tmpPitcher;
+        SingleGamePitcher tmpPitcher;
 
         /* Check that value is an integer */
         try {
@@ -891,7 +893,7 @@ public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccoun
 
             /* Initialize visitor object. */
             cityAndName = findTeamCityAndName(value);
-            visitor = new Team(value, cityAndName[0], cityAndName[1], false);
+            visitor = new SingleGameTeam(value, cityAndName[0], cityAndName[1], false);
 
         } else if (key.equals("hometeam")) {
             /* 
@@ -923,7 +925,7 @@ public class BxScrGameAccount implements GameAccount, Comparable<BxScrGameAccoun
 
             /* Initialize visitor object. */
             cityAndName = findTeamCityAndName(value);
-            home = new Team(value, cityAndName[0], cityAndName[1], true);
+            home = new SingleGameTeam(value, cityAndName[0], cityAndName[1], true);
 
         } else if (key.equals("date")) {
             

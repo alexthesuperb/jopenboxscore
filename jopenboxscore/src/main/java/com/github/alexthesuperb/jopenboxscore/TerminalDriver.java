@@ -10,7 +10,7 @@ import java.io.OutputStreamWriter;
 import java.util.Collections;
 import java.util.LinkedList;
 
-public class Driver {
+public class TerminalDriver {
 
     /* Flags */
     static boolean readInFile;
@@ -211,11 +211,11 @@ public class Driver {
 
         /* Read files */
         String currFile = inFileNames.getFirst();
-        LinkedList<BxScrGameAccount> games = new LinkedList<>();
+        LinkedList<BoxscoreGameAccount> games = new LinkedList<>();
         try {
             for (String s : inFileNames) {
                 currFile = s;
-                BxScrFileReader boxReader = new BxScrFileReader(s, year, rosDir);
+                RetrosheetEveReader boxReader = new RetrosheetEveReader(s, year, rosDir);
 
                 if (queryType == QUERY_ALL_GAMES) {
                     boxReader.readAll();
@@ -236,7 +236,7 @@ public class Driver {
                 // }
 
                 /* Add game accounts produced by file to master list. */
-                for (BxScrGameAccount game : boxReader.getGameAccounts()) {
+                for (BoxscoreGameAccount game : boxReader.getGameAccounts()) {
                     games.add(game);
                 }
 
@@ -258,8 +258,8 @@ public class Driver {
             Collections.sort(games);
         }
         try {
-            for (BxScrGameAccount g : games) {
-                g.printBoxscore(outWriter);
+            for (BoxscoreGameAccount g : games) {
+                g.printBoxscore(outWriter, BoxscoreFactory.NEWSPAPER_BOXSCORE_KEY);
             }
         } catch (IOException e) {
             System.out.println("\nAn error occured while printing boxscores.\n");

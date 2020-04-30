@@ -7,9 +7,9 @@ package com.github.alexthesuperb.jopenboxscore;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Team {
-    private ArrayList<LinkedList<BxScrPositionPlayer>> lineup;
-    private LinkedList<BxScrPitcher> pitchers;
+public class SingleGameTeam {
+    private ArrayList<LinkedList<SingleGamePositionPlayer>> lineup;
+    private LinkedList<SingleGamePitcher> pitchers;
     private ArrayList<Integer> linescore;
     private String teamID, city, name;
     private int totLeftOnBase, totalDP, totalTP;
@@ -23,7 +23,7 @@ public class Team {
      * @param home <code>true</code> if this is the home team, <code>false</code>
      *        if this is the visitor.
      */
-    public Team(String id, String city, String name, boolean home) {
+    public SingleGameTeam(String id, String city, String name, boolean home) {
         teamID = id;
         this.city = city;
         this.name = name;
@@ -33,7 +33,7 @@ public class Team {
         linescore = new ArrayList<>(30);
         
         for (int i = 0; i < 9; i++) {
-            lineup.add(new LinkedList<BxScrPositionPlayer>());
+            lineup.add(new LinkedList<SingleGamePositionPlayer>());
         }
     }
 
@@ -100,7 +100,7 @@ public class Team {
      * @param playerID The pitcher's ID.
      */
     public void setPitDecision(char decKey, String playerID) {
-        for (BxScrPitcher p : pitchers) {
+        for (SingleGamePitcher p : pitchers) {
             if (p.getPlayerID().equals(playerID)) {
                 p.setDecision(decKey);
             }
@@ -116,7 +116,7 @@ public class Team {
      * @return
      */
     public boolean setEarnedRuns(String pitcherID, int er) {
-        for (BxScrPitcher p : pitchers) {
+        for (SingleGamePitcher p : pitchers) {
             if (p.getPlayerID().equals(pitcherID)) {
                 p.incrementStats(BaseballPlayer.KEY_ER);
                 return true;
@@ -155,8 +155,8 @@ public class Team {
             BaseballPlayer.KEY_H, BaseballPlayer.KEY_RBI
         };
         
-        for (LinkedList<BxScrPositionPlayer> ar : lineup) {
-            for (BxScrPositionPlayer p : ar) {
+        for (LinkedList<SingleGamePositionPlayer> ar : lineup) {
+            for (SingleGamePositionPlayer p : ar) {
                 int[] pStats = p.getStats(keys);
                 for (int i = 0; i < 4; i++)
                     stats[i] += pStats[i];
@@ -180,7 +180,7 @@ public class Team {
             BaseballPlayer.KEY_SO
         };
         
-        for (BxScrPitcher p : pitchers) {
+        for (SingleGamePitcher p : pitchers) {
             int[] pStats = p.getStats(keys);
             for (int i = 0; i < 6; i++)
                 stats[i] += pStats[i];
@@ -207,7 +207,7 @@ public class Team {
             if (position == BaseballPlayer.PITCHER) {
                 getCurrentPitcher().incrementStats(BaseballPlayer.KEY_E,1);
             } else {
-                for (LinkedList<BxScrPositionPlayer> ar : lineup) {
+                for (LinkedList<SingleGamePositionPlayer> ar : lineup) {
                     if (ar.getLast().getCurrentPosition() == position) {
                         ar.getLast().incrementStats(BaseballPlayer.KEY_E,1);
                         return;
@@ -215,7 +215,7 @@ public class Team {
                 }
             }
         } else if (statKey.equals(BaseballPlayer.KEY_PB)) {
-            for (LinkedList<BxScrPositionPlayer> ar : lineup) {
+            for (LinkedList<SingleGamePositionPlayer> ar : lineup) {
                 if (ar.getLast().getCurrentPosition() == BaseballPlayer.CATCHER) {
                     ar.getLast().incrementStats(BaseballPlayer.KEY_PB,1);
                 }
@@ -252,22 +252,22 @@ public class Team {
                  * a position after entering the game earlier as a pitcher. 
                  */
                 if (containsPitcher(id)) {
-                    BxScrPositionPlayer newB = new BxScrPositionPlayer(
-                        id,first,last,spotInt,BxScrPositionPlayer.PITCHER);
+                    SingleGamePositionPlayer newB = new SingleGamePositionPlayer(
+                        id,first,last,spotInt,SingleGamePositionPlayer.PITCHER);
                     newB.changePosition(posInt);
                     lineup.get(spotInt-1).add(newB);
                 } else {
-                    BxScrPositionPlayer newB = new BxScrPositionPlayer(
+                    SingleGamePositionPlayer newB = new SingleGamePositionPlayer(
                         id,first,last,spotInt,posInt);
                     lineup.get(spotInt-1).add(newB);
                 }
             }
         }
-        if (posInt == BxScrPositionPlayer.PITCHER) {
+        if (posInt == SingleGamePositionPlayer.PITCHER) {
 
             /* New pitcher entering the game -- add to game staff. */
             if (!containsPitcher(id)) {
-                BxScrPitcher newP = new BxScrPitcher(id, first, last);
+                SingleGamePitcher newP = new SingleGamePitcher(id, first, last);
                 pitchers.add(newP);
             }
         }
@@ -282,7 +282,7 @@ public class Team {
      * parameter <code>id</code>.
      */
     public boolean containsPitcher(String id) {
-        for (BxScrPitcher p : pitchers) {
+        for (SingleGamePitcher p : pitchers) {
             if (p.getPlayerID().equals(id))
                 return true;
         }
@@ -298,8 +298,8 @@ public class Team {
      * otherwise.
      */
     private boolean containsBxScrPositionPlayer(String playerID) {
-        for (LinkedList<BxScrPositionPlayer> list : lineup) {
-            for (BxScrPositionPlayer p : list) {
+        for (LinkedList<SingleGamePositionPlayer> list : lineup) {
+            for (SingleGamePositionPlayer p : list) {
                 if (p.getPlayerID().equals(playerID))
                     return true;
             }
@@ -368,7 +368,7 @@ public class Team {
     }
 
     /** @return pitcher currently in the game for this team. */
-    public BxScrPitcher getCurrentPitcher() {
+    public SingleGamePitcher getCurrentPitcher() {
         return pitchers.getLast();
     }
 
@@ -377,8 +377,8 @@ public class Team {
      * @param id
      * @return
      */
-    public BxScrPitcher getPitcher(String id) {
-        for (BxScrPitcher p : pitchers) {
+    public SingleGamePitcher getPitcher(String id) {
+        for (SingleGamePitcher p : pitchers) {
             if (p.getPlayerID().equals(id))
                 return p;
         }
@@ -390,7 +390,7 @@ public class Team {
      * @param spot
      * @return
      */
-    public BxScrPositionPlayer getLineupSpot(int spot) {
+    public SingleGamePositionPlayer getLineupSpot(int spot) {
         return lineup.get(spot).getLast();
     }
 
@@ -399,9 +399,9 @@ public class Team {
      * @param id
      * @return
      */
-    public BxScrPositionPlayer getBxScrPositionPlayer(String id) {
-        for (LinkedList<BxScrPositionPlayer> list : lineup) {
-            for (BxScrPositionPlayer p : list) {
+    public SingleGamePositionPlayer getBxScrPositionPlayer(String id) {
+        for (LinkedList<SingleGamePositionPlayer> list : lineup) {
+            for (SingleGamePositionPlayer p : list) {
                 if (p.getPlayerID().equals(id))
                     return p;
             }
@@ -410,12 +410,12 @@ public class Team {
     }
 
     /** @return the team's lineup. */
-    public ArrayList<LinkedList<BxScrPositionPlayer>> getLineup() {
+    public ArrayList<LinkedList<SingleGamePositionPlayer>> getLineup() {
         return lineup;
     }
 
     /** @return a list of all pitchers who played for team in game */
-    public LinkedList<BxScrPitcher> getPitchingStaff() {
+    public LinkedList<SingleGamePitcher> getPitchingStaff() {
         return pitchers;
     }
 }

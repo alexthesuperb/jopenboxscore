@@ -15,7 +15,7 @@ import java.util.LinkedList;
  * @version 1.0.0
  * @since 2020-03-17
  */
-public class BxScrPositionPlayer extends BaseballPlayer {
+public class SingleGamePositionPlayer extends BaseballPlayer {
 
     /** Spot in the lineup. This is an index, ranging from 0 to 8. */
     private int lineupSpot;
@@ -24,7 +24,7 @@ public class BxScrPositionPlayer extends BaseballPlayer {
     private LinkedList<Integer> posList;
 
     /** The <code>Pitcher</code> held responsible for this player reaching base. */
-    BxScrPitcher pitcherCharged;
+    SingleGamePitcher pitcherCharged;
 
     /**
      * Parse <code>String lineupSpot</code> and <code>position</code> and 
@@ -37,7 +37,7 @@ public class BxScrPositionPlayer extends BaseballPlayer {
      * @param lineupSpot Player's lineup spot. 
      * @param position Player's position.
      */
-    public BxScrPositionPlayer(String playerID, String firstName, String lastName, 
+    public SingleGamePositionPlayer(String playerID, String firstName, String lastName, 
             String lineupSpot, String position) {
 
         this(playerID, firstName, lastName, Integer.parseInt(lineupSpot), 
@@ -54,7 +54,7 @@ public class BxScrPositionPlayer extends BaseballPlayer {
      * @param lineupSpot Player's lineup spot. 
      * @param position Player's position.
      */
-    public BxScrPositionPlayer(String playerID, String firstName, String lastName,
+    public SingleGamePositionPlayer(String playerID, String firstName, String lastName,
             int lineupSpot, int position) {
         super(playerID, firstName, lastName);
         posList = new LinkedList<>();
@@ -67,7 +67,7 @@ public class BxScrPositionPlayer extends BaseballPlayer {
      * reaching base.
      * @param pitcher The pitcher charged.
      */
-    public void setPitcherCharged(BxScrPitcher pitcher) {
+    public void setPitcherCharged(SingleGamePitcher pitcher) {
         pitcherCharged = pitcher;
     }
 
@@ -81,7 +81,7 @@ public class BxScrPositionPlayer extends BaseballPlayer {
      * 
      * @return The pitcher charged. This value may be <code>null</code>.
      */
-    public BxScrPitcher getPitcherCharged() {
+    public SingleGamePitcher getPitcherCharged() {
         return pitcherCharged;
     }
 

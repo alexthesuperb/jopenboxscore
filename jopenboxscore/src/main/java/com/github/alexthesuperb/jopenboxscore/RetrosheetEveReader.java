@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /** */
-public class BxScrFileReader/*  implements EventFileReader */ {
+public class RetrosheetEveReader {
 
     /** Name of file to be read. */
     private String fileName;
@@ -26,7 +26,7 @@ public class BxScrFileReader/*  implements EventFileReader */ {
     private BufferedReader pbpReader;
 
     /** A list of the games processed by this instance. */
-    private List<BxScrGameAccount> gameAccounts;
+    private List<BoxscoreGameAccount> gameAccounts;
 
     /** 
      * A directory containing TEAM and roster files. This object is
@@ -34,9 +34,9 @@ public class BxScrFileReader/*  implements EventFileReader */ {
      */
     private File teamRosDir;
 
-    public BxScrFileReader(String eveFileName, String year, File teamRosDir)
+    public RetrosheetEveReader(String eveFileName, String year, File teamRosDir)
             throws IOException {
-        gameAccounts = new LinkedList<BxScrGameAccount>();
+        gameAccounts = new LinkedList<BoxscoreGameAccount>();
         this.fileName = eveFileName;
         this.year = year;
         this.teamRosDir = teamRosDir;
@@ -63,7 +63,7 @@ public class BxScrFileReader/*  implements EventFileReader */ {
     public void readAll() throws FileNotFoundException, IOException, 
             IllegalArgumentException {
         String line;
-        BxScrGameAccount currGame = null;
+        BoxscoreGameAccount currGame = null;
 
         /* 
          * Read through the entire file, one line at a time.
@@ -79,7 +79,7 @@ public class BxScrFileReader/*  implements EventFileReader */ {
                     currGame.finalize();
                     gameAccounts.add(currGame);
                 }
-                currGame = new BxScrGameAccount(line.substring(3), year, fileName, 
+                currGame = new BoxscoreGameAccount(line.substring(3), year, fileName, 
                     teamRosDir);
             }
             if (currGame != null) {
@@ -108,7 +108,7 @@ public class BxScrFileReader/*  implements EventFileReader */ {
     public void readGamesByID(List<String> gameIDs) throws FileNotFoundException, 
             IOException, IllegalArgumentException {
         String line;
-        BxScrGameAccount currGame = null;
+        BoxscoreGameAccount currGame = null;
         boolean readThisGame = false;
         
         /* 
@@ -130,7 +130,7 @@ public class BxScrFileReader/*  implements EventFileReader */ {
 
                 if (gameIDs.contains(line.substring(3))) {
                     readThisGame = true;
-                    currGame = new BxScrGameAccount(line.substring(3), year, fileName, 
+                    currGame = new BoxscoreGameAccount(line.substring(3), year, fileName, 
                         teamRosDir);
                 }
             }
@@ -165,7 +165,7 @@ public class BxScrFileReader/*  implements EventFileReader */ {
         int endInt;
         int gameDateInt;
         String gameID;
-        BxScrGameAccount currGame = null;
+        BoxscoreGameAccount currGame = null;
         boolean readThisGame = false;
 
         /* Check that start and end are valid dates. */
@@ -201,7 +201,7 @@ public class BxScrFileReader/*  implements EventFileReader */ {
                 /* Check if game falls into range. If it does, read. */
                 if (gameDateInt >= startInt && gameDateInt <= endInt) {
                     readThisGame = true;
-                    currGame = new BxScrGameAccount(gameID, year, fileName, 
+                    currGame = new BoxscoreGameAccount(gameID, year, fileName, 
                         teamRosDir);
                 }   
             }
@@ -239,7 +239,7 @@ public class BxScrFileReader/*  implements EventFileReader */ {
      * @return a list of game accounts, each containing the teams, score,
      * and other boxscore information on a particular game.
      */
-    public List<BxScrGameAccount> getGameAccounts() {
+    public List<BoxscoreGameAccount> getGameAccounts() {
         return gameAccounts;
     }
 
@@ -252,7 +252,7 @@ public class BxScrFileReader/*  implements EventFileReader */ {
      * @throws IOException if a problem occurs while closing 
      *         <code>BufferedReader</code>.
      */
-    public List<BxScrGameAccount> close() throws IOException {
+    public List<BoxscoreGameAccount> close() throws IOException {
         pbpReader.close();
         return gameAccounts;
     }

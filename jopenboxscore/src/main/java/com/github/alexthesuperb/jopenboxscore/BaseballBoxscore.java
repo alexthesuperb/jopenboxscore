@@ -19,7 +19,7 @@ import java.io.IOException;
  * data stored in in <code>BxScrGameAccount</code>.
  * </p>
  */
-public interface Boxscore {
+public interface BaseballBoxscore {
     
     public void write() throws IOException;
 
