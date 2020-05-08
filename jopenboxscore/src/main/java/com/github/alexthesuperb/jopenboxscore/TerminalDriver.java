@@ -20,6 +20,7 @@ public class TerminalDriver {
     static boolean readOutFile;
     static boolean readGameID;
     static boolean readInRosDir;
+    static boolean readSummaryFile;
 
     /** If <code>true</code>, print boxscores in ascending order by date.*/
     static boolean writeInOrder;
@@ -27,11 +28,15 @@ public class TerminalDriver {
     /** If <code>false</code>, output to terminal. */
     static boolean hasOutFile;
 
+    /** If <code>true</code>, write summary. */
+    static boolean hasSummaryFile;
+
     /* From String[] args */
     static String year;
     static String startDate;
     static String endDate;
     static String outFileName;
+    static String summaryFileName;
     static LinkedList<String> inFileNames;
     static LinkedList<String> gameIDs;
 
@@ -47,6 +52,8 @@ public class TerminalDriver {
     /* Writes output */
     static BufferedWriter outWriter;
 
+    static BufferedWriter summaryWriter;
+
     /** Directory containing TEAM and roster files. */
     static File rosDir;
 
@@ -59,6 +66,7 @@ public class TerminalDriver {
         readOutFile = false;
         readGameID = false;
         readInRosDir = false;
+        readSummaryFile = false;
     }
 
     /**
@@ -84,19 +92,24 @@ public class TerminalDriver {
             while (i < argc) {
 
                 /* Check for flags */
-                if (args[i].equals("-h") || args[i].equals("-help")) {
+                if (args[i].equalsIgnoreCase("-h") || 
+                        args[i].equalsIgnoreCase("-help")) {
                     printHelp();
                     System.exit(0);
-                } else if (args[i].equals("-y") || args[i].equals("-year")) {
+                } else if (args[i].equalsIgnoreCase("-y") ||
+                        args[i].equalsIgnoreCase("-year")) {
                     resetFlags();
                     readYear = true;
-                } else if (args[i].equals("-o") || args[i].equals("-order")) {
+                } else if (args[i].equalsIgnoreCase("-o") ||
+                        args[i].equalsIgnoreCase("-order")) {
                     resetFlags();
                     writeInOrder = true;
-                } else if (args[i].equals("-p") || args[i].equals("-path")) {
+                } else if (args[i].equalsIgnoreCase("-p") ||
+                        args[i].equalsIgnoreCase("-path")) {
                     resetFlags();
                     readInRosDir = true;
-                }  else if (args[i].equals("-i") || args[i].equals("-id")) {
+                }  else if (args[i].equalsIgnoreCase("-i") ||
+                        args[i].equalsIgnoreCase("-id")) {
                     /* 
                      * If queryType is not the default, user has already entered
                      * another flag. Conflicting flags throws an exception. 
@@ -107,7 +120,8 @@ public class TerminalDriver {
                     resetFlags();
                     readGameID = true;
                     queryType = QUERY_BY_ID;
-                } else if (args[i].equals("-s") || args[i].equals("-start")) {
+                } else if (args[i].equalsIgnoreCase("-s") ||
+                        args[i].equalsIgnoreCase("-start")) {
 
                     /* Query may only contain 1 start date. */
                     if (startDate != null) {
@@ -116,7 +130,8 @@ public class TerminalDriver {
                     resetFlags();
                     readStartDate = true;
                     queryType = QUERY_BY_DATES;
-                } else if (args[i].equals("-e") || args[i].equals("-end")) {
+                } else if (args[i].equalsIgnoreCase("-e") ||
+                        args[i].equalsIgnoreCase("-end")) {
 
                     /* Query may only contain 1 end date. */
                     if (endDate != null) {
@@ -125,11 +140,16 @@ public class TerminalDriver {
                     resetFlags();
                     readEndDate = true;
                     queryType = QUERY_BY_DATES;
-                } else if (args[i].equals("-d") || args[i].equals("-dest")) {
+                } else if (args[i].equalsIgnoreCase("-d") || 
+                        args[i].equalsIgnoreCase("-dest")) {
                     hasOutFile = true;
                     resetFlags();
                     readOutFile = true;
-                } else if (args[i].equals("-q")) {
+                } else if (args[i].equalsIgnoreCase("-summary")) {
+                    hasSummaryFile = true;
+                    resetFlags();
+                    readSummaryFile = true;
+                } else if (args[i].equalsIgnoreCase("-q")) {
 
                     /* Conflicting flags, throw exception. */
                     if (queryType != QUERY_ALL_GAMES) {
@@ -153,6 +173,9 @@ public class TerminalDriver {
                     } else if (readOutFile) {
                         outFileName = args[i];
                         readOutFile = false;
+                    } else if (readSummaryFile) {
+                        summaryFileName = args[i];
+                        readSummaryFile = false;
                     } else {
                         if (readGameID) {
                             /* 
@@ -207,6 +230,21 @@ public class TerminalDriver {
             }
         } catch (IOException ioe) {
             outWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+        }
+
+        /* 
+         * Initialized BufferedWriter for Summary. If user has entered 
+         * 'CONSOLE' as the file name, then write summary to console. 
+         */
+        try {
+            if (hasSummaryFile) {
+                if (summaryFileName.equalsIgnoreCase("CONSOLE")) {
+                    throw new IOException();
+                }
+                summaryWriter = new BufferedWriter(new FileWriter(summaryFileName));
+            }
+        } catch (IOException ioe) {
+            summaryWriter = new BufferedWriter(new OutputStreamWriter(System.out));
         }
 
         /* Read files */
@@ -267,6 +305,16 @@ public class TerminalDriver {
             System.exit(0);
         }
 
+        if (hasSummaryFile) {
+            NewspaperSummary summary = new NewspaperSummary(summaryWriter);
+            summary.addGames(games);
+            try {
+                summary.write();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         /* Finish program. */
         System.out.println("[Program terminated successfully.]");
     }
@@ -311,6 +359,10 @@ public class TerminalDriver {
             "    -dest <file name>\n" +
             "                  Specify a file to which results will be printed. By default,\n" +
             "                  results are printed to this terminal.\n" +
+            "    -summary <file name>\n" +
+            "                  Specify a file location to which an overall statistical summary of\n" +
+            "                  the processed files will be written. If 'CONSOLE' is entered as the\n" +
+            "                  argument, this summary will be printed to the terminal.\n" +
             "    -p <directory>\n" +
             "    -path <directory>\n" +
             "                  Specify a directory containing the necessary .ROS and TEAM\n" +
@@ -323,7 +375,7 @@ public class TerminalDriver {
     }
 
     /* Print query in plain English to terminal. (DEBUGGING) */
-    static void printQuery() {
+    static private void printQuery() {
         System.out.println("Year: " + year);
         System.out.print("Query Type: ");
         

@@ -16,7 +16,8 @@ import java.util.HashMap;
  * @version 1.0.0
  * @since 2020-4-17
  */
-public abstract class BaseballPlayer {
+public abstract class BaseballPlayer implements SportsStatContainer,
+        Comparable<BaseballPlayer> {
 
     /** <code>key</code> for games played. */
     public static final String KEY_G = "g";
@@ -27,10 +28,10 @@ public abstract class BaseballPlayer {
     /** <code>key</code> for at-bats. */
     public static final String KEY_AB = "ab";
 
-    /** <code>key</code> for runs scored/allowed. */
-    public static final String KEY_R = "r";         
+    /** <code>key</code> for runs scored. */
+    public static final String KEY_R = "r";  
 
-    /** <code>key</code> for hits/hits allowed. */
+    /** <code>key</code> for hits. */
     public static final String KEY_H = "h";
     
     /** <code>key</code> for runs batted in. */
@@ -55,16 +56,15 @@ public abstract class BaseballPlayer {
     public static final String KEY_SB = "sb"; 
     
     /** <code>key</code> for times caught stealing. */
-    public static final String KEY_CS = "cs";  
+    public static final String KEY_CS = "cs"; 
+    
+    public static final String KEY_PO = "po";
     
     /** <code>key</code> for strikeouts. */
     public static final String KEY_SO = "so";
     
-    /** <code>key</code> for earned runs. */
-    public static final String KEY_ER = "er";
-
     /** <code>key</code> for walks. */
-    public static final String KEY_BB = "bb";  
+    public static final String KEY_BB = "bb"; 
 
     /** <code>key</code> for sacrafice flies. */
     public static final String KEY_SF = "sf";
@@ -75,17 +75,44 @@ public abstract class BaseballPlayer {
     /** <code>key</code> for errors. */
     public static final String KEY_E = "e";
 
+    /** <code>key</code> for games started by a pitcher */
+    public static final String KEY_PITCHER_GS = "gs";
+
     /** <code>key</code> for outs recorded by a pitcher */
     public static final String KEY_BATTERS_RETIRED = "br";
 
-    /**<code>key</code> for passed balls. */
-    public static final String KEY_PB = "pb";
+    /**<code>key</code> for hits allowed. */
+    public static final String KEY_PITCHER_H = "hits_allowed";
+
+    /** <code>key</code> for batters struck out by pitcher. */
+    public static final String KEY_PITCHER_SO = "pitcher_strikeouts";
+
+    /** <code>key</code> for runs allowed by pitcher. */
+    public static final String KEY_PITCHER_R = "runs_allowed";
+    
+    /** <code>key</code> for earned runs allowed by pitcher. */
+    public static final String KEY_PITCHER_ER = "earned_runs";
+
+    /** <code>key</code> for walks allowed by a pitcher. */
+    public static final String KEY_PITCHER_BB = "walks_allowed"; 
 
     /**<code>key</code> for wild pitches. */
-    public static final String KEY_WP = "wp";
+    public static final String KEY_PITCHER_WP = "wp";
 
     /**<code>key</code> for balks. */
-    public static final String KEY_BK = "bk";
+    public static final String KEY_PITCHER_BK = "bk";
+
+    /**<code>key</code> for the <i>statistical category</i> pitcher wins. */
+    public static final String KEY_PITCHER_WINS = "pitcher_wins";
+
+    /**<code>key</code> for the <i>statistical category</i> pitcher losses. */
+    public static final String KEY_PITCHER_LOSSES = "pitcher_losses";
+
+    /**<code>key</code> for the <i>statistical category</i> pitcher saves. */
+    public static final String KEY_PITCHER_SAVES = "pitcher_saves";
+
+    /**<code>key</code> for passed balls. */
+    public static final String KEY_PB = "pb";
 
     /**<code>key</code> for pickoff */
     public static final String KEY_PICKOFF = "po";
@@ -154,7 +181,7 @@ public abstract class BaseballPlayer {
     protected String firstName;
 
     /** Unique player ID */
-    protected String playerID;
+    protected String playerId;
 
     /** The number of instances of this class. */
     protected static int numObj;
@@ -169,7 +196,7 @@ public abstract class BaseballPlayer {
      * @param lastName The player's last name.
      */
     public BaseballPlayer(String playerID, String firstName, String lastName) {
-        this.playerID = playerID;
+        this.playerId = playerID;
         this.firstName = firstName;
         this.lastName = lastName;
         stats = new HashMap<>();
@@ -264,7 +291,7 @@ public abstract class BaseballPlayer {
      * @param playerID The player's ID. 
      */
     public void setPlayerID(String playerID) {
-        this.playerID = playerID;
+        this.playerId = playerID;
     }
 
     /** 
@@ -272,8 +299,16 @@ public abstract class BaseballPlayer {
      * 
      * @return <code>playerID</code> The player's ID. 
      */
-    public String getPlayerID() {
-        return playerID;
+    public String getPlayerId() {
+        return playerId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     /** 
@@ -285,15 +320,66 @@ public abstract class BaseballPlayer {
         return lastName + " " + firstName.charAt(0);
     }
 
-    // /** 
-    //  * This method is the primary way in which <code>BaseballPlayer</code>
-    //  * subclasses express their output. This method is abstracted because
-    //  * the most meaningful statistics will differ by child. For example,
-    //  * a hitter class' <code>statsToString()</code> method may return a
-    //  * String containing at-bats, runs, hits, and runs batted in, while
-    //  * a pitcher's may return innings pitched, hits, earned runs, and runs.
-    //  */
-    // public abstract String statsToString();
+    /**
+     * Convert The number of batters retired by a pitcher into
+     * a boxscore-style innings pitched total. This number is 
+     * expressed as the number of whole innings, a decimal point,
+     * and the remaining thirds of an inning completed. For example,
+     * <code>retired = 13</code> would be expressed as
+     * <code>ip = 4.1</code>.
+     * 
+     * @param outsRecorded The number of batters retired.
+     * @return Innings pitched if <code>outsRecorded >= 0</code>; otherwise,
+     * <code>"NaN"</code>. 
+     */
+    public static String convertToIP(int outsRecorded) {
+
+        if (outsRecorded < 0) {
+            return "NaN";
+        } else {
+            String wholeIP;
+            String fractionIP;
+    
+            wholeIP = String.valueOf(outsRecorded/3);
+            fractionIP = String.valueOf(outsRecorded%3);
+    
+            return wholeIP + "." + fractionIP;
+        }
+    }
+
+    public static float getOnBasePercentage(int atBats, int hits, int walks, 
+            int hbp, int sacFlies) {
+        return (float)(hits + walks + hbp)/(float)(atBats + walks + hbp + sacFlies);
+    }
+
+    public static float getSluggingPercentage(int atBats, int hits, int doubles,
+            int triples, int homeruns) {
+        return (float)(hits + doubles + 2*triples + 3*homeruns)/(float)atBats;
+    }
+
+    public static float getBattingAverage(int atBats, int hits) {
+        return (float)hits/(float)atBats;
+    }
+
+    public static float getEarnedRunAverage(int earnedRuns, int battersRetired) {
+        return (float)9 * (float)earnedRuns / ((float)battersRetired / (float)3);
+    }
+
+    @Override
+    public int compareTo(BaseballPlayer o) {
+        int compare = this.playerId.compareTo(o.playerId);
+        if (compare == 0) {
+            compare = this.lastName.compareTo(o.lastName);
+            if (compare == 0) {
+                return this.firstName.compareTo(o.firstName);
+            } else {
+                return compare;
+            }
+        } else {
+            return compare;
+        }
+    }
+
 }
 
 // END OF FILE

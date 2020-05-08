@@ -60,6 +60,7 @@ public class SingleGamePositionPlayer extends BaseballPlayer {
         posList = new LinkedList<>();
         this.lineupSpot = lineupSpot;
         posList.add(position);
+        stats.put(BaseballPlayer.KEY_G, 1);
     }
 
     /**
@@ -122,15 +123,19 @@ public class SingleGamePositionPlayer extends BaseballPlayer {
     }
 
     /** 
-     * @return a <code>LinkedList</code> of positions played by the player in
+     * @return an array of positions played by the player in
      * this game. This list is chronologically ordered: that is, the 
-     * <code>Integer</code> at index <code>0</code> represents the first
-     * position played by the player, and index <code>getLast()</code> 
+     * <code>int</code> at index <code>0</code> represents the first
+     * position played by the player, and index <code>length - 1</code> 
      * represents the position he manned when either the game ended or he
      * was pulled from the game.
      */
-    public LinkedList<Integer> getPositionsList() {
-        return posList;
+    public int[] getPositionsList() {
+        int[] positions = new int[posList.size()];
+        for (int i = 0; i < positions.length; i++) {
+            positions[i] = posList.get(i);
+        }
+        return positions;
     }
 
     /**

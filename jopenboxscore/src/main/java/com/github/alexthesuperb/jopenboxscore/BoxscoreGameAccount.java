@@ -202,19 +202,12 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
         }
 
         /* Award pitching decisions */
-        if (visitor.containsPitcher(wpID)) {
-            /* 
-             * If visitor contains winning pitcher, then home must
-             * contain losing pitcher.
-             */
-            visitor.setPitDecision(BaseballPlayer.DECISION_WIN, wpID);
-            home.setPitDecision(BaseballPlayer.DECISION_LOSS, lpID);
-            visitor.setPitDecision(BaseballPlayer.DECISION_SAVE, saveID);
-        } else {
-            home.setPitDecision(BaseballPlayer.DECISION_WIN, wpID);
-            visitor.setPitDecision(BaseballPlayer.DECISION_LOSS, lpID);
-            home.setPitDecision(BaseballPlayer.DECISION_SAVE, saveID);
-        }
+        visitor.setPitchingDecision(BaseballPlayer.DECISION_WIN, wpID);
+        visitor.setPitchingDecision(BaseballPlayer.DECISION_LOSS, lpID);
+        visitor.setPitchingDecision(BaseballPlayer.DECISION_SAVE, saveID);
+        home.setPitchingDecision(BaseballPlayer.DECISION_WIN, wpID);
+        home.setPitchingDecision(BaseballPlayer.DECISION_LOSS, lpID);
+        home.setPitchingDecision(BaseballPlayer.DECISION_SAVE, saveID);
     }
 
     /**
@@ -441,13 +434,13 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
              */
             if (s.startsWith("BK")) {           //Balk
                 pitcher.incrementStats(
-                    BaseballPlayer.KEY_BK,1);
+                    BaseballPlayer.KEY_PITCHER_BK,1);
                 involvesBatter = false;
             } else if (s.startsWith("DI")) {    //Defensive indifference
                 involvesBatter = false;
             } else if (s.startsWith("WP")) {    //Wild pitch
                 pitcher.incrementStats(
-                    BaseballPlayer.KEY_WP,1);
+                    BaseballPlayer.KEY_PITCHER_WP,1);
                 involvesBatter = false;
             } else if (s.startsWith("PB")) {    //Passed ball
                 pitTeam.awardFieldingStats(
@@ -477,17 +470,25 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
                     pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
                 }
                 involvesBatter = false;
-            } else if (s.startsWith("PO") || s.startsWith("CS")) {
-
+            } else if (s.startsWith("PO")) {
+                if (!s.contains("E")) {
+                    int strtBase = Integer.parseInt(String.valueOf(s.charAt(2)))-1;
+                    batTeam.getLineupSpot(baserunnerSpots[strtBase]).incrementStats(BaseballPlayer.KEY_PO);
+                    baserunnerSpots[strtBase] = -1;
+                    outs++;
+                    pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
+                }
+                involvesBatter = false;
+            } else if (s.startsWith("CS")) {
                 /* See "POCS" case for this section's logical breakdown. */
                 if (!s.contains("E")) {
                     if (s.charAt(2) == 'H') {
                         batTeam.getLineupSpot(baserunnerSpots[2]).incrementStats(BaseballPlayer.KEY_CS);
                         baserunnerSpots[2] = -1;
                     } else {
-                        int strtBase = Integer.parseInt(String.valueOf(s.charAt(2)))-1;
+                        int strtBase = Integer.parseInt(String.valueOf(s.charAt(2)))-2;
 
-                        batTeam.getLineupSpot(strtBase).incrementStats(BaseballPlayer.KEY_CS);
+                        batTeam.getLineupSpot(baserunnerSpots[strtBase]).incrementStats(BaseballPlayer.KEY_CS);
                         baserunnerSpots[strtBase] = -1;
                     }
                     outs++;
@@ -505,7 +506,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
                     SingleGamePositionPlayer r = batTeam.getLineupSpot(baserunnerSpots[2]);
                     inngRuns++;
                     r.incrementStats(BaseballPlayer.KEY_R);
-                    r.getPitcherCharged().incrementStats(BaseballPlayer.KEY_R);
+                    r.getPitcherCharged().incrementStats(BaseballPlayer.KEY_PITCHER_R);
                     r.incrementStats(BaseballPlayer.KEY_SB,1);
                     baserunnerSpots[2] = -1;
                 } else{
@@ -517,22 +518,12 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
                      * batEvent has been overridden.
                      */
                     if (bsrEvent.equals("")) {
-                        int endBase = 0, startBase = 0;
-                        if (s.charAt(2)=='2') {
-                            endBase = 1;
-                            startBase = 0;
-                        } else if (s.charAt(2) == '3') {
-                            endBase = 2;
-                            startBase = 1;
-                        }
-                        /* 
-                         * Finally, increment player's SB stats and
-                         * remove him from the basepaths.
-                         */
-                        batTeam.getLineupSpot(startBase).incrementStats(
-                            BaseballPlayer.KEY_SB);
-                        baserunnerSpots[endBase] = baserunnerSpots[startBase];
-                        baserunnerSpots[startBase] = -1;
+
+                        /* Example: Stealing second means runner began at first; first base index is 0 (2 - 2 = 0) */
+                        int strtBase = Integer.parseInt(String.valueOf(s.charAt(2)))-2;
+                        batTeam.getLineupSpot(baserunnerSpots[strtBase]).incrementStats(BaseballPlayer.KEY_SB);
+                        baserunnerSpots[strtBase + 1] = baserunnerSpots[strtBase];
+                        baserunnerSpots[strtBase] = -1;
                     }
                 }
                 involvesBatter = false;
@@ -551,26 +542,27 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
             }
             else if (s.startsWith("HP")) {                          //Hit-by-pitch
                 pitcher.addBattersHBP(batter);
+                batter.incrementStats(BaseballPlayer.KEY_HBP);
                 batter.setPitcherCharged(pitcher);
                 bAdvance = 1;
             } else if (s.startsWith("S")) {                         //Single
                 batter.incrementStats(BaseballPlayer.KEY_AB);
                 batter.incrementStats(BaseballPlayer.KEY_H);
-                pitcher.incrementStats(BaseballPlayer.KEY_H);
+                pitcher.incrementStats(BaseballPlayer.KEY_PITCHER_H);
                 batter.setPitcherCharged(pitcher);
                 bAdvance = 1;
             } else if (s.startsWith("D")) {                         //Double
                 batter.incrementStats(BaseballPlayer.KEY_AB);
                 batter.incrementStats(BaseballPlayer.KEY_H);
                 batter.incrementStats(BaseballPlayer.KEY_2B);
-                pitcher.incrementStats(BaseballPlayer.KEY_H);
+                pitcher.incrementStats(BaseballPlayer.KEY_PITCHER_H);
                 batter.setPitcherCharged(pitcher);
                 bAdvance = 2;
             } else if (s.startsWith("T")) {                         //Triple
                 batter.incrementStats(BaseballPlayer.KEY_AB);
                 batter.incrementStats(BaseballPlayer.KEY_H);
                 batter.incrementStats(BaseballPlayer.KEY_3B);
-                pitcher.incrementStats(BaseballPlayer.KEY_H);
+                pitcher.incrementStats(BaseballPlayer.KEY_PITCHER_H);
                 batter.setPitcherCharged(pitcher);
                 bAdvance = 3;
             } else if (s.startsWith("HR") || s.startsWith("H")) {   //Homerun
@@ -578,11 +570,12 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
                 batter.incrementStats(BaseballPlayer.KEY_H);
                 batter.incrementStats(BaseballPlayer.KEY_HR);
                 batter.incrementStats(BaseballPlayer.KEY_RBI);
-                pitcher.incrementStats(BaseballPlayer.KEY_H);
+                pitcher.incrementStats(BaseballPlayer.KEY_PITCHER_H);
                 batter.setPitcherCharged(pitcher);
                 bAdvance = 4;
             } else if (s.startsWith("W") || s.startsWith("IW")) {   //Walk
-                pitcher.incrementStats(BaseballPlayer.KEY_BB);
+                batter.incrementStats(BaseballPlayer.KEY_BB);
+                pitcher.incrementStats(BaseballPlayer.KEY_PITCHER_BB);
                 batter.setPitcherCharged(pitcher);
                 bAdvance = 1;
                 /* 
@@ -602,7 +595,8 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
                 }
             } else if (s.startsWith("K")) {                         //Strikeout
                 batter.incrementStats(BaseballPlayer.KEY_AB);
-                pitcher.incrementStats(BaseballPlayer.KEY_SO);
+                batter.incrementStats(BaseballPlayer.KEY_SO);
+                pitcher.incrementStats(BaseballPlayer.KEY_PITCHER_SO);
                 /* 
                  * Like walks, a non-batter event may occur 
                  * on the play. Otherwise, increment inning
@@ -716,7 +710,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
         if (bsrEvent.equals("")) {
             if (bAdvance == 4) {
                 batter.incrementStats(BaseballPlayer.KEY_R);
-                batter.getPitcherCharged().incrementStats(BaseballPlayer.KEY_R);
+                batter.getPitcherCharged().incrementStats(BaseballPlayer.KEY_PITCHER_R);
                 inngRuns++;
             } else if (bAdvance > 0 && bAdvance < 4) {
                 baserunnerSpots[bAdvance-1] = batter.getLineupSpot()-1;
@@ -758,9 +752,9 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
                         if (!s.contains("(NR)"))
                             batter.incrementStats(BaseballPlayer.KEY_RBI);
                         try{
-                            r.getPitcherCharged().incrementStats(BaseballPlayer.KEY_R);
+                            r.getPitcherCharged().incrementStats(BaseballPlayer.KEY_PITCHER_R);
                         } catch (NullPointerException e) {
-                            pitcher.incrementStats(BaseballPlayer.KEY_R);
+                            pitcher.incrementStats(BaseballPlayer.KEY_PITCHER_R);
                         }
                         // r.getPitcherCharged().add_runs(1);
                         inngRuns++;
@@ -776,7 +770,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
                         if (s.charAt(2) == 'H') { //Runner scores on error
                             baserunnerSpots[startBase] = -1;
                             r.incrementStats(BaseballPlayer.KEY_R);
-                            r.getPitcherCharged().incrementStats(BaseballPlayer.KEY_R);
+                            r.getPitcherCharged().incrementStats(BaseballPlayer.KEY_PITCHER_R);
                             inngRuns++;
                         } else { //Runner moves to new base on error
                             int endBase = Integer.parseInt(String.valueOf(s.charAt(2)))-1;
@@ -794,7 +788,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
 
         if (bAdvance == 4) {
             batter.incrementStats(BaseballPlayer.KEY_R);
-            batter.getPitcherCharged().incrementStats(BaseballPlayer.KEY_R);
+            batter.getPitcherCharged().incrementStats(BaseballPlayer.KEY_PITCHER_R);
             inngRuns++;
         } else if (bAdvance > 0 && bAdvance < 4) {
             baserunnerSpots[bAdvance-1] = batter.getLineupSpot()-1;
@@ -836,11 +830,11 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
             /* Check each team for player. When found, award earned runs. */
             tmpPitcher = visitor.getPitcher(playerID);
             if (tmpPitcher != null) {
-                tmpPitcher.incrementStats(BaseballPlayer.KEY_ER, valueInt);
+                tmpPitcher.incrementStats(BaseballPlayer.KEY_PITCHER_ER, valueInt);
             }
             tmpPitcher = home.getPitcher(playerID);
             if (tmpPitcher != null) {
-                tmpPitcher.incrementStats(BaseballPlayer.KEY_ER, valueInt);
+                tmpPitcher.incrementStats(BaseballPlayer.KEY_PITCHER_ER, valueInt);
             }
         }
     }

@@ -237,7 +237,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
         writer.write(String.format("%2s%-20s", 
             "", visitor.getCity()) + pitchingStatColumns + "\n");
         
-        for (SingleGamePitcher p : visitor.getPitchingStaff()) {
+        for (SingleGamePitcher p : visitor.getAllPitchers()) {
             writer.write(getBoxscoreLine(p) + "\n");
         }
         writer.write("\n");
@@ -245,7 +245,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
         writer.write(String.format("%2s%-20s", 
             "", home.getCity()) + pitchingStatColumns + "\n");
         
-        for (SingleGamePitcher p : home.getPitchingStaff()) {
+        for (SingleGamePitcher p : home.getAllPitchers()) {
             writer.write(getBoxscoreLine(p) + "\n");
         }
 
@@ -270,7 +270,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
         String shStr = getSpecialStatString(BaseballPlayer.KEY_SH, visitor, home, true);
         String sfStr = getSpecialStatString(BaseballPlayer.KEY_SF, visitor, home, true);
         String hbpStr = getSpecialStatString(BaseballPlayer.KEY_HBP, visitor, home, false);
-        String wpStr = getSpecialStatString(BaseballPlayer.KEY_WP, visitor, home, false);
+        String wpStr = getSpecialStatString(BaseballPlayer.KEY_PITCHER_WP, visitor, home, false);
         String pbStr = getSpecialStatString(BaseballPlayer.KEY_PB, visitor, home, false);
 
         if (errorStr.length() > 0) {
@@ -393,7 +393,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
             }
             
             if (statKey.equals(BaseballPlayer.KEY_HBP)) {
-                for (SingleGamePitcher p : visitor.getPitchingStaff()) {
+                for (SingleGamePitcher p : visitor.getAllPitchers()) {
                     if (p.getBattersHBP().size() > 0) {
                         str += "by " + p.getName() + " (";
                         for (SingleGamePositionPlayer batter : p.getBattersHBP()) {
@@ -403,7 +403,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
                         str += "), ";
                     }
                 }
-                for (SingleGamePitcher p : home.getPitchingStaff()) {
+                for (SingleGamePitcher p : home.getAllPitchers()) {
                     if (p.getBattersHBP().size() > 0) {
                         str += "by " + p.getName() + " (";
                         for (SingleGamePositionPlayer batter : p.getBattersHBP()) {
@@ -414,7 +414,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
                     }
                 }
             } else {
-                for (SingleGamePitcher p : visitor.getPitchingStaff()) {
+                for (SingleGamePitcher p : visitor.getAllPitchers()) {
                     if (p.getStat(statKey) > 0) {
                         if (p.getStat(statKey) == 1)
                             str += p.getName();
@@ -423,7 +423,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
                         str += ", ";
                     }
                 }
-                for (SingleGamePitcher p : home.getPitchingStaff()) {
+                for (SingleGamePitcher p : home.getAllPitchers()) {
                     if (p.getStat(statKey) > 0) {
                         if (p.getStat(statKey) == 1)
                             str += p.getName();

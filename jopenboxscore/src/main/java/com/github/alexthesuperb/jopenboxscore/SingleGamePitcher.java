@@ -46,6 +46,7 @@ public class SingleGamePitcher extends BaseballPlayer {
     public SingleGamePitcher(String playerID, String firstName, String lastName) {
         super(playerID, firstName, lastName);
         battersHBP = new LinkedList<>();
+        stats.put(BaseballPlayer.KEY_G, 1);
         decision = DECISION_NONE;
         startNewInning();
     }
@@ -153,35 +154,13 @@ public class SingleGamePitcher extends BaseballPlayer {
      * @return The array of stats.
      */
     public int[] getBxScrStats() {
-        String[] kArr = {KEY_BATTERS_RETIRED, KEY_H, KEY_R, KEY_ER, KEY_BB, KEY_SO};
+        String[] kArr = {KEY_BATTERS_RETIRED, 
+                         KEY_PITCHER_H,
+                         KEY_PITCHER_R, 
+                         KEY_PITCHER_ER,
+                         KEY_PITCHER_BB,
+                         KEY_PITCHER_SO};
         return getStats(kArr);
-    }
-
-    /**
-     * Convert The number of batters retired by a pitcher into
-     * a boxscore-style innings pitched total. This number is 
-     * expressed as the number of whole innings, a decimal point,
-     * and the remaining thirds of an inning completed. For example,
-     * <code>retired = 13</code> would be expressed as
-     * <code>ip = 4.1</code>.
-     * 
-     * @param outsRecorded The number of batters retired.
-     * @return Innings pitched if <code>outsRecorded >= 0</code>; otherwise,
-     * <code>"NaN"</code>. 
-     */
-    public static String convertToIP(int outsRecorded) {
-
-        if (outsRecorded < 0) {
-            return "NaN";
-        } else {
-            String wholeIP;
-            String fractionIP;
-    
-            wholeIP = String.valueOf(outsRecorded/3);
-            fractionIP = String.valueOf(outsRecorded%3);
-    
-            return wholeIP + "." + fractionIP;
-        }
     }
 
     /**
@@ -190,32 +169,6 @@ public class SingleGamePitcher extends BaseballPlayer {
 	public void incrementInningBF() {
         inningBF++;
 	}
-
-    // /**
-    //  * Returns a <code>String</code> of whitespace-delimited 
-    //  * traditional boxscore statistics (innings pitched, hits,
-    //  * runs, earned runs, walks, strikeouts), specifically 
-    //  * formatted for use in the 
-    //  * <code>com.alexwimer.bsblib.BxScrSingleGame</code> 
-    //  * class.
-    //  * 
-    //  * @return The <code>String</code> of classic pitching
-    //  * boxscore statistics.
-    //  */
-    // public String statsToString() {
-        
-    //     int depth = 3;
-    //     String str = "";
-    //     int[] statsArr = getBxScrStats();
-    //     String ip = convertRetiredtoIP(statsArr[0]);
-
-    //     str += String.format("%" + depth + "s", ip);
-    //     for(int i = 1; i < statsArr.length; i++) {
-    //         str += String.format("%" + depth + "d", statsArr[i]);
-    //     }
-
-    //     return str;    
-    // }
 
 }
 
