@@ -604,15 +604,28 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
                  */
                 if (s.contains("+")) {
                     readPlateEvent(batTeam, pitTeam, s.split("[+]")[1], bsrEvent);
-                    bsrEvent = "";
                     /* 
                      * If the batter does not reach base,
                      * increment outs. 
+                     * 
+                     * NOTE: This does not account for the exceedingly rare
+                     * event in which the the batter reaches base due to some
+                     * error after the initial strikeout. Somethig like 
+                     * "K+WP.BX1(E2/TH)", where the runner should have been
+                     * thrown out but reached base because the catcher overthrew
+                     * the first baseman. This will need to be changed in a 
+                     * later edition.
                      */
                     if (!bsrEvent.contains("B-")) {
                         outs++;
                         pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
                     }
+                    /* 
+                     * Finally,  since readPlateEvent() was called recursively 
+                     * to handle the non-batter event, clear bsrEvent so that
+                     * the baserunning is not processed twice.
+                     */
+                    bsrEvent = "";
                 } else {
                     outs++;
                     pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);

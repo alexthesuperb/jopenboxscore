@@ -215,7 +215,11 @@ public class NewspaperBoxscore implements BaseballBoxscore {
             if (visitor.getLinescore().length > home.getLinescore().length) {
                 writer.write(outs_str + " when game ended.");
             } else {
-                writer.write(outs_str + " when winning run scored.");
+                if (home.getTotalRuns() > visitor.getTotalRuns()) {
+                    writer.write(outs_str + " when winning run scored.");
+                } else {
+                    writer.write(outs_str + " when game ended.");
+                }
             }
             writer.write("\n");
         }
