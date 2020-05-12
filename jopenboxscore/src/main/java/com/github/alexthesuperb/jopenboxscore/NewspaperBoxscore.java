@@ -212,14 +212,20 @@ public class NewspaperBoxscore implements BaseballBoxscore {
         if (outs < 3) {
             String outs_str = (outs == 1) ? "1 out" : outs + " outs";
             writer.write(String.format("%2s", ""));
-            if (visitor.getLinescore().length > home.getLinescore().length) {
+            // if (visitor.getLinescore().length > home.getLinescore().length) {
+            //     writer.write(outs_str + " when game ended.");
+            // } else {
+            //     if (home.getTotalRuns() > visitor.getTotalRuns()) {
+            //         writer.write(outs_str + " when winning run scored.");
+            //     } else {
+            //         writer.write(outs_str + " when game ended.");
+            //     }
+            // }
+            if ((visitor.getLinescore().length > home.getLinescore().length) || 
+                    (visitor.getTotalRuns() > home.getTotalRuns())) {
                 writer.write(outs_str + " when game ended.");
             } else {
-                if (home.getTotalRuns() > visitor.getTotalRuns()) {
-                    writer.write(outs_str + " when winning run scored.");
-                } else {
-                    writer.write(outs_str + " when game ended.");
-                }
+                writer.write(outs_str + " when winning run scored.");
             }
             writer.write("\n");
         }

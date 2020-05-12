@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class TerminalDriver {
 
@@ -249,7 +250,7 @@ public class TerminalDriver {
 
         /* Read files */
         String currFile = inFileNames.getFirst();
-        LinkedList<BoxscoreGameAccount> games = new LinkedList<>();
+        List<BoxscoreGameAccount> games = new LinkedList<>();
         try {
             for (String s : inFileNames) {
                 currFile = s;
@@ -263,21 +264,13 @@ public class TerminalDriver {
                     boxReader.readGamesByID(gameIDs);
                 } else if (queryType == QUERY_ASK_USER) {
                     
-                    /* implement here... */
+                    //TODO: Implement here.
                     System.out.println("\n[Whoops! Not yet supported.]\n");
                     System.exit(0);
                 }
 
-                // /* Print boxscores of games read from this file. */
-                // for (BxScrGameAccount game: boxReader.getGameAccounts()) {
-                //     game.printBoxscore(outWriter);
-                // }
-
                 /* Add game accounts produced by file to master list. */
-                for (BoxscoreGameAccount game : boxReader.getGameAccounts()) {
-                    games.add(game);
-                }
-
+                games.addAll(boxReader.getGameAccounts());
             }
         } catch (Exception e) {
 
