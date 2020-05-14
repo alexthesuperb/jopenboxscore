@@ -193,12 +193,12 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
         if (homeBatting) {
             home.linescoreAdd(inngRuns);
             home.addLOB(inngPA,inngRuns,outs);
-            visitor.getCurrentPitcher().setInningRemoved(inng);
+            visitor.getCurrentPitcher().setInningRemoved(inng+1);
         }
         else{
             visitor.linescoreAdd(inngRuns);
             visitor.addLOB(inngPA,inngRuns,outs);
-            home.getCurrentPitcher().setInningRemoved(inng);
+            home.getCurrentPitcher().setInningRemoved(inng+1);
         }
 
         /* Award pitching decisions */

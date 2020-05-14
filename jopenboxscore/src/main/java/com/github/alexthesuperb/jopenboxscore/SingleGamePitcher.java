@@ -71,7 +71,7 @@ public class SingleGamePitcher extends BaseballPlayer {
      * @param inning The inning the pitcher was removed.
      */
     public void setInningRemoved(int inning) {
-        inningRemoved = inning; 
+        this.inningRemoved = inning; 
     }
 
     /** @return the inning the pitcher was removed. */

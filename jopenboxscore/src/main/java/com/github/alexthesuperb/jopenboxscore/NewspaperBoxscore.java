@@ -121,14 +121,14 @@ public class NewspaperBoxscore implements BaseballBoxscore {
             String tmp = c + " Pitched to " + p.getInningBF() + " ";
             tmp += (p.getInningBF() == 1) ? "batter" : "batters";
             tmp += " in ";
-            if ((p.getInningRemoved() + 1) == 1) {
+            if (p.getInningRemoved() == 1) {
                 tmp += "1st";
-            } else if ((p.getInningRemoved() + 1) == 2) {
+            } else if (p.getInningRemoved() == 2) {
                 tmp += "2nd";
-            } else if ((p.getInningRemoved() + 1) == 3) {
+            } else if (p.getInningRemoved() == 3) {
                 tmp += "3rd";
             } else {
-                tmp += (p.getInningRemoved() + 1) + "th";
+                tmp += p.getInningRemoved() + "th";
             }
             pitcherRemovedStrings.add(tmp);
         }
