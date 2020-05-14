@@ -21,7 +21,13 @@ public class NewspaperBoxscore implements BaseballBoxscore {
     private int attendance;
     private int outs;
     private LinkedList<Character> symbols;
-    private LinkedList<String> pitching_info_strings;
+
+    /** 
+     * If a pitcher is removed from an inning before recording an out,
+     * the number of batters faced and the inning from which he was removed
+     * are saved to a String and recorded in this list.
+     */
+    private LinkedList<String> pitcherRemovedStrings;
 
     private static final String pitchingStatColumns = 
             String.format("%3s%3s%3s%3s%3s%3s", "IP", "H", "R", "ER", "BB", "SO");
@@ -40,7 +46,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
         attendance = game.getAttendance();
         outs = game.getOuts();
         symbols = new LinkedList<Character>();
-        pitching_info_strings = new LinkedList<String>();
+        pitcherRemovedStrings = new LinkedList<String>();
 
         symbols.push('~');
         symbols.push('^');
@@ -115,16 +121,16 @@ public class NewspaperBoxscore implements BaseballBoxscore {
             String tmp = c + " Pitched to " + p.getInningBF() + " ";
             tmp += (p.getInningBF() == 1) ? "batter" : "batters";
             tmp += " in ";
-            if (p.getInningRemoved() == 1) {
+            if ((p.getInningRemoved() + 1) == 1) {
                 tmp += "1st";
-            } else if (p.getInningRemoved() == 2) {
+            } else if ((p.getInningRemoved() + 1) == 2) {
                 tmp += "2nd";
-            } else if (p.getInningRemoved() == 3) {
+            } else if ((p.getInningRemoved() + 1) == 3) {
                 tmp += "3rd";
             } else {
-                tmp += p.getInningRemoved() + "th";
+                tmp += (p.getInningRemoved() + 1) + "th";
             }
-            pitching_info_strings.add(tmp);
+            pitcherRemovedStrings.add(tmp);
         }
 
         int[] pitching_stats = p.getBxScrStats();
@@ -236,7 +242,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
 
     private void printPitching() throws IOException {
         symbols.clear();
-        pitching_info_strings.clear();
+        pitcherRemovedStrings.clear();
         symbols.push('~');
         symbols.push('^');
         symbols.push('%');
@@ -259,7 +265,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
             writer.write(getBoxscoreLine(p) + "\n");
         }
 
-        for (String s : pitching_info_strings) {
+        for (String s : pitcherRemovedStrings) {
             writer.write(String.format("%2s", ""));
             writer.write(s);
             writer.write("\n");

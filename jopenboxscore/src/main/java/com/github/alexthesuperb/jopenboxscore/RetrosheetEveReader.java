@@ -204,7 +204,7 @@ public class RetrosheetEveReader {
                     gameAccounts.add(currGame);
                 }
                 readThisGame = false;
-                currGame = null;
+                currGame = null;   
 
                 gameID = line.substring(3);
                 try {
