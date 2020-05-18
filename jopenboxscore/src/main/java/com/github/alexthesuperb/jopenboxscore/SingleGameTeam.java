@@ -14,8 +14,13 @@ public class SingleGameTeam
     private ArrayList<LinkedList<SingleGamePositionPlayer>> lineup;
     private LinkedList<SingleGamePitcher> pitchers;
     private ArrayList<Integer> linescore;
-    private int totLeftOnBase, totalDP, totalTP;
+    private int totLeftOnBase;
+    private int totalDP;
+    private int totalTP;
     private boolean homeTF;
+    private String gameOutcome;
+    private int runsAllowed;
+    private String opponentId;
 
     /**
      * Construct a new <code>Team</code>.
@@ -115,6 +120,8 @@ public class SingleGameTeam
             }
         }
     }
+
+
 
     /**
      * Set earned runs. If player is found and charged with those earned runs,
@@ -322,6 +329,14 @@ public class SingleGameTeam
         return false;
     }
 
+    public void setOpponentId(String opponentId) {
+        this.opponentId = opponentId;
+    }
+
+    public String getOpponentId() {
+        return opponentId;
+    }
+
     /** @return team's inning linescore. */
     public int[] getLinescore() {
         int[] lsArr = new int[linescore.size()];
@@ -343,12 +358,32 @@ public class SingleGameTeam
     }
 
     /** @return total runs scored by the team. */
-    public int getTotalRuns() {
+    public int getTotalRunsScored() {
         int t = 0;
         for (int r : linescore) {
             t+=r;
         }
         return t;
+    }
+
+    public int getTotalRunsAllowed() {
+        return runsAllowed;
+    }
+
+    public void setTotalRunsAllowed(int ra) {
+        this.runsAllowed = ra;
+    }
+
+    public void setGameOutcome(String key) {
+        if (key.equalsIgnoreCase(BaseballTeam.KEY_TEAM_WIN) || 
+                key.equalsIgnoreCase(BaseballTeam.KEY_TEAM_LOSS) ||
+                key.equalsIgnoreCase(BaseballTeam.KEY_TEAM_TIE)) {
+            this.gameOutcome = key;
+        }
+    }
+
+    public String getGameOutcome() {
+        return this.gameOutcome;
     }
 
     /**

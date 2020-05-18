@@ -199,6 +199,12 @@ public class NewspaperBoxscore implements BaseballBoxscore {
     }
 
     private void printLinescore() throws IOException {
+        writer.write(String.format("%2s", ""));
+        int visitorScore = visitor.getTotalRunsScored();
+        int homeScore = home.getTotalRunsScored();
+        int vInnings = visitor.getLinescore().length;
+        int hInnings = home.getLinescore().length;
+        int homeFinalInningRuns = home.getLinescore()[hInnings - 1];
         String v = visitor.linescoreToString(3, 1);
         String h = home.linescoreToString(3, 1);
         
@@ -208,30 +214,28 @@ public class NewspaperBoxscore implements BaseballBoxscore {
             h += "x";
         }
         
+        writer.write("\n");
         writer.write(String.format("%-17s", visitor.getCity()) + 
-            v + " --" + String.format("%3d", visitor.getTotalRuns()));
+            v + " --" + String.format("%3d", visitorScore));
         writer.write("\n");
         writer.write(String.format("%-17s", home.getCity()) + 
-            h + " --" + String.format("%3d", home.getTotalRuns()));
+            h + " --" + String.format("%3d", homeScore));
         writer.write("\n");
         
         if (outs < 3) {
             String outs_str = (outs == 1) ? "1 out" : outs + " outs";
-            writer.write(String.format("%2s", ""));
-            // if (visitor.getLinescore().length > home.getLinescore().length) {
-            //     writer.write(outs_str + " when game ended.");
-            // } else {
-            //     if (home.getTotalRuns() > visitor.getTotalRuns()) {
-            //         writer.write(outs_str + " when winning run scored.");
-            //     } else {
-            //         writer.write(outs_str + " when game ended.");
-            //     }
-            // }
-            if ((visitor.getLinescore().length > home.getLinescore().length) || 
-                    (visitor.getTotalRuns() > home.getTotalRuns())) {
-                writer.write(outs_str + " when game ended.");
-            } else {
+            /* 
+             * If both teams have played the same number of innings, and 
+             * the home team has scored more runs than the visiting team,
+             * and the home team had scored fewer runs than the visiting team
+             * before the final inning, then the game has ended in a walkoff.
+             */
+            if ((hInnings == vInnings) && (homeScore > visitorScore) &&
+                    ((homeScore - homeFinalInningRuns) <= visitorScore)) {
                 writer.write(outs_str + " when winning run scored.");
+            } else {
+                /* Otherwise, game has prematurely ended */
+                writer.write(outs_str + " when game ended.");
             }
             writer.write("\n");
         }

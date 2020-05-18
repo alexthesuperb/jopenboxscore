@@ -81,8 +81,10 @@ public class NewspaperSummary implements BaseballBoxscore {
 
         for (String k : sortedKeys) {
             AggregatedTeam<SingleGameTeam> team = teams.get(k);
+            writeHomeAwayRecord(team);
             writeRows(team, false);
             writeRows(team, true);
+            writer.write("\n");
         }
         writer.flush();
     }
@@ -104,6 +106,87 @@ public class NewspaperSummary implements BaseballBoxscore {
             }
         }
         return statStr;
+    }
+
+    private void writeHomeAwayRecord(AggregatedTeam<SingleGameTeam> team) throws IOException {
+        int record[];
+        String totalStr = String.format("%15s", "Total") + String.format("%15s","");
+        String homeStr = String.format("%15s", "Home") + String.format("%15s","");
+        String roadStr = String.format("%15s", "Road") + String.format("%15s","");
+        String columns = String.format("%5s%5s%5s%5s%5s%5s","G", "W", "L", "T", "RS", "RA");
+
+        /* Print section header */
+        writer.write(team.getCity() + " " + team.getName() + " Win/Loss Record");
+        writer.write("\n\n");
+
+        /* Write columns titles */
+        writer.write(String.format("%7s", "") + totalStr + 
+                String.format("%2s", "") + homeStr + 
+                String.format("%2s", "") + roadStr);
+        writer.write("\n");
+        writer.write(String.format("%-7s", "Team") + columns + 
+                String.format("%2s", "") + columns +
+                String.format("%2s", "") + columns);
+        writer.write("\n");
+
+        record = team.getTotalRecord();
+        writer.write(String.format("%-7s", "Total") + 
+                String.format("%5d%5d%5d%5d%5d%5d",
+                        record[RecordMatrix.INDEX_TOTAL_GAMES],
+                        record[RecordMatrix.INDEX_TOTAL_WINS],
+                        record[RecordMatrix.INDEX_TOTAL_LOSSES],
+                        record[RecordMatrix.INDEX_TOTAL_TIES],
+                        record[RecordMatrix.INDEX_TOTAL_RS],
+                        record[RecordMatrix.INDEX_TOTAL_RA]) +
+                String.format("%2s", "") +
+                String.format("%5d%5d%5d%5d%5d%5d",
+                        record[RecordMatrix.INDEX_HOME_GAMES],
+                        record[RecordMatrix.INDEX_HOME_WINS],
+                        record[RecordMatrix.INDEX_HOME_LOSSES],
+                        record[RecordMatrix.INDEX_HOME_TIES],
+                        record[RecordMatrix.INDEX_HOME_RS],
+                        record[RecordMatrix.INDEX_HOME_RA]) + 
+                String.format("%2s", "") +
+                String.format("%5d%5d%5d%5d%5d%5d",
+                        record[RecordMatrix.INDEX_ROAD_GAMES],
+                        record[RecordMatrix.INDEX_ROAD_WINS],
+                        record[RecordMatrix.INDEX_ROAD_LOSSES],
+                        record[RecordMatrix.INDEX_ROAD_TIES],
+                        record[RecordMatrix.INDEX_ROAD_RS],
+                        record[RecordMatrix.INDEX_ROAD_RA]));
+        writer.write("\n");
+
+        for (String id : team.getOpponentIds()) {
+            record = team.getRecordVersusTeam(id);
+            writer.write(String.format("%-7s", id) + 
+                String.format("%5d%5d%5d%5d%5d%5d",
+                        record[RecordMatrix.INDEX_TOTAL_GAMES],
+                        record[RecordMatrix.INDEX_TOTAL_WINS],
+                        record[RecordMatrix.INDEX_TOTAL_LOSSES],
+                        record[RecordMatrix.INDEX_TOTAL_TIES],
+                        record[RecordMatrix.INDEX_TOTAL_RS],
+                        record[RecordMatrix.INDEX_TOTAL_RA]) +
+                String.format("%2s", "") +
+                String.format("%5d%5d%5d%5d%5d%5d",
+                        record[RecordMatrix.INDEX_HOME_GAMES],
+                        record[RecordMatrix.INDEX_HOME_WINS],
+                        record[RecordMatrix.INDEX_HOME_LOSSES],
+                        record[RecordMatrix.INDEX_HOME_TIES],
+                        record[RecordMatrix.INDEX_HOME_RS],
+                        record[RecordMatrix.INDEX_HOME_RA]) + 
+                String.format("%2s", "") +
+                String.format("%5d%5d%5d%5d%5d%5d",
+                        record[RecordMatrix.INDEX_ROAD_GAMES],
+                        record[RecordMatrix.INDEX_ROAD_WINS],
+                        record[RecordMatrix.INDEX_ROAD_LOSSES],
+                        record[RecordMatrix.INDEX_ROAD_TIES],
+                        record[RecordMatrix.INDEX_ROAD_RS],
+                        record[RecordMatrix.INDEX_ROAD_RA]));
+            writer.write("\n");
+        }
+
+        writer.write("\n");
+        writer.flush();
     }
 
     private void writeRows(AggregatedTeam<SingleGameTeam> team, boolean isPitching) 

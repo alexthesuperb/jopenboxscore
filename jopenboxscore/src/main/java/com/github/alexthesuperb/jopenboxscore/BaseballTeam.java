@@ -4,6 +4,11 @@ import java.util.List;
 
 public abstract class BaseballTeam<B extends BaseballPlayer, P extends BaseballPlayer> 
         implements SportsStatContainer {
+
+    public static final String KEY_TEAM_WIN  = "win";
+    public static final String KEY_TEAM_LOSS = "loss";
+    public static final String KEY_TEAM_TIE  = "tie";
+
     protected String teamId;
     protected String city;
     protected String name;

@@ -8,12 +8,13 @@ public class AggregatedTeam<T extends SingleGameTeam> extends
 
     private List<AggregatedPlayer> aggregatedPitchers;
     private List<AggregatedPlayer> aggregatedPositionPlayers;
+    private RecordMatrix winLossRecord;
 
     public AggregatedTeam(String id, String city, String name) {
-        
         super(id, city, name);
-        aggregatedPitchers = new LinkedList<>();
-        aggregatedPositionPlayers = new LinkedList<>();
+        this.aggregatedPitchers = new LinkedList<>();
+        this.aggregatedPositionPlayers = new LinkedList<>();
+        this.winLossRecord = new RecordMatrix(id);
     }
 
     /**
@@ -22,6 +23,11 @@ public class AggregatedTeam<T extends SingleGameTeam> extends
      */
     public void addGame(T singleGameTeam) {
         if (singleGameTeam.getTeamId().equals(teamId) && (singleGameTeam != null)) {
+
+            /* Update winLossRecord object. */
+            winLossRecord.addTeamGame(singleGameTeam);
+
+            /* Add all pitchers from game to AggregatedTeam's pitching roster */
             for (SingleGamePitcher p : singleGameTeam.getAllPitchers()) {
                 if (containsPitcher(p.getPlayerId())) {
                     getPitcher(p.getPlayerId()).addPerformance(p);
@@ -51,6 +57,8 @@ public class AggregatedTeam<T extends SingleGameTeam> extends
                         p.getStat(BaseballPlayer.KEY_E)
                 );
             }
+
+            /* Add all PositionPlayers to AggregatedTeam's roster */
             for (List<SingleGamePositionPlayer> list : singleGameTeam.getLineup()) {
                 for (SingleGamePositionPlayer b : list) {
                     // singleGamePositionPlayers.add(b);
@@ -75,6 +83,96 @@ public class AggregatedTeam<T extends SingleGameTeam> extends
             addGame(team);
         }
     }
+
+    public int[] getRecordVersusTeam(String opponentId) {
+        return winLossRecord.getRecord(opponentId);
+    }
+
+    public int[] getTotalRecord() {
+        return winLossRecord.getTotals();
+    }
+
+    public List<String> getOpponentIds() {
+        return winLossRecord.getOpponentIds();
+    }
+
+    // public float getParkFactor() {
+    //     float numerator = (float)(homeRunsScored + homeRunsAllowed)/(float)homeGames;
+    //     float denominator = (float)(roadRunsScored + roadRunsAllowed)/(float)roadGames;
+    //     return numerator/denominator;
+    // }
+
+    // public int getTotalGames() {
+    //     return homeGames + roadGames;
+    // }
+
+    // public int getHomeGames() {
+    //     return homeGames;
+    // }
+
+    // public int getRoadGames() {
+    //     return roadGames;
+    // }
+
+    // public int getTotalRunsScored() {
+    //     return homeRunsScored + roadRunsScored;
+    // }
+
+    // public int getTotalRunsAllowed() {
+    //     return homeRunsAllowed + roadRunsAllowed;
+    // }
+
+    // public int getHomeRunsScored() {
+    //     return homeRunsScored;
+    // }
+
+    // public int getRoadRunsScored() {
+    //     return roadRunsScored;
+    // }
+
+    // public int getHomeRunsAllowed() {
+    //     return homeRunsAllowed;
+    // }
+
+    // public int getRoadRunsAllowed() {
+    //     return roadRunsAllowed;
+    // }
+
+    // public int getTotalWins() {
+    //     return homeWins + roadWins;
+    // }
+
+    // public int getTotalLosses() {
+    //     return homeLosses + roadLosses;
+    // }
+
+    // public int getTotalTies() {
+    //     return homeTies + roadTies;
+    // }
+
+    // public int getHomeWins() {
+    //     return homeWins;
+    // }
+
+    // public int getHomeLosses() {
+    //     return homeLosses;
+    // }
+
+    // public int getHomeTies() {
+    //     return homeTies;
+    // }
+
+    // public int getRoadWins() {
+    //     return roadWins;
+    // }
+
+    // public int getRoadLosses() {
+    //     return roadLosses;
+    // }
+
+    // public int getRoadTies() {
+    //     return roadTies;
+    // }
 
     @Override
     public boolean containsPositionPlayer(String playerId) {
