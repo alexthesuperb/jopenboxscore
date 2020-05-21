@@ -22,6 +22,7 @@ syntax. A complete explanation of that syntax can be found [here](https://www.re
 
 Additionally, this software relies on Retrosheet roster \(ROS\) and TEAM files, which must be placed in the directory from which the jar is executed. Those support files, along with the event files \(.EVE, .EVA, and .EVN\) to be parsed, can be found [here](https://www.retrosheet.org/game.htm).
 
+Finally, this project was written and compiled using Java JDK 8.
 
 ## How to use jopenboxscore
 
