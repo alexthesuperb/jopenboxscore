@@ -21,7 +21,13 @@ public class NewspaperBoxscore implements BaseballBoxscore {
     private int attendance;
     private int outs;
     private LinkedList<Character> symbols;
-    private LinkedList<String> pitching_info_strings;
+
+    /** 
+     * If a pitcher is removed from an inning before recording an out,
+     * the number of batters faced and the inning from which he was removed
+     * are saved to a String and recorded in this list.
+     */
+    private LinkedList<String> pitcherRemovedStrings;
 
     private static final String pitchingStatColumns = 
             String.format("%3s%3s%3s%3s%3s%3s", "IP", "H", "R", "ER", "BB", "SO");
@@ -40,7 +46,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
         attendance = game.getAttendance();
         outs = game.getOuts();
         symbols = new LinkedList<Character>();
-        pitching_info_strings = new LinkedList<String>();
+        pitcherRemovedStrings = new LinkedList<String>();
 
         symbols.push('~');
         symbols.push('^');
@@ -124,7 +130,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
             } else {
                 tmp += p.getInningRemoved() + "th";
             }
-            pitching_info_strings.add(tmp);
+            pitcherRemovedStrings.add(tmp);
         }
 
         int[] pitching_stats = p.getBxScrStats();
@@ -193,6 +199,12 @@ public class NewspaperBoxscore implements BaseballBoxscore {
     }
 
     private void printLinescore() throws IOException {
+        writer.write(String.format("%2s", ""));
+        int visitorScore = visitor.getTotalRunsScored();
+        int homeScore = home.getTotalRunsScored();
+        int vInnings = visitor.getLinescore().length;
+        int hInnings = home.getLinescore().length;
+        int homeFinalInningRuns = home.getLinescore()[hInnings - 1];
         String v = visitor.linescoreToString(3, 1);
         String h = home.linescoreToString(3, 1);
         
@@ -202,24 +214,28 @@ public class NewspaperBoxscore implements BaseballBoxscore {
             h += "x";
         }
         
+        writer.write("\n");
         writer.write(String.format("%-17s", visitor.getCity()) + 
-            v + " --" + String.format("%3d", visitor.getTotalRuns()));
+            v + " --" + String.format("%3d", visitorScore));
         writer.write("\n");
         writer.write(String.format("%-17s", home.getCity()) + 
-            h + " --" + String.format("%3d", home.getTotalRuns()));
+            h + " --" + String.format("%3d", homeScore));
         writer.write("\n");
         
         if (outs < 3) {
             String outs_str = (outs == 1) ? "1 out" : outs + " outs";
-            writer.write(String.format("%2s", ""));
-            if (visitor.getLinescore().length > home.getLinescore().length) {
-                writer.write(outs_str + " when game ended.");
+            /* 
+             * If both teams have played the same number of innings, and 
+             * the home team has scored more runs than the visiting team,
+             * and the home team had scored fewer runs than the visiting team
+             * before the final inning, then the game has ended in a walkoff.
+             */
+            if ((hInnings == vInnings) && (homeScore > visitorScore) &&
+                    ((homeScore - homeFinalInningRuns) <= visitorScore)) {
+                writer.write(outs_str + " when winning run scored.");
             } else {
-                if (home.getTotalRuns() > visitor.getTotalRuns()) {
-                    writer.write(outs_str + " when winning run scored.");
-                } else {
-                    writer.write(outs_str + " when game ended.");
-                }
+                /* Otherwise, game has prematurely ended */
+                writer.write(outs_str + " when game ended.");
             }
             writer.write("\n");
         }
@@ -230,7 +246,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
 
     private void printPitching() throws IOException {
         symbols.clear();
-        pitching_info_strings.clear();
+        pitcherRemovedStrings.clear();
         symbols.push('~');
         symbols.push('^');
         symbols.push('%');
@@ -253,7 +269,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
             writer.write(getBoxscoreLine(p) + "\n");
         }
 
-        for (String s : pitching_info_strings) {
+        for (String s : pitcherRemovedStrings) {
             writer.write(String.format("%2s", ""));
             writer.write(s);
             writer.write("\n");

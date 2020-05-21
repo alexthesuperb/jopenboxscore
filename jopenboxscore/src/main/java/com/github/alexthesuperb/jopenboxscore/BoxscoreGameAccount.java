@@ -193,12 +193,12 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
         if (homeBatting) {
             home.linescoreAdd(inngRuns);
             home.addLOB(inngPA,inngRuns,outs);
-            visitor.getCurrentPitcher().setInningRemoved(inng);
+            visitor.getCurrentPitcher().setInningRemoved(inng+1);
         }
         else{
             visitor.linescoreAdd(inngRuns);
             visitor.addLOB(inngPA,inngRuns,outs);
-            home.getCurrentPitcher().setInningRemoved(inng);
+            home.getCurrentPitcher().setInningRemoved(inng+1);
         }
 
         /* Award pitching decisions */
@@ -208,6 +208,32 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
         home.setPitchingDecision(BaseballPlayer.DECISION_WIN, wpID);
         home.setPitchingDecision(BaseballPlayer.DECISION_LOSS, lpID);
         home.setPitchingDecision(BaseballPlayer.DECISION_SAVE, saveID);
+
+        /* Award team outcomes */
+        if (visitor.getTotalRunsScored() > home.getTotalRunsScored()) {
+            visitor.setGameOutcome(BaseballTeam.KEY_TEAM_WIN);
+            home.setGameOutcome(BaseballTeam.KEY_TEAM_LOSS);
+        } else if (visitor.getTotalRunsScored() < home.getTotalRunsScored()) {
+            visitor.setGameOutcome(BaseballTeam.KEY_TEAM_LOSS);
+            home.setGameOutcome(BaseballTeam.KEY_TEAM_WIN);
+        } else {
+            home.setGameOutcome(BaseballTeam.KEY_TEAM_TIE);
+            visitor.setGameOutcome(BaseballTeam.KEY_TEAM_TIE);
+        }
+
+        /* Set runs allowed */
+        visitor.setTotalRunsAllowed(home.getTotalRunsScored());
+        home.setTotalRunsAllowed(visitor.getTotalRunsScored());
+
+        /* 
+         * Set the ID of each team's opponent. 
+         * 
+         * NOTE: This is placed in the finalize() method because it is assumed
+         * that this object will not be exported and used elsewhere until 
+         * the game account has been finalized. 
+         */
+        visitor.setOpponentId(home.getTeamId());
+        home.setOpponentId(visitor.getTeamId());   
     }
 
     /**

@@ -1,3 +1,4 @@
+com/github/alexthesuperb/jopenboxscore/RecordMatrix.class
 com/github/alexthesuperb/jopenboxscore/NewspaperSummary.class
 com/github/alexthesuperb/jopenboxscore/BaseballBoxscore.class
 com/github/alexthesuperb/jopenboxscore/BoxscoreGameAccount.class
@@ -7,6 +8,7 @@ com/github/alexthesuperb/jopenboxscore/TerminalDriver.class
 com/github/alexthesuperb/jopenboxscore/AggregatedTeam.class
 com/github/alexthesuperb/jopenboxscore/SingleGamePitcher.class
 com/github/alexthesuperb/jopenboxscore/RetrosheetEveReader.class
+com/github/alexthesuperb/jopenboxscore/RecordMatrix$RecordRow.class
 com/github/alexthesuperb/jopenboxscore/SingleGameTeam.class
 com/github/alexthesuperb/jopenboxscore/BaseballPlayer.class
 com/github/alexthesuperb/jopenboxscore/SingleGamePositionPlayer.class

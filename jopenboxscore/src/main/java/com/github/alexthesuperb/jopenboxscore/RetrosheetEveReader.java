@@ -120,18 +120,35 @@ public class RetrosheetEveReader {
          * is true.
          */
         while ((line = pbpReader.readLine()) != null) {
+            /* 
+             * Increment file line file line number with each line read in. 
+             * This is passed into the currGame.addLine(line, lineNum) for
+             * error reporting.
+             */
             lineNum++;
+            /*
+             * "id" lines mark the beginning of a new game account. If the 
+             * previous game was read (signified by a non-null GameAccount
+             * object and flag readThisGame == true), add that game to 
+             * gameAccounts. 
+             * 
+             * Additionally, mark readThisGame false and set currGame to null.
+             * This prevents unwanted games from being read and the same 
+             * currGame being added to gameAccounts multiple times.
+            */
             if (line.startsWith("id,")) {
-                if (currGame != null && readThisGame) {
+                if ((currGame != null) && readThisGame) {
                     currGame.finalize();
                     gameAccounts.add(currGame);
                 }
                 readThisGame = false;
+                currGame = null;
 
                 if (gameIDs.contains(line.substring(3))) {
                     readThisGame = true;
                     currGame = new BoxscoreGameAccount(line.substring(3), year, fileName, 
                         teamRosDir);
+                    gameIDs.remove(currGame.getGameID());
                 }
             }
             if (readThisGame && currGame != null) {
@@ -187,6 +204,7 @@ public class RetrosheetEveReader {
                     gameAccounts.add(currGame);
                 }
                 readThisGame = false;
+                currGame = null;   
 
                 gameID = line.substring(3);
                 try {
