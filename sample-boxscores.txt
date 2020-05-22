@@ -1,0 +1,1503 @@
+     Game of 04/20/2020 -- A.L. Central at N.L. West (N) -- game 1
+
+  A.L. Central       AB  R  H RBI    N.L. West          AB  R  H RBI
+Lindor F, ss          4  0  0  0   Bellinger C, cf       5  2  2  0
+Rosario E, rf         4  0  0  0   Arenado N, 3b         5  1  1  2
+Merrifield W, 2b      4  0  1  0   Grandal Y, c          4  2  3  0
+Ramirez J, 3b         4  0  0  0   Goldschmidt P, 1b     2  1  1  1
+Castellanos N, lf     4  0  1  0   Belt B, 1b            0  0  0  0
+Abreu J, 1b           2  0  1  0   Blackmon C, lf        4  1  1  1
+Narvaez O, c          3  0  0  0   Stammen C, p          0  0  0  0
+Martin L, cf          2  0  0  0   Crawford B, ss        3  1  1  1
+Kluber C, p           1  0  0  0   Ahmed N, ss           0  0  0  0
+Rogers T, p           0  0  0  0   Marte K, 2b           4  1  1  4
+Wilson A, p           0  0  0  0   Renfroe H, rf-lf      4  0  2  0
+O'Hearn R, ph         1  0  0  0   Buehler W, p          2  0  0  0
+Jimenez J, p          0  0  0  0   Myers W, ph           1  0  0  0
+Anderson T, ph        1  0  0  0   Smith W, p            0  0  0  0
+Keller B, p           0  0  0  0   Gonzalez C, rf        1  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     30  0  3  0                        35  9 12  9
+
+A.L. Central     000 000 000 --  0
+N.L. West        100 500 12x --  9
+
+  A.L. Central         IP  H  R ER BB SO
+Kluber C (L)*         3.0  4  4  4  1  4
+Rogers T#             0.0  0  1  1  1  0
+Wilson A              1.0  2  1  1  0  1
+Jimenez J             2.0  1  0  0  1  0
+Keller B              2.0  5  3  3  0  3
+
+  N.L. West            IP  H  R ER BB SO
+Buehler W (W)         6.0  1  0  0  3  4
+Smith W               1.0  1  0  0  0  1
+Stammen C             2.0  1  0  0  0  4
+  * Pitched to 3 batters in 4th
+  # Pitched to 1 batter in 4th
+
+E -- Crawford B
+DP -- N.L. West 1
+LOB -- A.L. Central 7, N.L. West 6
+2B -- Merrifield W, Abreu J, Bellinger C, Grandal Y, Blackmon C, Renfroe H
+3B -- Renfroe H
+HR -- Arenado N, Marte K
+SF -- Goldschmidt P
+HBP -- by Buehler W (Abreu J)
+WP -- Buehler W
+T -- 0:00
+A -- 0
+
+     Game of 04/21/2020 -- N.L. East at A.L. East (D) -- game 1
+
+  N.L. East          AB  R  H RBI    A.L. East          AB  R  H RBI
+Acuna R, lf           3  0  1  0   Betts M, rf           4  0  1  0
+Turner T, ss          3  0  0  0   Judge A, lf           3  0  0  0
+Realmuto J, c         4  0  0  0   Gregorius D, ss       4  0  0  0
+Rendon A, 3b          4  1  2  1   Machado M, 3b         4  0  1  0
+Freeman F, 1b         3  1  2  0   Wendle J, 2b          4  0  0  0
+Albies O, 2b          4  0  1  0   Smoak J, 1b           4  0  0  0
+Vizcaino A, p         0  0  0  0   Kiermaier K, cf       2  0  1  0
+Anderson B, rf        4  0  1  1   Ramos W, c            3  0  1  0
+Nimmo B, cf           3  0  0  0   Leon S, c             0  0  0  0
+Scherzer M, p         2  0  0  0   Sale C, p             1  0  0  0
+Hoskins R, ph         1  0  0  0   Villar J, ph          1  0  0  0
+Doolittle S, p        0  0  0  0   Green C, p            0  0  0  0
+Castro S, 2b          1  0  0  0   Chapman A, p          0  0  0  0
+                                   Clippard T, p         0  0  0  0
+                                   Jones A, ph           1  0  0  0
+                                   Castro M, p           0  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     32  2  7  2                        31  0  4  0
+
+N.L. East        000 000 110 --  2
+A.L. East        000 000 000 --  0
+
+  N.L. East            IP  H  R ER BB SO
+Scherzer M (W)        6.0  3  0  0  1  5
+Doolittle S           1.1  1  0  0  1  3
+Vizcaino A (S)        1.2  0  0  0  0  4
+
+  A.L. East            IP  H  R ER BB SO
+Sale C                5.0  3  0  0  3  4
+Green C (L)           1.1  2  1  1  0  0
+Chapman A             0.2  0  0  0  2  0
+Clippard T            1.0  2  1  1  0  0
+Castro M              1.0  0  0  0  0  1
+
+E -- Realmuto J, Scherzer M
+DP -- N.L. East 2, A.L. East 2
+LOB -- N.L. East 8, A.L. East 6
+2B -- Rendon A, Freeman F, Betts M
+HR -- Rendon A
+WP -- Chapman A, Clippard T
+T -- 0:00
+A -- 0
+
+     Game of 04/21/2020 -- A.L. Central at N.L. West (N) -- game 2
+
+  A.L. Central       AB  R  H RBI    N.L. West          AB  R  H RBI
+Lindor F, ss          4  0  1  0   Bellinger C, cf       5  0  0  0
+Castellanos N, lf     5  1  2  1   Arenado N, 3b         4  0  0  0
+Mondesi A, 2b         0  0  0  0   Posey B, c            5  1  1  0
+Merrifield W, 2b-lf   4  0  2  2   Goldschmidt P, 1b     3  1  2  1
+Ramirez J, 3b         4  0  0  0   Blackmon C, lf        4  0  1  1
+Abreu J, 1b           3  0  0  0   Crawford B, ss        4  0  0  0
+Narvaez O, c          4  0  0  0   Jansen K, p           0  0  0  0
+Martin L, cf          3  1  0  0   Marte K, 2b           4  0  1  0
+Rosario E, rf         4  1  2  0   Renfroe H, rf         2  1  1  0
+Bauer T, p            1  0  0  0   Corbin P, p           1  0  0  0
+Escobar E, ph         1  1  1  1   Fields J, p           0  0  0  0
+Soria J, p            0  0  0  0   Smith W, p            0  0  0  0
+O'Hearn R, ph         1  0  0  0   Belt B, ph            1  0  0  0
+Jimenez J, p          0  0  0  0   Yates K, p            0  0  0  0
+Rogers T, p           0  0  0  0   Hand B, p             0  0  0  0
+Anderson T, ph        1  0  0  0   Ahmed N, ss           1  0  1  0
+Peralta W, p          0  0  0  0   
+                     -- -- -- --                        -- -- -- --
+                     35  4  8  4                        34  3  7  2
+
+A.L. Central     000 040 000 --  4
+N.L. West        100 000 011 --  3
+
+  A.L. Central         IP  H  R ER BB SO
+Bauer T (W)           4.0  3  1  1  2  3
+Soria J               2.0  1  0  0  0  3
+Jimenez J*            1.0  1  1  1  0  1
+Rogers T              1.0  0  0  0  0  2
+Peralta W (S)         1.0  2  1  1  0  1
+
+  N.L. West            IP  H  R ER BB SO
+Corbin P (L)          4.1  5  4  4  1  7
+Fields J              0.2  1  0  0  0  0
+Smith W               1.0  0  0  0  0  2
+Yates K               1.1  1  0  0  1  2
+Hand B                1.1  1  0  0  0  0
+Jansen K              0.1  0  0  0  0  1
+  * Pitched to 1 batter in 8th
+
+E -- Ramirez J
+LOB -- A.L. Central 7, N.L. West 9
+2B -- Castellanos N, Merrifield W, Posey B, Marte K
+HR -- Goldschmidt P
+SH -- Corbin P
+HBP -- by Bauer T (Goldschmidt P, Renfroe H), by Corbin P (Abreu J)
+WP -- Bauer T, Peralta W 2
+T -- 0:00
+A -- 0
+
+     Game of 04/22/2020 -- N.L. East at A.L. East (N) -- game 2
+
+  N.L. East          AB  R  H RBI    A.L. East          AB  R  H RBI
+Acuna R, lf           4  1  2  0   Betts M, rf           2  1  0  0
+Freeman F, 1b         3  0  0  0   Judge A, lf           3  1  1  0
+Realmuto J, c         3  0  0  0   Gregorius D, ss       4  0  1  0
+Rendon A, 3b          4  0  0  0   Machado M, 3b         4  0  1  1
+Cabrera A, ss         1  0  0  0   Wendle J, 2b          4  0  1  1
+Turner T, pr-ss       2  0  0  0   Smoak J, 1b           4  1  1  1
+Albies O, 2b          3  0  1  0   Kiermaier K, cf       3  0  1  0
+Anderson B, rf        3  0  0  0   Leon S, c             2  0  0  0
+Hoskins R, ph         1  0  0  0   Severino L, p         2  0  0  0
+Nimmo B, cf           3  0  0  0   Villar J, ph          1  0  0  0
+deGrom J, p           2  0  0  0   Alvarado J, p         0  0  0  0
+Grace M, p            0  0  0  0   
+Franco M, ph          0  0  0  0   
+Familia J, p          0  0  0  0   
+Doolittle S, p        0  0  0  0   
+                     -- -- -- --                        -- -- -- --
+                     29  1  3  0                        29  3  6  3
+
+N.L. East        100 000 000 --  1
+A.L. East        100 011 00x --  3
+
+  N.L. East            IP  H  R ER BB SO
+deGrom J (L)*         5.0  4  3  3  2  9
+Grace M               1.0  1  0  0  0  0
+Familia J             0.2  1  0  0  2  1
+Doolittle S           1.1  0  0  0  0  1
+
+  A.L. East            IP  H  R ER BB SO
+Severino L (W)        7.0  3  1  1  4 10
+Alvarado J (S)        2.0  0  0  0  0  1
+  * Pitched to 2 batters in 6th
+
+DP -- N.L. East 1, A.L. East 1
+LOB -- N.L. East 6, A.L. East 6
+HR -- Smoak J
+HBP -- by Severino L (Cabrera A)
+WP -- Familia J
+PB -- Leon S
+T -- 0:00
+A -- 0
+
+     Game of 04/23/2020 -- N.L. West at A.L. Central (D) -- game 3
+
+  N.L. West          AB  R  H RBI    A.L. Central       AB  R  H RBI
+Bellinger C, cf       5  0  1  0   Ramirez J, 3b         3  0  2  1
+Grandal Y, c          3  0  0  0   Garver M, c           5  0  1  0
+Arenado N, 3b         4  0  1  0   Merrifield W, 2b-lf   4  0  0  0
+Goldschmidt P, 1b     3  0  1  0   Abreu J, 1b           5  1  2  0
+Blackmon C, lf        4  0  0  0   Lindor F, ss          4  0  0  0
+Crawford B, ss        4  1  2  0   Castellanos N, lf     4  1  2  1
+Marte K, 2b           4  0  1  0   Soria J, p            0  0  0  0
+Renfroe H, rf         1  0  0  0   Rosario E, rf         3  1  2  1
+Stammen C, p          0  0  0  0   Martin L, cf          3  1  1  1
+Ottavino A, p         0  0  0  0   Clevinger M, p        1  0  0  0
+Gonzalez C, ph        0  0  0  0   Escobar E, ph         1  0  0  0
+Smith W, p            0  0  0  0   Rogers T, p           0  0  0  0
+Fields J, p           0  0  0  0   Wilson A, p           0  0  0  0
+Belt B, ph            1  0  0  0   Mondesi A, 2b         1  1  1  1
+Hand B, p             0  0  0  0   
+Yates K, p            0  0  0  0   
+Posey B, ph           1  0  0  0   
+Greinke Z, p          0  0  0  0   
+Myers W, rf           4  0  0  0   
+                     -- -- -- --                        -- -- -- --
+                     34  1  6  0                        34  5 11  5
+
+N.L. West        010 000 000 --  1
+A.L. Central     031 000 01x --  5
+
+  N.L. West            IP  H  R ER BB SO
+Greinke Z (L)         1.2  4  3  3  1  1
+Stammen C*            1.1  4  1  1  1  3
+Ottavino A            1.0  0  0  0  0  1
+Smith W               1.0  1  0  0  0  2
+Fields J              1.0  1  0  0  1  1
+Hand B#               1.0  1  1  1  0  0
+Yates K               1.0  0  0  0  1  0
+
+  A.L. Central         IP  H  R ER BB SO
+Clevinger M (W)       5.0  4  1  0  2  5
+Rogers T              1.0  0  0  0  0  1
+Wilson A              1.1  2  0  0  0  1
+Soria J               1.2  0  0  0  1  0
+  * Pitched to 2 batters in 4th
+  # Pitched to 1 batter in 8th
+
+E -- Goldschmidt P, Lindor F, Rosario E
+DP -- N.L. West 1, A.L. Central 1
+LOB -- N.L. West 9, A.L. Central 11
+2B -- Goldschmidt P, Crawford B, Ramirez J, Rosario E
+HR -- Castellanos N, Rosario E, Mondesi A
+SH -- Clevinger M
+HBP -- by Stammen C (Martin L)
+PB -- Grandal Y 2
+T -- 0:00
+A -- 0
+
+     Game of 04/23/2020 -- A.L. East at N.L. East (N) -- game 3
+
+  A.L. East          AB  R  H RBI    N.L. East          AB  R  H RBI
+Betts M, rf           3  0  0  0   Acuna R, lf           3  0  1  1
+Judge A, lf           2  0  0  0   Turner T, ss          4  0  0  0
+Gregorius D, ss       4  0  2  0   Realmuto J, c         3  0  0  0
+Machado M, 3b         4  0  0  0   Rendon A, 3b          3  0  1  0
+Wendle J, 2b          4  0  0  0   Freeman F, 1b         3  0  0  0
+Smoak J, 1b           4  0  0  0   Albies O, 2b          3  0  0  0
+Kiermaier K, cf       2  0  0  0   Anderson B, rf        1  1  0  0
+Leon S, c             3  0  0  0   Nimmo B, cf           3  0  0  0
+Snell B, p            2  0  0  0   Nola A, p             2  1  1  0
+Villar J, ph          1  0  0  0   Franco M, ph          1  1  1  2
+Clippard T, p         0  0  0  0   Barraclough K, p      0  0  0  0
+Tepera R, p           0  0  0  0   
+                     -- -- -- --                        -- -- -- --
+                     29  0  2  0                        26  3  4  3
+
+A.L. East        000 000 000 --  0
+N.L. East        001 000 02x --  3
+
+  A.L. East            IP  H  R ER BB SO
+Snell B (L)           7.0  3  1  1  1  5
+Clippard T            0.1  1  2  2  1  0
+Tepera R              0.2  0  0  0  1  0
+
+  N.L. East            IP  H  R ER BB SO
+Nola A (W)            8.0  2  0  0  2  8
+Barraclough K (S)     1.0  0  0  0  0  1
+
+DP -- A.L. East 2
+LOB -- A.L. East 6, N.L. East 2
+2B -- Gregorius D, Nola A
+HR -- Franco M
+HBP -- by Nola A (Judge A, Kiermaier K)
+T -- 0:00
+A -- 0
+
+     Game of 04/24/2020 -- N.L. West at A.L. Central (D) -- game 4
+
+  N.L. West          AB  R  H RBI    A.L. Central       AB  R  H RBI
+Bellinger C, cf       5  1  3  1   Merrifield W, 2b      4  1  2  1
+Arenado N, 3b         4  0  1  0   Castellanos N, lf     4  0  1  0
+Grandal Y, c          4  0  0  0   Ramirez J, 3b         4  0  0  0
+Gonzalez C, lf        0  0  0  0   Abreu J, 1b           3  0  0  0
+Goldschmidt P, 1b     4  0  1  0   Rosario E, rf         4  0  0  0
+Blackmon C, lf        4  1  1  0   Lindor F, ss          4  1  2  1
+Hand B, p             0  0  0  0   Narvaez O, c          3  0  0  0
+Crawford B, ss        4  1  1  0   Martin L, cf          2  0  0  0
+Marte K, 2b           4  1  1  1   Escobar E, ph         0  0  0  0
+Renfroe H, rf         4  0  0  0   Kluber C, p           3  0  0  0
+Freeland K, p         2  0  0  0   Soria J, p            0  0  0  0
+Belt B, ph            1  0  1  0   Wilson A, p           0  0  0  0
+Jansen K, p           0  0  0  0   Mondesi A, ph         1  0  0  0
+Posey B, ph-c         1  0  1  2   
+                     -- -- -- --                        -- -- -- --
+                     37  4 10  4                        32  2  5  2
+
+N.L. West        001 000 003 --  4
+A.L. Central     011 000 000 --  2
+
+  N.L. West            IP  H  R ER BB SO
+Freeland K            7.0  5  2  2  2  6
+Jansen K (W)          1.0  0  0  0  1  3
+Hand B (S)            1.0  0  0  0  0  2
+
+  A.L. Central         IP  H  R ER BB SO
+Kluber C              7.1  6  1  1  0  6
+Soria J (L)           1.0  3  3  3  0  2
+Wilson A              0.2  1  0  0  0  1
+
+LOB -- N.L. West 6, A.L. Central 7
+2B -- Arenado N, Goldschmidt P
+3B -- Castellanos N
+HR -- Bellinger C, Merrifield W, Lindor F
+HBP -- by Hand B (Escobar E)
+T -- 0:00
+A -- 0
+
+     Game of 04/24/2020 -- N.L. West at A.L. Central (D) -- game 5
+
+  N.L. West          AB  R  H RBI    A.L. Central       AB  R  H RBI
+Bellinger C, cf       4  0  0  0   Ramirez J, 3b         3  1  1  0
+Arenado N, 3b         3  0  0  0   Castellanos N, lf     3  0  0  1
+Posey B, c            4  0  0  0   Jimenez J, p          0  0  0  0
+Goldschmidt P, 1b     4  0  0  0   Merrifield W, 2b-rf   3  0  2  0
+Blackmon C, lf        4  0  1  0   Abreu J, 1b           3  0  0  0
+Marte K, 2b           3  0  0  0   Rosario E, rf-lf      3  0  0  0
+Crawford B, ss        3  0  2  0   Garver M, c           3  0  0  0
+Renfroe H, rf         3  0  1  0   Lindor F, ss          3  0  1  0
+Buehler W, p          1  0  0  0   Martin L, cf          2  0  0  0
+Belt B, ph            1  0  0  0   Rogers T, p           0  0  0  0
+Ottavino A, p         0  0  0  0   Berrios J, p          2  0  0  0
+Smith W, p            0  0  0  0   Bauer T, p            0  0  0  0
+Gonzalez C, ph        1  0  0  0   Mondesi A, ph-2b      1  0  0  0
+Jansen K, p           0  0  0  0   
+                     -- -- -- --                        -- -- -- --
+                     31  0  4  0                        26  1  4  1
+
+N.L. West        000 000 000 --  0
+A.L. Central     100 000 00x --  1
+
+  N.L. West            IP  H  R ER BB SO
+Buehler W (L)         5.0  3  1  1  1  7
+Ottavino A            1.0  1  0  0  0  1
+Smith W               1.0  0  0  0  0  1
+Jansen K              1.0  0  0  0  1  3
+
+  A.L. Central         IP  H  R ER BB SO
+Rogers T              1.0  0  0  0  0  1
+Berrios J (W)*        6.0  4  0  0  1  9
+Bauer T               1.0  0  0  0  0  1
+Jimenez J (S)         1.0  0  0  0  0  0
+  * Pitched to 2 batters in 8th
+
+DP -- N.L. West 1
+LOB -- N.L. West 5, A.L. Central 4
+2B -- Blackmon C, Renfroe H, Ramirez J
+SF -- Castellanos N
+PB -- Posey B
+T -- 0:00
+A -- 0
+
+     Game of 04/24/2020 -- A.L. East at N.L. East (N) -- game 4
+
+  A.L. East          AB  R  H RBI    N.L. East          AB  R  H RBI
+Gregorius D, ss       4  0  0  0   Acuna R, lf           5  1  1  0
+Judge A, lf           4  0  1  0   Freeman F, 1b         3  1  1  0
+Betts M, rf           4  1  1  1   Realmuto J, c         3  0  0  0
+Machado M, 3b         4  0  0  0   Rendon A, 3b          4  0  2  1
+Wendle J, 2b          4  1  2  0   Turner T, ss          4  1  1  0
+Smoak J, 1b           4  1  1  1   Albies O, 2b          4  1  1  1
+Kiermaier K, cf       3  0  1  0   Anderson B, rf        3  0  0  0
+Pillar K, ph          1  0  0  0   Nimmo B, cf           3  0  0  0
+Ramos W, c            3  0  0  0   Syndergaard N, p      1  0  0  0
+Porcello R, p         1  0  0  0   Hoskins R, ph         0  0  0  0
+Tepera R, p           0  0  0  0   Dominguez S, p        0  0  0  0
+Jones A, ph           1  0  0  0   Franco M, ph          1  0  1  2
+Velazquez H, p        0  0  0  0   Grace M, p            0  0  0  0
+Alvarado J, p         0  0  0  0   Vizcaino A, p         0  0  0  0
+Villar J, ph          0  0  0  1   Cabrera A, ph         1  0  0  0
+Green C, p            0  0  0  0   Doolittle S, p        0  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     33  3  6  3                        32  4  7  4
+
+A.L. East        000 100 200 --  3
+N.L. East        200 002 00x --  4
+
+  A.L. East            IP  H  R ER BB SO
+Porcello R (L)        4.1  5  2  2  2  2
+Tepera R              0.2  0  0  0  0  0
+Velazquez H           0.2  2  2  1  1  2
+Alvarado J            0.1  0  0  0  0  1
+Green C               2.0  0  0  0  2  1
+
+  N.L. East            IP  H  R ER BB SO
+Syndergaard N (W)     5.0  2  1  1  0  6
+Dominguez S           1.0  1  0  0  0  1
+Grace M               0.1  3  2  2  0  0
+Vizcaino A            1.2  0  0  0  1  2
+Doolittle S (S)       1.0  0  0  0  0  2
+
+E -- Acuna R, Velazquez H
+LOB -- A.L. East 5, N.L. East 9
+2B -- Judge A, Acuna R, Freeman F, Rendon A, Franco M
+3B -- Wendle J
+HR -- Betts M
+SF -- Villar J
+T -- 0:00
+A -- 0
+
+     Game of 04/25/2020 -- A.L. East at N.L. East (N) -- game 5
+
+  A.L. East          AB  R  H RBI    N.L. East          AB  R  H RBI
+Gregorius D, ss       5  1  2  1   Acuna R, lf           4  0  0  0
+Judge A, lf           3  1  3  0   Turner T, ss          4  0  0  0
+Wendle J, 2b          4  0  0  0   Realmuto J, c         3  0  2  0
+Betts M, rf           4  1  2  0   Barraclough K, p      0  0  0  0
+Machado M, 3b         4  1  0  0   Familia J, p          0  0  0  0
+Smoak J, 1b           2  1  0  1   Hoskins R, ph         1  0  0  0
+Kiermaier K, cf       5  1  2  2   Rendon A, 3b          4  0  0  0
+Ramos W, c            3  1  1  3   Freeman F, 1b         3  1  1  1
+Sale C, p             2  0  0  0   Albies O, 2b          3  0  0  0
+Jones A, ph           1  0  0  0   Anderson B, rf        3  1  1  1
+Castro M, p           0  0  0  0   Nimmo B, cf           3  0  0  0
+Nunez R, ph           1  0  0  0   Foltynewicz M, p      0  0  0  0
+Clippard T, p         0  0  0  0   Dominguez S, p        0  0  0  0
+                                   Castro S, ph          1  0  0  0
+                                   Grace M, p            0  0  0  0
+                                   Franco M, ph          1  0  0  0
+                                   Steckenrider D, p     0  0  0  0
+                                   Alfaro J, c           1  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     34  7 10  7                        31  2  4  2
+
+A.L. East        600 000 001 --  7
+N.L. East        000 010 010 --  2
+
+  A.L. East            IP  H  R ER BB SO
+Sale C (W)            5.0  2  1  1  0  8
+Castro M              2.0  1  0  0  0  1
+Clippard T            2.0  1  1  1  0  4
+
+  N.L. East            IP  H  R ER BB SO
+Foltynewicz M (L)     1.0  5  6  6  2  1
+Dominguez S           2.0  1  0  0  0  2
+Grace M               3.0  3  0  0  1  1
+Steckenrider D        1.2  1  0  0  2  2
+Barraclough K         1.0  0  1  1  3  1
+Familia J             0.1  0  0  0  1  0
+
+DP -- N.L. East 3
+LOB -- A.L. East 9, N.L. East 2
+2B -- Realmuto J
+3B -- Betts M
+HR -- Gregorius D, Ramos W, Freeman F, Anderson B
+T -- 0:00
+A -- 0
+
+     Game of 04/26/2020 -- N.L. East at A.L. East (N) -- game 6
+
+  N.L. East          AB  R  H RBI    A.L. East          AB  R  H RBI
+Acuna R, rf           3  0  0  0   Gregorius D, ss       3  1  0  0
+Freeman F, 1b         4  0  1  0   Judge A, lf           4  0  0  0
+Turner T, ss          4  0  0  0   Smoak J, 1b           4  0  0  0
+Rendon A, 3b          4  0  1  0   Betts M, rf           4  1  2  0
+Hoskins R, lf         4  0  0  0   Machado M, 3b         4  2  2  3
+Albies O, 2b          3  0  0  0   Wendle J, 2b          3  0  2  1
+Alfaro J, c           3  0  1  0   Kiermaier K, cf       3  0  1  0
+Nimmo B, cf           2  0  0  0   Ramos W, c            3  0  0  0
+Scherzer M, p         1  0  0  0   Green C, p            0  0  0  0
+Doolittle S, p        0  0  0  0   Villar J, ph          1  0  0  0
+Franco M, ph          1  0  0  0   Borucki R, p          1  0  0  0
+Familia J, p          0  0  0  0   Jones A, ph           1  0  0  0
+                                   Chapman A, p          0  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     29  0  3  0                        31  4  7  4
+
+N.L. East        000 000 000 --  0
+A.L. East        300 001 00x --  4
+
+  N.L. East            IP  H  R ER BB SO
+Scherzer M (L)        5.2  6  4  4  1  6
+Doolittle S           1.1  0  0  0  0  2
+Familia J             1.0  1  0  0  0  2
+
+  A.L. East            IP  H  R ER BB SO
+Green C               2.0  0  0  0  0  5
+Borucki R (W)         5.0  3  0  0  2  2
+Chapman A             2.0  0  0  0  0  2
+
+LOB -- N.L. East 5, A.L. East 4
+2B -- Rendon A, Machado M
+HR -- Machado M
+SH -- Scherzer M
+PB -- Ramos W
+T -- 0:00
+A -- 0
+
+     Game of 04/27/2020 -- A.L. Central at N.L. West (D) -- game 6
+
+  A.L. Central       AB  R  H RBI    N.L. West          AB  R  H RBI
+Ramirez J, 3b         5  0  1  0   Bellinger C, cf       4  0  0  0
+Castellanos N, lf     5  0  1  0   Arenado N, 3b         4  1  2  0
+Merrifield W, 2b-rf   5  0  1  0   Grandal Y, c          2  0  0  0
+Abreu J, 1b           5  2  2  0   Renfroe H, lf         1  0  0  0
+Lindor F, ss          4  1  2  2   Goldschmidt P, 1b     4  1  3  0
+Garver M, c           4  0  1  1   Blackmon C, lf        3  0  0  0
+Mondesi A, pr-2b      0  0  0  0   Jansen K, p           0  0  0  0
+Rosario E, rf         3  0  0  0   Smith W, p            0  0  0  0
+Anderson T, ph        1  0  0  0   Ahmed N, ph           1  0  0  0
+Narvaez O, c          0  0  0  0   Stammen C, p          0  0  0  0
+Martin L, cf          4  0  0  0   Crawford B, ss        5  1  1  1
+Clevinger M, p        2  0  0  0   Marte K, 2b           4  0  1  1
+Rogers T, p           0  0  0  0   Gonzalez C, rf        2  0  0  1
+Wilson A, p           0  0  0  0   Greinke Z, p          0  0  0  0
+O'Hearn R, ph         1  0  0  0   Posey B, c            2  1  1  0
+Jimenez J, p          0  0  0  0   Ottavino A, p         0  0  0  0
+Escobar E, ph         1  0  0  0   Corbin P, p           1  0  0  0
+Bauer T, p            0  0  0  0   Belt B, ph            1  0  0  0
+                                   Fields J, p           0  0  0  0
+                                   Myers W, rf           3  1  1  2
+                     -- -- -- --                        -- -- -- --
+                     40  3  8  3                        37  5  9  5
+
+A.L. Central     020 000 001 00 --  3
+N.L. West        000 003 000 02 --  5
+  2 outs when winning run scored.
+
+  A.L. Central         IP  H  R ER BB SO
+Clevinger M           5.1  3  2  2  6  2
+Rogers T              0.2  2  1  1  0  0
+Wilson A              1.0  1  0  0  1  1
+Jimenez J             2.0  0  0  0  0  3
+Bauer T (L)           1.2  3  2  2  0  2
+
+  N.L. West            IP  H  R ER BB SO
+Ottavino A            1.0  0  0  0  0  2
+Corbin P              4.0  3  2  2  0  1
+Fields J              1.0  2  0  0  0  0
+Greinke Z             2.0  1  0  0  0  4
+Jansen K              0.2  2  1  1  0  2
+Smith W               1.1  0  0  0  0  3
+Stammen C (W)         1.0  0  0  0  0  1
+
+DP -- A.L. Central 4, N.L. West 1
+LOB -- A.L. Central 4, N.L. West 8
+2B -- Abreu J, Garver M, Goldschmidt P 2, Marte K
+HR -- Lindor F, Myers W
+HBP -- by Clevinger M (Marte K)
+PB -- Garver M
+T -- 0:00
+A -- 0
+
+     Game of 04/27/2020 -- N.L. East at A.L. East (N) -- game 7
+
+  N.L. East          AB  R  H RBI    A.L. East          AB  R  H RBI
+Acuna R, lf           3  0  0  0   Gregorius D, ss       5  0  1  0
+Freeman F, 1b         4  1  1  1   Judge A, lf           4  1  2  2
+Realmuto J, c         4  0  1  0   Smoak J, 1b           3  0  1  0
+Rendon A, 3b          4  1  1  0   Betts M, rf           4  0  0  0
+Turner T, ss          4  1  1  0   Machado M, 3b         4  0  0  0
+Albies O, 2b          4  0  1  0   Wendle J, 2b          4  0  2  0
+Anderson B, rf        4  1  1  3   Kiermaier K, cf       3  0  1  0
+Nimmo B, cf           3  0  0  0   Nunez R, ph           1  0  0  0
+deGrom J, p           3  0  2  0   Leon S, c             3  0  1  0
+Doolittle S, p        0  0  0  0   Ramos W, ph           1  0  0  0
+                                   Severino L, p         1  0  0  0
+                                   Clippard T, p         0  0  0  0
+                                   Jones A, ph           1  0  0  0
+                                   Alvarado J, p         0  0  0  0
+                                   Villar J, ph          0  1  0  0
+                                   Green C, p            0  0  0  0
+                                   Chapman A, p          0  0  0  0
+                                   Pillar K, ph          1  0  1  0
+                     -- -- -- --                        -- -- -- --
+                     33  4  8  4                        35  2  9  2
+
+N.L. East        000 310 000 --  4
+A.L. East        000 000 200 --  2
+
+  N.L. East            IP  H  R ER BB SO
+deGrom J (W)          7.0  8  2  2  2  7
+Doolittle S (S)       2.0  1  0  0  0  2
+
+  A.L. East            IP  H  R ER BB SO
+Severino L (L)        3.2  6  3  3  2  4
+Clippard T            1.1  1  1  1  0  1
+Alvarado J            2.0  1  0  0  0  0
+Green C               1.0  0  0  0  0  1
+Chapman A             1.0  0  0  0  0  2
+
+E -- Kiermaier K
+DP -- N.L. East 1, A.L. East 3
+LOB -- N.L. East 4, A.L. East 8
+2B -- deGrom J
+HR -- Freeman F, Anderson B, Judge A
+T -- 0:00
+A -- 0
+
+     Game of 04/28/2020 -- A.L. Central at N.L. West (D) -- game 7
+
+  A.L. Central       AB  R  H RBI    N.L. West          AB  R  H RBI
+Ramirez J, 3b         5  0  0  0   Bellinger C, cf       4  0  1  0
+Castellanos N, lf     4  1  4  0   Goldschmidt P, 1b     4  1  2  1
+Rosario E, lf         0  0  0  0   Posey B, c            4  0  0  0
+Lindor F, ss          3  0  0  0   Arenado N, 3b         4  0  1  0
+Abreu J, 1b           4  0  1  0   Blackmon C, lf        4  1  1  1
+Garver M, c           4  0  1  1   Crawford B, ss        3  0  1  0
+Merrifield W, rf      3  0  0  0   Marte K, 2b           3  0  1  0
+Mondesi A, 2b         4  0  1  0   Renfroe H, rf         2  0  0  0
+Martin L, cf          3  0  0  0   Yates K, p            0  0  0  0
+Kluber C, p           2  0  0  0   Greinke Z, p          0  0  0  0
+Soria J, p            0  0  0  0   Belt B, ph            1  0  0  0
+O'Hearn R, ph         1  0  0  0   Hand B, p             0  0  0  0
+Jimenez J, p          0  0  0  0   Bumgarner M, p        1  0  0  0
+                                   Myers W, rf           1  0  0  0
+                                   Gonzalez C, ph-rf     1  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     33  1  7  1                        32  2  7  2
+
+A.L. Central     000 001 000 --  1
+N.L. West        000 000 002 --  2
+  2 outs when winning run scored.
+
+  A.L. Central         IP  H  R ER BB SO
+Kluber C*             7.0  4  0  0  0  9
+Soria J               1.0  1  0  0  0  2
+Jimenez J (L)         0.2  2  2  2  0  1
+
+  N.L. West            IP  H  R ER BB SO
+Bumgarner M           5.2  5  1  0  1  5
+Yates K               1.0  1  0  0  2  0
+Greinke Z             1.1  0  0  0  0  1
+Hand B (W)            1.0  1  0  0  0  3
+  * Pitched to 1 batter in 8th
+
+DP -- A.L. Central 1
+LOB -- A.L. Central 9, N.L. West 4
+2B -- Mondesi A, Crawford B
+HR -- Goldschmidt P, Blackmon C
+SH -- Kluber C
+T -- 0:00
+A -- 0
+
+     Game of 04/30/2020 -- N.L. West at N.L. Central (D) -- game 1
+
+  N.L. West          AB  R  H RBI    N.L. Central       AB  R  H RBI
+Grandal Y, c          4  1  1  1   Votto J, 1b           4  2  2  1
+Goldschmidt P, 1b     3  0  1  0   Diaz E, c             4  0  0  0
+Crawford B, ss        4  0  0  0   DeJong P, ph-ss       1  0  0  0
+Blackmon C, lf        4  0  0  0   Cain L, cf            4  2  3  2
+Arenado N, 3b         4  0  1  0   Yelich C, rf          4  0  2  1
+Marte K, 2b           4  1  1  0   Zobrist B, 2b         3  1  1  0
+Bellinger C, cf       3  1  1  2   Contreras W, c        0  0  0  0
+Renfroe H, rf         3  0  1  0   Baez J, ss-2b         4  1  2  2
+Freeland K, p         1  0  0  0   Suarez E, 3b          4  1  1  1
+Ottavino A, p         0  0  0  0   Marte S, lf           4  0  1  0
+Stammen C, p          0  0  0  0   Hendricks K, p        1  0  0  0
+Yates K, p            0  0  0  0   Winker J, ph          1  0  0  0
+Ahmed N, ph           1  0  0  0   Knebel C, p           0  0  0  0
+Fields J, p           0  0  0  0   Wong K, ph            1  0  0  0
+Greinke Z, p          0  0  0  0   Hader J, p            0  0  0  0
+                                   Polanco G, ph         1  0  0  0
+                                   Jeffress J, p         0  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     31  3  6  3                        36  7 12  7
+
+N.L. West        120 000 000 --  3
+N.L. Central     201 110 20x --  7
+
+  N.L. West            IP  H  R ER BB SO
+Freeland K (L)*       3.0  7  4  4  0  3
+Ottavino A            1.0  0  0  0  0  2
+Stammen C             0.1  2  1  1  1  0
+Yates K               1.2  1  0  0  0  1
+Fields J              1.0  2  2  2  0  0
+Greinke Z             1.0  0  0  0  0  1
+
+  N.L. Central         IP  H  R ER BB SO
+Hendricks K (W)       4.0  6  3  3  0  2
+Knebel C              2.0  0  0  0  1  3
+Hader J               2.0  0  0  0  0  2
+Jeffress J            1.0  0  0  0  0  2
+  * Pitched to 2 batters in 4th
+
+E -- Marte K
+DP -- N.L. Central 1
+LOB -- N.L. West 3, N.L. Central 7
+2B -- Arenado N, Yelich C
+3B -- Zobrist B
+HR -- Grandal Y, Bellinger C, Votto J, Cain L, Baez J, Suarez E
+SH -- Freeland K
+HBP -- by Greinke Z (Votto J)
+T -- 0:00
+A -- 0
+
+     Game of 04/30/2020 -- N.L. East at A.L. West (N) -- game 1
+
+  N.L. East          AB  R  H RBI    A.L. West          AB  R  H RBI
+Acuna R, rf           5  0  0  0   Choo S, lf            3  3  2  2
+Freeman F, 1b         5  1  2  0   Minor M, p            0  0  0  0
+Realmuto J, c         4  0  2  1   Petit Y, p            0  0  0  0
+Rendon A, 3b          4  1  1  0   Trout M, cf           4  2  2  2
+Foltynewicz M, p      0  0  0  0   Altuve J, 2b          3  1  2  2
+Castro S, ph          1  0  0  0   Lowrie J, 3b          3  1  0  1
+Hoskins R, lf         4  1  2  1   Gallo J, 1b           4  1  1  4
+Albies O, 2b          5  1  1  0   Springer G, rf        4  1  0  0
+Nimmo B, cf           2  0  0  0   Simmons A, ss         4  2  2  1
+Cabrera A, ss-3b      4  0  1  2   Maldonado M, c        4  0  0  0
+Scherzer M, p         2  0  0  0   Verlander J, p        2  0  0  0
+Franco M, ph          1  1  1  1   Davis K, ph-lf        1  1  0  0
+Dominguez S, p        0  0  0  0   
+Vizcaino A, p         0  0  0  0   
+Turner T, ss          0  0  0  0   
+                     -- -- -- --                        -- -- -- --
+                     37  5 10  5                        32 12  9 12
+
+N.L. East        002 000 120 --  5
+A.L. West        102 001 80x -- 12
+
+  N.L. East            IP  H  R ER BB SO
+Scherzer M (L)        6.0  5  4  4  2 10
+Dominguez S*          0.0  0  3  3  3  0
+Vizcaino A#           0.0  1  3  3  2  0
+Foltynewicz M         2.0  3  2  2  2  2
+
+  A.L. West            IP  H  R ER BB SO
+Verlander J (W)       7.0  7  3  3  2  9
+Minor M               0.1  2  2  2  1  0
+Petit Y               1.2  1  0  0  1  3
+  * Pitched to 3 batters in 7th
+  # Pitched to 3 batters in 7th
+
+E -- Choo S, Simmons A
+DP -- N.L. East 1
+LOB -- N.L. East 10, A.L. West 6
+2B -- Freeman F, Hoskins R, Albies O, Cabrera A, Trout M 2
+3B -- Rendon A
+HR -- Franco M, Choo S, Gallo J, Simmons A
+SF -- Realmuto J
+HBP -- by Scherzer M (Altuve J)
+T -- 0:00
+A -- 0
+
+     Game of 05/01/2020 -- N.L. West at N.L. Central (D) -- game 2
+
+  N.L. West          AB  R  H RBI    N.L. Central       AB  R  H RBI
+Grandal Y, c          4  0  1  0   Votto J, 1b           5  0  0  0
+Yates K, p            0  0  0  0   Cain L, cf            4  1  1  1
+Goldschmidt P, 1b     5  0  0  0   Baez J, ss            4  1  2  1
+Marte K, 2b           4  0  1  0   Yelich C, rf          3  0  0  0
+Bellinger C, cf       4  1  1  0   Suarez E, 3b          4  0  1  0
+Arenado N, 3b         3  0  0  0   Winker J, lf          3  0  1  0
+Blackmon C, rf-lf     4  1  1  1   Contreras W, c        4  0  1  0
+Myers W, lf           0  0  0  0   Wong K, 2b            2  0  0  0
+Belt B, lf            3  1  1  2   Zobrist B, ph-2b      2  0  1  0
+Smith W, p            0  0  0  0   Mikolas M, p          1  0  1  0
+Ottavino A, p         0  0  0  0   Polanco G, ph         1  0  0  0
+Hand B, p             0  0  0  0   Martinez C, p         0  0  0  0
+Posey B, ph-c         1  0  1  0   Marte S, ph           1  0  0  0
+Ahmed N, ss           4  0  0  0   Iglesias R, p         0  0  0  0
+Buehler W, p          2  0  0  0   Rivero F, p           0  0  0  0
+Gonzalez C, ph-rf     2  0  0  0   DeJong P, ph          1  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     36  3  6  3                        35  2  8  2
+
+N.L. West        030 000 000 --  3
+N.L. Central     000 001 010 --  2
+
+  N.L. West            IP  H  R ER BB SO
+Buehler W (W)         6.0  4  1  1  1 12
+Smith W               1.0  1  0  0  0  1
+Ottavino A            0.2  2  1  1  1  0
+Hand B                0.1  0  0  0  0  1
+Yates K (S)           1.0  1  0  0  0  2
+
+  N.L. Central         IP  H  R ER BB SO
+Mikolas M (L)         5.0  4  3  3  1  6
+Martinez C            2.0  0  0  0  0  0
+Iglesias R            0.1  1  0  0  0  0
+Rivero F              1.2  1  0  0  1  4
+
+E -- Votto J, Rivero F
+DP -- N.L. West 1, N.L. Central 1
+LOB -- N.L. West 8, N.L. Central 8
+2B -- Marte K, Contreras W
+HR -- Belt B, Cain L, Baez J
+WP -- Buehler W, Mikolas M 2
+T -- 0:00
+A -- 0
+
+     Game of 05/01/2020 -- N.L. East at A.L. West (N) -- game 2
+
+  N.L. East          AB  R  H RBI    A.L. West          AB  R  H RBI
+Nimmo B, cf           2  0  0  0   Choo S, lf            5  0  0  0
+Castro S, ph          1  0  0  0   Trout M, cf           4  1  2  1
+Rendon A, 3b          4  1  1  1   Minor M, p            0  0  0  0
+Turner T, ss          4  0  0  0   Altuve J, 2b          4  0  0  0
+Freeman F, 1b         4  0  0  0   Lowrie J, 3b          3  2  1  0
+Anderson B, rf        3  0  1  0   Gallo J, 1b-rf        4  0  1  0
+Cabrera A, 2b         2  0  0  0   Springer G, rf-cf     4  1  2  1
+Hoskins R, lf         3  0  1  0   Simmons A, ss         3  1  1  1
+Alfaro J, c           3  0  0  0   Maldonado M, c        4  1  2  2
+deGrom J, p           2  0  0  0   Cole G, p             3  1  1  0
+Franco M, ph          1  0  0  0   Profar J, ph-1b       1  1  1  2
+Familia J, p          0  0  0  0   
+Barraclough K, p      0  0  0  0   
+Foltynewicz M, p      0  0  0  0   
+                     -- -- -- --                        -- -- -- --
+                     29  1  3  1                        35  8 11  7
+
+N.L. East        000 000 001 --  1
+A.L. West        011 000 06x --  8
+
+  N.L. East            IP  H  R ER BB SO
+deGrom J (L)          7.0  6  2  2  1  9
+Familia J             0.2  3  3  2  0  0
+Barraclough K*        0.0  2  3  2  1  0
+Foltynewicz M         0.1  0  0  0  0  0
+
+  A.L. West            IP  H  R ER BB SO
+Cole G (W)            8.0  2  0  0  2 11
+Minor M               1.0  1  1  1  0  1
+  * Pitched to 3 batters in 8th
+
+DP -- A.L. West 1
+LOB -- N.L. East 3, A.L. West 5
+2B -- Anderson B, Hoskins R, Trout M, Gallo J, Simmons A, Maldonado M, Cole G
+HR -- Rendon A, Profar J
+PB -- Alfaro J
+T -- 0:00
+A -- 0
+
+     Game of 05/02/2020 -- N.L. Central at N.L. West (D) -- game 3
+
+  N.L. Central       AB  R  H RBI    N.L. West          AB  R  H RBI
+Votto J, 1b           3  0  0  0   Marte K, 2b           3  0  0  0
+Cain L, cf            5  1  1  0   Goldschmidt P, 1b     4  0  0  0
+Baez J, ss-3b         5  0  1  1   Posey B, c            2  0  0  0
+Yelich C, rf          4  1  1  0   Myers W, pr           0  0  0  0
+Winker J, lf          2  0  0  0   Belt B, lf            4  0  1  0
+Suarez E, 3b          2  0  0  0   Bellinger C, cf       3  0  0  0
+Hader J, p            0  0  0  0   Arenado N, 3b         4  0  0  0
+Marte S, ph           1  0  0  0   Crawford B, ss        2  0  0  0
+Hughes J, p           0  0  0  0   Gonzalez C, rf        3  0  1  0
+Contreras W, c        4  0  1  1   Smith W, p            0  0  0  0
+Wong K, 2b            4  0  0  0   Jansen K, p           0  0  0  0
+Flaherty J, p         2  0  0  0   Greinke Z, p          1  0  0  0
+DeJong P, ss          1  0  1  0   Renfroe H, rf         1  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     33  2  5  2                        27  0  2  0
+
+N.L. Central     001 000 010 --  2
+N.L. West        000 000 000 --  0
+
+  N.L. Central         IP  H  R ER BB SO
+Flaherty J (W)        5.2  1  0  0  2  7
+Hader J               1.1  0  0  0  1  2
+Hughes J (S)          2.0  1  0  0  0  2
+
+  N.L. West            IP  H  R ER BB SO
+Greinke Z (L)         7.1  1  1  0  5  8
+Smith W               0.2  2  1  1  1  0
+Jansen K              1.0  2  0  0  0  0
+
+E -- Crawford B
+LOB -- N.L. Central 11, N.L. West 6
+2B -- Baez J
+SH -- Greinke Z
+HBP -- by Flaherty J (Posey B), by Hughes J (Posey B), by Greinke Z (Yelich C)
+WP -- Greinke Z
+T -- 0:00
+A -- 0
+
+     Game of 05/02/2020 -- A.L. West at N.L. East (N) -- game 3
+
+  A.L. West          AB  R  H RBI    N.L. East          AB  R  H RBI
+Choo S, lf            3  1  0  0   Turner T, ss          5  0  0  0
+Trout M, cf           4  0  1  0   Acuna R, rf           4  0  2  0
+Altuve J, 2b          4  1  3  1   Realmuto J, c         1  0  0  0
+Lowrie J, 3b          4  2  2  3   Castro S, 2b          4  0  0  0
+Gallo J, 1b           4  0  0  0   Rendon A, 3b          4  0  1  0
+Simmons A, ss         4  0  0  0   Freeman F, 1b         4  0  0  0
+Haniger M, rf         2  0  1  0   Hoskins R, lf         4  2  2  1
+Treinen B, p          0  0  0  0   Familia J, p          0  0  0  0
+Profar J, ph          1  0  0  0   Alfaro J, c           3  0  2  1
+Leclerc J, p          0  0  0  0   Albies O, 2b          0  0  0  0
+Diaz E, p             0  0  0  0   Nimmo B, cf           3  0  1  0
+Zunino M, c           4  1  1  0   Nola A, p             1  0  0  0
+Paxton J, p           2  0  0  0   Franco M, ph          1  0  0  0
+Springer G, rf        2  0  0  0   Dominguez S, p        0  0  0  0
+                                   Doolittle S, p        0  0  0  0
+                                   Anderson B, ph-lf     0  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     34  5  8  4                        34  2  8  2
+
+A.L. West        000 211 100 --  5
+N.L. East        010 000 010 --  2
+
+  A.L. West            IP  H  R ER BB SO
+Paxton J (W)          5.1  6  1  1  4  4
+Treinen B             1.2  1  0  0  0  1
+Leclerc J             1.0  1  1  1  0  0
+Diaz E (S)            1.0  0  0  0  0  2
+
+  N.L. East            IP  H  R ER BB SO
+Nola A (L)            6.0  6  4  3  3  9
+Dominguez S           0.1  2  1  1  0  0
+Doolittle S           1.2  0  0  0  0  2
+Familia J             1.0  0  0  0  0  1
+
+DP -- N.L. East 1
+LOB -- A.L. West 6, N.L. East 11
+2B -- Haniger M, Zunino M, Rendon A
+3B -- Hoskins R
+HR -- Lowrie J 2, Hoskins R
+SH -- Nola A
+HBP -- by Leclerc J (Anderson B), by Dominguez S (Choo S)
+WP -- Paxton J
+PB -- Alfaro J
+T -- 0:00
+A -- 0
+
+     Game of 05/03/2020 -- N.L. Central at N.L. West (D) -- game 4
+
+  N.L. Central       AB  R  H RBI    N.L. West          AB  R  H RBI
+Votto J, 1b           4  0  1  0   Marte K, 2b           3  1  0  0
+Cain L, cf            3  1  1  0   Goldschmidt P, 1b     5  0  1  0
+Baez J, 3b            5  0  0  0   Posey B, c            5  0  1  1
+Yelich C, rf          5  1  1  0   Belt B, lf            4  1  1  0
+Zobrist B, 2b         5  0  1  1   Bellinger C, cf       4  1  1  2
+Morrow B, p           0  0  0  0   Arenado N, 3b         3  0  0  0
+Diaz E, c             4  0  0  0   Crawford B, ss        3  0  0  0
+DeJong P, ss          4  0  1  0   Blackmon C, rf        3  0  0  0
+Marte S, lf           4  0  0  0   Yates K, p            0  0  0  0
+Martinez C, p         2  0  0  0   Fields J, p           0  0  0  0
+Knebel C, p           0  0  0  0   Myers W, ph           1  0  0  0
+Winker J, ph          1  0  0  0   Jansen K, p           0  0  0  0
+Hader J, p            0  0  0  0   Bumgarner M, p        1  0  0  0
+Polanco G, ph         1  0  0  0   Gonzalez C, ph        0  0  0  0
+Jeffress J, p         0  0  0  0   Ottavino A, p         0  0  0  0
+Wong K, 2b            0  0  0  0   Stammen C, p          0  0  0  0
+                                   Renfroe H, rf         2  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     38  2  5  1                        34  3  4  3
+
+N.L. Central     000 200 000 00 --  2
+N.L. West        020 000 000 01 --  3
+  1 out when winning run scored.
+
+  N.L. Central         IP  H  R ER BB SO
+Martinez C            4.2  2  2  2  4  6
+Knebel C              1.1  0  0  0  0  3
+Hader J               3.0  0  0  0  0  4
+Jeffress J (L)        1.1  1  1  1  1  1
+Morrow B*             0.0  1  0  0  0  0
+
+  N.L. West            IP  H  R ER BB SO
+Bumgarner M           5.0  3  2  2  2  4
+Ottavino A            1.0  0  0  0  0  1
+Stammen C             1.1  2  0  0  0  4
+Yates K               1.2  0  0  0  0  3
+Fields J              1.0  0  0  0  0  0
+Jansen K (W)          1.0  0  0  0  0  0
+  * Pitched to 1 batter in 11th
+
+DP -- N.L. Central 1
+LOB -- N.L. Central 6, N.L. West 5
+HR -- Bellinger C
+HBP -- by Jansen K (Cain L)
+WP -- Bumgarner M
+T -- 0:00
+A -- 0
+
+     Game of 05/03/2020 -- A.L. West at N.L. East (N) -- game 4
+
+  A.L. West          AB  R  H RBI    N.L. East          AB  R  H RBI
+Choo S, lf            5  0  2  0   Nimmo B, cf           4  1  1  1
+Trout M, cf           5  0  0  0   Turner T, ss          4  1  1  0
+Altuve J, 2b          4  1  2  0   Realmuto J, c         4  2  2  0
+Haniger M, rf         0  0  0  0   Freeman F, 1b         3  1  1  1
+Gallo J, 1b           3  2  2  3   Rendon A, 3b          4  0  1  0
+Springer G, rf        4  0  0  0   Anderson B, rf        4  0  2  3
+Diaz E, p             0  0  0  0   Albies O, 2b          4  0  0  0
+Simmons A, ss         4  0  2  1   Acuna R, lf           1  0  0  0
+Profar J, 3b          3  0  0  0   Syndergaard N, p      0  0  0  0
+Zunino M, c           4  0  0  0   Franco M, ph          1  0  0  0
+McHugh C, p           0  0  0  0   Steckenrider D, p     0  0  0  0
+Davis K, ph           1  1  1  0   Hoskins R, ph         1  0  0  0
+Barria J, p           1  0  0  0   Vizcaino A, p         0  0  0  0
+Lowrie J, ph          1  0  0  0   Dominguez S, p        0  0  0  0
+Petit Y, p            0  0  0  0   Cabrera A, ph         1  0  0  0
+Alvarez J, p          0  0  0  0   Barraclough K, p      0  0  0  0
+Gordon D, 2b          1  0  0  0   Doolittle S, p        0  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     36  4  9  4                        31  5  8  5
+
+A.L. West        013 000 000 --  4
+N.L. East        100 100 03x --  5
+
+  A.L. West            IP  H  R ER BB SO
+McHugh C              2.0  1  1  1  0  1
+Barria J              4.0  3  1  1  3  3
+Petit Y               1.1  2  2  2  0  1
+Alvarez J (L)*        0.0  1  1  1  0  0
+Diaz E                0.2  1  0  0  0  2
+
+  N.L. East            IP  H  R ER BB SO
+Syndergaard N         3.0  5  4  4  0  5
+Steckenrider D        1.0  1  0  0  0  2
+Vizcaino A            2.0  1  0  0  1  2
+Dominguez S           1.0  2  0  0  0  2
+Barraclough K (W)     1.0  0  0  0  1  1
+Doolittle S (S)       1.0  0  0  0  0  1
+  * Pitched to 1 batter in 8th
+
+DP -- A.L. West 1
+LOB -- A.L. West 7, N.L. East 5
+2B -- Choo S, Gallo J, Realmuto J, Freeman F, Anderson B
+HR -- Gallo J, Nimmo B
+WP -- Syndergaard N
+T -- 0:00
+A -- 0
+
+     Game of 05/04/2020 -- N.L. Central at N.L. West (D) -- game 5
+
+  N.L. Central       AB  R  H RBI    N.L. West          AB  R  H RBI
+Cain L, cf            5  1  1  0   Marte K, 2b           4  0  1  0
+Zobrist B, lf         4  0  1  0   Bellinger C, 1b-cf    4  0  0  0
+Marte S, lf           1  1  1  0   Grandal Y, c          2  1  0  1
+Votto J, 1b           4  0  1  1   Posey B, ph-c         1  0  0  0
+Baez J, 2b-ss         4  3  1  0   Belt B, lf            3  2  1  1
+Yelich C, rf          5  3  4  5   Arenado N, 3b         4  1  1  1
+Suarez E, 3b          3  1  1  1   Blackmon C, cf        4  1  1  0
+Contreras W, c        3  0  0  1   Hand B, p             0  0  0  0
+Diaz E, c             0  0  0  0   Stammen C, p          0  0  0  0
+DeJong P, ss          3  0  0  1   Smith W, p            0  0  0  0
+Taillon J, p          3  0  0  0   Ahmed N, ph           1  0  0  0
+Rivero F, p           0  0  0  0   Crawford B, ss        2  0  0  1
+Hader J, p            0  0  0  0   Gonzalez C, rf        4  0  1  0
+Iglesias R, p         0  0  0  0   Yates K, p            0  0  0  0
+Winker J, ph          1  0  0  0   Corbin P, p           2  0  0  0
+Wong K, 2b            0  0  0  0   Ottavino A, p         0  0  0  0
+Morrow B, p           0  0  0  0   Myers W, ph           1  1  1  1
+                                   Fields J, p           0  0  0  0
+                                   Goldschmidt P, 1b     1  0  1  0
+                     -- -- -- --                        -- -- -- --
+                     36  9 10  9                        33  6  7  5
+
+N.L. Central     021 002 031 --  9
+N.L. West        000 204 000 --  6
+
+  N.L. Central         IP  H  R ER BB SO
+Taillon J*            5.0  5  5  4  5  5
+Rivero F              0.2  1  1  1  2  2
+Hader J               0.1  0  0  0  0  0
+Iglesias R (W)        1.0  0  0  0  1  1
+Morrow B (S)          2.0  1  0  0  0  1
+
+  N.L. West            IP  H  R ER BB SO
+Yates K#              1.0  1  1  0  0  1
+Corbin P              4.1  4  4  4  3  1
+Ottavino A            0.2  0  0  0  1  0
+Fields J+             1.0  0  1  1  1  0
+Hand B (L)%           0.0  1  1  1  0  0
+Stammen C             1.2  4  2  2  0  3
+Smith W               0.1  0  0  0  0  0
+  * Pitched to 3 batters in 6th
+  # Pitched to 1 batter in 2nd
+  + Pitched to 1 batter in 8th
+  % Pitched to 1 batter in 8th
+
+E -- DeJong P, Arenado N
+DP -- N.L. Central 1, N.L. West 1
+LOB -- N.L. Central 6, N.L. West 9
+2B -- Yelich C, Arenado N
+HR -- Yelich C 2, Suarez E, Belt B
+SF -- Votto J, Crawford B
+WP -- Taillon J, Corbin P
+T -- 0:00
+A -- 0
+
+     Game of 05/04/2020 -- A.L. West at N.L. East (N) -- game 5
+
+  A.L. West          AB  R  H RBI    N.L. East          AB  R  H RBI
+Choo S, rf            4  0  1  0   Franco M, 3b          4  0  0  0
+Springer G, rf-cf     0  0  0  0   Freeman F, 1b         4  0  0  0
+Trout M, cf           3  2  1  0   Realmuto J, c         4  1  1  0
+Haniger M, pr-rf      0  0  0  0   Anderson B, rf        3  0  1  1
+Altuve J, 2b          4  1  1  0   Hoskins R, lf         3  0  0  0
+Gallo J, lf           4  2  1  3   Nimmo B, cf           3  0  1  0
+Lowrie J, 3b          4  1  1  4   Albies O, 2b          3  0  0  0
+Simmons A, ss         3  0  1  0   Turner T, ss          3  0  0  0
+Profar J, 1b          4  1  2  1   Scherzer M, p         1  0  0  0
+Maldonado M, c        4  0  1  0   Barraclough K, p      0  0  0  0
+Verlander J, p        3  1  1  0   Castro S, ph          1  0  0  0
+Davis K, ph           1  0  0  0   Foltynewicz M, p      0  0  0  0
+Leclerc J, p          0  0  0  0   Steckenrider D, p     0  0  0  0
+Trivino L, p          0  0  0  0   Rendon A, ph          1  0  0  0
+                                   Familia J, p          0  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     34  8 10  8                        30  1  3  1
+
+A.L. West        003 041 000 --  8
+N.L. East        000 100 000 --  1
+
+  A.L. West            IP  H  R ER BB SO
+Verlander J (W)       7.0  3  1  1  0  8
+Leclerc J             1.0  0  0  0  0  1
+Trivino L             1.0  0  0  0  0  1
+
+  N.L. East            IP  H  R ER BB SO
+Scherzer M (L)        4.2  6  7  7  3  5
+Barraclough K         0.1  0  0  0  0  1
+Foltynewicz M         2.1  3  1  1  2  4
+Steckenrider D        0.2  0  0  0  0  0
+Familia J             1.0  1  0  0  1  1
+
+DP -- N.L. East 2
+LOB -- A.L. West 6, N.L. East 2
+2B -- Verlander J, Realmuto J, Anderson B, Nimmo B
+HR -- Gallo J, Lowrie J, Profar J
+SB -- Trout M
+HBP -- by Scherzer M (Trout M)
+T -- 0:00
+A -- 0
+
+     Game of 05/05/2020 -- N.L. West at N.L. Central (D) -- game 6
+
+  N.L. West          AB  R  H RBI    N.L. Central       AB  R  H RBI
+Goldschmidt P, 1b     3  0  0  0   Cain L, cf            4  0  1  1
+Belt B, lf            4  0  0  0   Zobrist B, 2b         3  0  1  0
+Marte K, 2b           4  0  1  0   Marte S, lf           0  0  0  0
+Bellinger C, cf       4  0  0  0   Baez J, ss            4  0  2  0
+Arenado N, 3b         4  0  0  0   Yelich C, rf          4  0  0  0
+Grandal Y, c          2  0  1  0   Suarez E, 3b          3  1  0  0
+Crawford B, ss        3  0  1  0   Votto J, 1b           4  1  2  2
+Renfroe H, rf         3  0  0  0   Contreras W, c        3  0  0  0
+Jansen K, p           1  0  0  0   Wong K, pr-2b         0  0  0  0
+Gonzalez C, ph        1  0  0  0   Winker J, lf          4  1  1  0
+Freeland K, p         0  0  0  0   Iglesias R, p         0  0  0  0
+Blackmon C, ph        1  0  0  0   Mikolas M, p          2  1  1  1
+Smith W, p            0  0  0  0   DeJong P, ph          1  0  1  0
+Hand B, p             0  0  0  0   Jeffress J, p         0  0  0  0
+                                   Diaz E, ph-c          1  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     30  0  3  0                        33  4  9  4
+
+N.L. West        000 000 000 --  0
+N.L. Central     000 010 12x --  4
+
+  N.L. West            IP  H  R ER BB SO
+Jansen K              4.0  3  0  0  0  3
+Freeland K (L)        3.0  5  2  2  1  4
+Smith W               0.1  1  2  2  2  0
+Hand B                0.2  0  0  0  0  1
+
+  N.L. Central         IP  H  R ER BB SO
+Mikolas M (W)         7.0  3  0  0  2  6
+Jeffress J            1.0  0  0  0  0  1
+Iglesias R            1.0  0  0  0  0  1
+
+E -- Crawford B
+DP -- N.L. West 1
+LOB -- N.L. West 5, N.L. Central 8
+2B -- Crawford B, Zobrist B, Baez J, Votto J, DeJong P
+HR -- Votto J, Mikolas M
+T -- 0:00
+A -- 0
+
+     Game of 05/08/2020 -- N.L. Central at A.L. West (N) -- game 1
+
+  N.L. Central       AB  R  H RBI    A.L. West          AB  R  H RBI
+Cain L, cf            3  0  2  0   Choo S, lf            4  0  1  0
+Zobrist B, 2b         3  0  0  0   Haniger M, lf         0  0  0  0
+Morrow B, p           0  0  0  0   Trout M, cf           4  0  2  0
+Baez J, ss            3  0  0  0   Altuve J, 2b          3  0  1  0
+Yelich C, rf          4  1  1  0   Gallo J, rf-1b        4  1  1  0
+Suarez E, 3b          4  0  0  0   Lowrie J, 3b          4  0  1  0
+Votto J, 1b           4  1  2  1   Diaz E, p             0  0  0  0
+Contreras W, c        4  0  1  1   Simmons A, ss         4  2  2  2
+Winker J, lf          3  0  0  0   Profar J, 1b-3b       4  0  0  0
+Flaherty J, p         1  0  0  0   Maldonado M, c        4  0  1  0
+Polanco G, ph         1  0  0  0   Verlander J, p        2  0  0  0
+Knebel C, p           0  0  0  0   Davis K, ph           1  0  0  0
+Hader J, p            0  0  0  0   McHugh C, p           0  0  0  0
+Jeffress J, p         0  0  0  0   Springer G, rf        0  0  0  0
+Wong K, ph-2b         0  0  0  0   
+                     -- -- -- --                        -- -- -- --
+                     30  2  6  2                        34  3  9  2
+
+N.L. Central     000 010 001 --  2
+A.L. West        010 002 00x --  3
+
+  N.L. Central         IP  H  R ER BB SO
+Flaherty J            4.0  5  1  0  0  3
+Knebel C              1.0  1  0  0  0  1
+Hader J (L)           1.2  2  2  2  0  1
+Jeffress J            0.1  1  0  0  1  1
+Morrow B              1.0  0  0  0  0  0
+
+  A.L. West            IP  H  R ER BB SO
+Verlander J (W)       7.0  3  1  1  2  8
+McHugh C              1.0  1  0  0  1  1
+Diaz E (S)            1.0  2  1  1  0  0
+
+E -- Suarez E
+DP -- A.L. West 1
+LOB -- N.L. Central 5, A.L. West 8
+2B -- Cain L, Votto J, Gallo J
+HR -- Simmons A
+SB -- Yelich C
+SH -- Baez J
+PB -- Contreras W
+T -- 0:00
+A -- 0
+
+     Game of 05/09/2020 -- N.L. Central at A.L. West (N) -- game 2
+
+  N.L. Central       AB  R  H RBI    A.L. West          AB  R  H RBI
+Cain L, cf            5  2  2  1   Choo S, lf            5  1  2  0
+Zobrist B, lf         5  0  2  0   Trout M, cf           5  0  1  0
+Baez J, ss            4  0  1  1   Altuve J, 2b          5  2  2  2
+Yelich C, rf          4  0  0  0   Gordon D, 2b          0  0  0  0
+Suarez E, 3b          3  1  1  0   Gallo J, 1b           3  1  2  2
+Votto J, 1b           3  0  0  0   Simmons A, ss         4  0  0  0
+Contreras W, c        4  0  2  0   Profar J, 3b          4  0  0  0
+Wong K, 2b            3  0  0  0   Springer G, rf        2  1  1  1
+Mikolas M, p          2  0  1  1   Maldonado M, c        3  0  2  0
+Rivero F, p           0  0  0  0   Cole G, p             1  0  0  0
+Knebel C, p           0  0  0  0   Lowrie J, ph          0  0  0  0
+Morrow B, p           0  0  0  0   Treinen B, p          0  0  0  0
+Winker J, ph          1  0  0  0   Davis K, ph           1  0  0  0
+Iglesias R, p         0  0  0  0   Trivino L, p          0  0  0  0
+Hughes J, p           0  0  0  0   Haniger M, ph         1  0  0  0
+Polanco G, ph         1  0  0  0   Leclerc J, p          0  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     35  3  9  3                        34  5 10  5
+
+N.L. Central     001 100 100 --  3
+A.L. West        012 020 00x --  5
+
+  N.L. Central         IP  H  R ER BB SO
+Mikolas M (L)         3.2  6  3  3  1  4
+Rivero F              0.2  2  2  2  0  2
+Knebel C              0.1  0  0  0  1  0
+Morrow B              0.1  0  0  0  0  0
+Iglesias R            1.2  2  0  0  2  2
+Hughes J              1.1  0  0  0  0  1
+
+  A.L. West            IP  H  R ER BB SO
+Cole G (W)            4.0  7  2  2  0  6
+Treinen B             1.0  1  0  0  0  1
+Trivino L             2.0  1  1  1  1  2
+Leclerc J (S)         2.0  0  0  0  0  0
+
+E -- Cain L, Profar J
+DP -- N.L. Central 1, A.L. West 1
+LOB -- N.L. Central 8, A.L. West 10
+2B -- Cain L, Zobrist B, Baez J, Gallo J
+3B -- Zobrist B
+HR -- Cain L, Altuve J, Gallo J, Springer G
+SH -- Wong K
+HBP -- by Knebel C (Springer G), by Cole G (Suarez E)
+WP -- Treinen B
+PB -- Contreras W
+T -- 0:00
+A -- 0
+
+     Game of 05/10/2020 -- A.L. West at N.L. Central (N) -- game 3
+
+  A.L. West          AB  R  H RBI    N.L. Central       AB  R  H RBI
+Choo S, lf            3  0  0  0   Cain L, cf            3  0  0  0
+Haniger M, lf         0  0  0  0   Zobrist B, lf         4  0  2  0
+Trout M, cf           4  2  2  2   Baez J, 2b            4  0  0  0
+Altuve J, 2b          4  0  1  0   Yelich C, rf          4  3  3  2
+Diaz E, p             0  0  0  0   Suarez E, 3b          4  0  0  0
+Gallo J, 1b           4  0  0  0   Votto J, 1b           2  0  1  1
+Simmons A, ss         4  0  1  0   Wong K, pr            0  0  0  0
+Profar J, 3b          3  1  1  0   DeJong P, ss          3  0  1  0
+Springer G, rf        4  1  1  2   Diaz E, c             3  0  0  0
+Zunino M, c           4  0  0  0   Contreras W, ph       1  0  0  0
+Paxton J, p           2  0  0  0   Martinez C, p         0  0  0  0
+Davis K, ph           1  0  0  0   Marte S, ph           1  0  0  0
+Minor M, p            0  0  0  0   Hughes J, p           0  0  0  0
+McHugh C, p           0  0  0  0   Winker J, ph          1  0  0  0
+Gordon D, ph-2b       1  0  0  0   Hader J, p            0  0  0  0
+                                   Polanco G, ph         1  0  0  0
+                                   Jeffress J, p         0  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     34  4  6  4                        31  3  7  3
+
+A.L. West        120 010 000 --  4
+N.L. Central     000 100 101 --  3
+
+  A.L. West            IP  H  R ER BB SO
+Paxton J (W)          6.0  4  1  1  1  4
+Minor M               0.1  2  1  0  0  0
+McHugh C              1.2  0  0  0  1  2
+Diaz E (S)            1.0  1  1  1  1  2
+
+  N.L. Central         IP  H  R ER BB SO
+Martinez C (L)        3.0  3  3  3  1  5
+Hughes J              2.0  1  1  1  0  1
+Hader J               2.0  2  0  0  0  5
+Jeffress J            2.0  0  0  0  0  1
+
+E -- Suarez E
+DP -- A.L. West 3
+LOB -- A.L. West 5, N.L. Central 5
+2B -- Yelich C
+HR -- Trout M 2, Springer G, Yelich C 2
+HBP -- by Paxton J (Votto J), by Hader J (Choo S)
+T -- 0:00
+A -- 0
+
+     Game of 05/11/2020 -- A.L. West at N.L. Central (N) -- game 4
+
+  A.L. West          AB  R  H RBI    N.L. Central       AB  R  H RBI
+Choo S, lf            2  0  0  0   Cain L, cf            3  0  0  0
+Trout M, cf           3  0  1  0   Zobrist B, lf         4  0  2  1
+Altuve J, 2b          4  0  1  0   Marte S, lf           0  0  0  0
+Gallo J, 1b           3  0  0  0   Contreras W, c        4  0  0  0
+Simmons A, ss         3  1  0  0   Yelich C, rf          1  1  0  0
+Profar J, 3b          4  0  1  1   Baez J, ss            3  1  1  2
+Springer G, rf        4  0  1  0   Votto J, 1b           3  0  1  0
+Zunino M, c           3  0  0  0   Suarez E, 3b          3  0  1  0
+Leclerc J, p          0  0  0  0   Wong K, 2b            3  0  0  0
+Barria J, p           1  0  0  0   Taillon J, p          1  0  0  0
+Lowrie J, ph          1  0  0  0   Winker J, ph          0  0  0  0
+Petit Y, p            0  0  0  0   Knebel C, p           0  0  0  0
+Davis K, ph           1  0  0  0   Iglesias R, p         0  0  0  0
+Treinen B, p          0  0  0  0   Polanco G, ph         1  1  1  0
+Trivino L, p          0  0  0  0   Morrow B, p           0  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     29  1  4  1                        26  3  6  3
+
+A.L. West        000 001 000 --  1
+N.L. Central     020 000 01x --  3
+
+  A.L. West            IP  H  R ER BB SO
+Leclerc J (L)*        1.0  0  1  1  1  1
+Barria J              3.0  4  1  1  1  1
+Petit Y               2.0  0  0  0  1  0
+Treinen B             1.1  2  1  1  1  1
+Trivino L             0.2  0  0  0  0  0
+
+  N.L. Central         IP  H  R ER BB SO
+Taillon J (W)         5.0  2  0  0  4  5
+Knebel C              1.0  1  1  1  1  3
+Iglesias R            2.0  1  0  0  0  2
+Morrow B (S)          1.0  0  0  0  0  0
+  * Pitched to 1 batter in 2nd
+
+DP -- A.L. West 4, N.L. Central 2
+LOB -- A.L. West 6, N.L. Central 3
+3B -- Altuve J
+HR -- Baez J
+SB -- Trout M, Simmons A
+T -- 0:00
+A -- 0
+
+     Game of 05/12/2020 -- A.L. West at N.L. Central (N) -- game 5
+
+  A.L. West          AB  R  H RBI    N.L. Central       AB  R  H RBI
+Choo S, lf            3  0  0  0   Cain L, cf            4  1  1  1
+Trout M, cf           4  0  0  0   Zobrist B, lf         4  0  1  0
+Altuve J, 2b          4  1  2  0   Marte S, lf           0  0  0  0
+Gallo J, 1b           4  0  0  0   Contreras W, c        4  0  1  0
+Simmons A, ss         4  0  1  0   Yelich C, rf          3  0  0  0
+Profar J, 3b          4  0  1  1   Votto J, 1b           3  1  1  1
+Springer G, rf        2  0  0  0   Baez J, ss            3  0  1  0
+Treinen B, p          0  0  0  0   Wong K, 2b            3  0  0  0
+Maldonado M, c        3  0  0  0   Suarez E, 3b          3  0  1  0
+Verlander J, p        2  0  0  0   Flaherty J, p         2  0  0  0
+Haniger M, rf         0  0  0  0   Jeffress J, p         0  0  0  0
+                                   Winker J, ph          1  0  0  0
+                                   Hader J, p            0  0  0  0
+                                   Iglesias R, p         0  0  0  0
+                     -- -- -- --                        -- -- -- --
+                     30  1  4  1                        30  2  6  2
+
+A.L. West        000 000 100 --  1
+N.L. Central     001 100 00x --  2
+
+  A.L. West            IP  H  R ER BB SO
+Verlander J (L)       6.1  6  2  2  1 10
+Treinen B             1.2  0  0  0  1  4
+
+  N.L. Central         IP  H  R ER BB SO
+Flaherty J (W)        6.2  4  1  1  1  5
+Jeffress J            0.1  0  0  0  0  1
+Hader J               1.0  0  0  0  2  1
+Iglesias R (S)        1.0  0  0  0  0  1
+
+DP -- N.L. Central 1
+LOB -- A.L. West 5, N.L. Central 6
+2B -- Profar J, Zobrist B, Baez J
+HR -- Cain L, Votto J
+T -- 0:00
+A -- 0
+
+     Game of 05/13/2020 -- N.L. Central at A.L. West (N) -- game 6
+
+  N.L. Central       AB  R  H RBI    A.L. West          AB  R  H RBI
+Cain L, cf            2  0  0  0   Choo S, lf            4  0  1  0
+Zobrist B, lf         3  1  1  0   Trout M, cf           4  0  0  0
+Marte S, lf           0  0  0  0   Altuve J, 2b          3  0  0  0
+Contreras W, c        4  0  1  2   Gallo J, 1b           3  0  0  0
+Yelich C, rf          3  0  0  0   Simmons A, ss         3  0  0  0
+Votto J, 1b           4  0  0  0   Profar J, 3b          3  0  0  0
+Baez J, ss            4  0  2  0   Springer G, rf        2  0  0  0
+Wong K, 2b            4  0  0  0   Leclerc J, p          0  0  0  0
+Suarez E, 3b          4  1  1  0   Diaz E, p             0  0  0  0
+Mikolas M, p          3  0  0  0   Lowrie J, ph          1  0  0  0
+                                   Trivino L, p          0  0  0  0
+                                   Zunino M, c           3  0  0  0
+                                   Cole G, p             1  0  0  0
+                                   Alvarez J, p          0  0  0  0
+                                   Haniger M, ph-rf      2  0  1  0
+                     -- -- -- --                        -- -- -- --
+                     31  2  5  2                        29  0  2  0
+
+N.L. Central     000 020 000 --  2
+A.L. West        000 000 000 --  0
+
+  N.L. Central         IP  H  R ER BB SO
+Mikolas M (W)         9.0  2  0  0  0  8
+
+  A.L. West            IP  H  R ER BB SO
+Cole G (L)            4.2  5  2  2  2  9
+Alvarez J             1.1  0  0  0  0  1
+Leclerc J             1.0  0  0  0  1  3
+Diaz E                1.0  0  0  0  0  1
+Trivino L             1.0  0  0  0  0  0
+
+E -- Suarez E
+DP -- N.L. Central 1
+LOB -- N.L. Central 7, A.L. West 2
+2B -- Contreras W, Baez J
+SB -- Baez J
+SH -- Mikolas M
+HBP -- by Alvarez J (Yelich C)
+T -- 0:00
+A -- 0
+
+     Game of 05/14/2020 -- N.L. Central at A.L. West (N) -- game 7
+
+  N.L. Central       AB  R  H RBI    A.L. West          AB  R  H RBI
+Cain L, cf            4  0  0  0   Choo S, lf            3  1  1  0
+Zobrist B, lf         4  0  2  0   Diaz E, p             0  0  0  0
+Baez J, 2b-ss         4  1  1  0   Trout M, cf           4  0  1  0
+Yelich C, rf          4  0  1  0   Altuve J, 2b          4  0  1  1
+Suarez E, 3b          4  1  1  1   Gallo J, 1b           4  0  0  0
+Votto J, 1b           3  0  0  1   Lowrie J, 3b          1  0  0  0
+DeJong P, ss          2  0  1  0   Treinen B, p          0  0  0  0
+Jeffress J, p         0  0  0  0   Haniger M, ph-lf      1  0  0  0
+Marte S, ph           1  0  0  0   Springer G, rf        3  0  0  0
+Diaz E, c             3  0  1  0   Simmons A, ss         3  0  1  0
+Hughes J, p           0  0  0  0   Zunino M, c           3  1  1  0
+Winker J, ph          1  0  0  0   Paxton J, p           2  0  1  0
+Martinez C, p         0  0  0  0   Profar J, 3b          1  1  1  2
+Polanco G, ph         1  0  0  0   
+Hader J, p            0  0  0  0   
+Wong K, 2b            1  0  0  0   
+                     -- -- -- --                        -- -- -- --
+                     32  2  7  2                        29  3  7  3
+
+N.L. Central     000 000 101 --  2
+A.L. West        100 000 20x --  3
+
+  N.L. Central         IP  H  R ER BB SO
+Hughes J              2.0  3  1  1  0  1
+Martinez C            3.0  1  0  0  2  4
+Hader J (L)           1.1  2  2  2  1  2
+Jeffress J            1.2  1  0  0  0  4
+
+  A.L. West            IP  H  R ER BB SO
+Paxton J*             6.0  4  1  1  1  7
+Treinen B (W)         2.0  2  0  0  0  2
+Diaz E (S)            1.0  1  1  0  0  2
+  * Pitched to 2 batters in 7th
+
+DP -- N.L. Central 1, A.L. West 1
+LOB -- N.L. Central 5, A.L. West 6
+2B -- Baez J, Simmons A
+HR -- Suarez E, Profar J
+SB -- Trout M
+SF -- Votto J
+HBP -- by Martinez C (Lowrie J)
+WP -- Hughes J, Paxton J, Treinen B
+T -- 0:00
+A -- 0
+
