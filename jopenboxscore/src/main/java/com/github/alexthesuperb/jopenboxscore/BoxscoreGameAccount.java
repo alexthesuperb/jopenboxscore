@@ -1,7 +1,3 @@
-/*
- * C-Style comment containing author/copyright info...
- */
-
 package com.github.alexthesuperb.jopenboxscore;
 
 import java.io.BufferedWriter;

@@ -1,21 +1,12 @@
-/*
- * C-style comment with author/copyright information...
- */
-
 package com.github.alexthesuperb.jopenboxscore;
 
 import java.util.LinkedList;
 
 /**
- * Single-game implementation of abstract class
- * <code>com.alexwimer.bsblib.BaseballPlayer</code>.
+ * Single-game implementation of abstract class <code>BaseballPlayer</code>.
  * This class contains methods and members relevant to a 
  * pitcher's single-game performance. Specifically, it tracks
  * the number of outs recorded and batters faced in each inning.
- * 
- * @since 2020-03-17
- * @version 1.0.0
- * @author Alexander C. Wimer
  */
 public class SingleGamePitcher extends BaseballPlayer {
 

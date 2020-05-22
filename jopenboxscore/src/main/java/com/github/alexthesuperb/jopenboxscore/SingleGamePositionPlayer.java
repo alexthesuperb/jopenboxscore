@@ -1,7 +1,3 @@
-/*
- * C-style comment with author/copyright information...
- */
-
 package com.github.alexthesuperb.jopenboxscore;
 
 import java.util.LinkedList;
@@ -10,10 +6,6 @@ import java.util.LinkedList;
  * An implementation of abstract class <code>BaseballPlayer</code>.
  * This class should only be used to represent a position player within a 
  * single game.
- * 
- * @author Alexander C. Wimer
- * @version 1.0.0
- * @since 2020-03-17
  */
 public class SingleGamePositionPlayer extends BaseballPlayer {
 

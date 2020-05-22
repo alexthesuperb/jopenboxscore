@@ -1,5 +1,3 @@
-/* C-style comment with author/copyright information... */
-
 package com.github.alexthesuperb.jopenboxscore;
 
 import java.io.BufferedReader;
@@ -10,7 +8,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-/** */
+/**
+ * Read Retrosheet Event (.EVE, .EVA, and .EVN) files.
+ */
 public class RetrosheetEveReader {
 
     /** Name of file to be read. */
@@ -30,7 +30,7 @@ public class RetrosheetEveReader {
 
     /** 
      * A directory containing TEAM and roster files. This object is
-     * passed into each <code>BxScrGameAccount</code> instance.
+     * passed into each <code>BoxscoreGameAccount</code> instance.
      */
     private File teamRosDir;
 

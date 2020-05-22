@@ -7,7 +7,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.io.BufferedWriter;
 
-
+/**
+ * Write a detailed statistical summary of each player, by team, in a human-readable
+ * format.
+ */
 public class NewspaperSummary implements BaseballBoxscore {
 
     private BufferedWriter writer;

@@ -1,7 +1,3 @@
-/*
- * C-style comment with author/copyright information...
- */
-
 package com.github.alexthesuperb.jopenboxscore;
 
 import java.util.HashMap;

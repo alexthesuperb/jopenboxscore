@@ -1,7 +1,3 @@
-/*
- * C-Style comment with author and copyright info...
- */
-
 package com.github.alexthesuperb.jopenboxscore;
 
 import java.io.FileNotFoundException;

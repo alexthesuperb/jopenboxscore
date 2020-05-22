@@ -1,5 +1,3 @@
-/* C-Style comment with Author & Copyright info... */
-
 package com.github.alexthesuperb.jopenboxscore;
 
 import java.io.BufferedWriter;
@@ -11,6 +9,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Main Class for console-based program.
+ */
 public class TerminalDriver {
 
     /* Flags */

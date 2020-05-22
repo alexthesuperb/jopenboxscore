@@ -3,6 +3,11 @@ package com.github.alexthesuperb.jopenboxscore;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * A class for collecting and aggregating counting statistics collected
+ * from Retrosheet event files.
+ * @param <T> The object's input, which must extend <code>SingleGameTeam</code>.
+ */
 public class AggregatedTeam<T extends SingleGameTeam> extends 
         BaseballTeam<AggregatedPlayer, AggregatedPlayer> {
 

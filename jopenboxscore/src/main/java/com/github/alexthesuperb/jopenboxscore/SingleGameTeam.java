@@ -1,13 +1,14 @@
-/*
- * C-style comment with author/copyright information...
- */
-
 package com.github.alexthesuperb.jopenboxscore;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * A class tracking a baseball team's performance over a single game.
+ * It is used to track a team's performance within 
+ * <code>BoxscoreGameAccount</code> and is that class' primary output.
+ */
 public class SingleGameTeam
         extends BaseballTeam<SingleGamePositionPlayer, SingleGamePitcher> {
 
