@@ -28,6 +28,8 @@ public class RetrosheetEveReader {
     /** A list of the games processed by this instance. */
     private List<BoxscoreGameAccount> gameAccounts;
 
+    private List<String> errorMessages;
+
     /** 
      * A directory containing TEAM and roster files. This object is
      * passed into each <code>BoxscoreGameAccount</code> instance.
@@ -41,6 +43,7 @@ public class RetrosheetEveReader {
         this.year = year;
         this.teamRosDir = teamRosDir;
         lineNum = 0;
+        errorMessages = new LinkedList<String>();
 
         /* Check if file with name fileName exists. If it does not, throw
         a new FileNotFoundException. */
@@ -83,7 +86,21 @@ public class RetrosheetEveReader {
                     teamRosDir);
             }
             if (currGame != null) {
-                currGame.addLine(line, lineNum);
+                /*
+                 * Try to read the current line. If an error occurs in currGame,
+                 * add that message to the list of error messages, then set currGame
+                 * to null so that the next-occurring game will be read.
+                 */
+                try {
+                    currGame.addLine(line, lineNum);
+                } catch (IndexOutOfBoundsException exc) {
+                    errorMessages.add(exc.getMessage());
+                    currGame = null;
+                } catch (NullPointerException exc) {
+                    //TEMPORARY FIX BECAUSE 2018SLN.EVN CANNOT BE PROCESSED.
+                    errorMessages.add(exc.getMessage());
+                    currGame = null;
+                }
             }
         }
 
@@ -152,7 +169,17 @@ public class RetrosheetEveReader {
                 }
             }
             if (readThisGame && currGame != null) {
-                currGame.addLine(line, lineNum);
+                /*
+                 * Try to read the current line. If an error occurs in currGame,
+                 * add that message to the list of error messages, then set currGame
+                 * to null so that the next-occurring game will be read.
+                 */
+                try {
+                    currGame.addLine(line, lineNum);
+                } catch (IndexOutOfBoundsException exc) {
+                    errorMessages.add(exc.getMessage());
+                    currGame = null;
+                }
             }
         }
 
@@ -224,7 +251,17 @@ public class RetrosheetEveReader {
                 }   
             }
             if (readThisGame && currGame != null) {
-                currGame.addLine(line, lineNum);
+                /*
+                 * Try to read the current line. If an error occurs in currGame,
+                 * add that message to the list of error messages, then set currGame
+                 * to null so that the next-occurring game will be read.
+                 */
+                try {
+                    currGame.addLine(line, lineNum);
+                } catch (IndexOutOfBoundsException exc) {
+                    errorMessages.add(exc.getMessage());
+                    currGame = null;
+                }
             }
         }
 
@@ -273,6 +310,12 @@ public class RetrosheetEveReader {
     public List<BoxscoreGameAccount> close() throws IOException {
         pbpReader.close();
         return gameAccounts;
+    }
+
+    public List<String> getErrorMessages() {
+        //TODO: Return a list of error messages corresponding to games that 
+        //could not be read due to IndexOutOfBoundsExceptions.    
+        return errorMessages;
     }
     
 }

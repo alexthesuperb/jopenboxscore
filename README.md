@@ -13,7 +13,7 @@ complex. Jopenboxscore is a Retrosheet play-by-play-parsing Java library capable
 
 ## Before You Start
 
-It should be noted that while this project can correctly parse approximately 93% of official Retrosheet event file game accounts, it was specifically developed to generate boxscores and 
+It should be noted that while this project can correctly parse approximately 97% of official Retrosheet event file game accounts, it was specifically developed to generate boxscores and 
 statistics for personal use (Strat-O-Matic, little league, etc) and works best on files written
 by the user.
 
@@ -96,4 +96,4 @@ To display these statistics in terminal, replace a filename with ```CONSOLE```.
 
 - [ ] Use unit testing to check single-game and cumulative statistics against official totals
 - [ ] Add the option of generating CSV statistical summaries
-- [ ] Jump over games causing null-pointer exceptions, rather than halting the entire program
+- [x] Jump over games generating IndexOutOfBoundsExceptions rather than halting the entire program

@@ -252,6 +252,7 @@ public class TerminalDriver {
         /* Read files */
         String currFile = inFileNames.getFirst();
         List<BoxscoreGameAccount> games = new LinkedList<>();
+        List<String> centralizedErrorMessages = new LinkedList<String>();
         try {
             for (String s : inFileNames) {
                 currFile = s;
@@ -272,6 +273,7 @@ public class TerminalDriver {
 
                 /* Add game accounts produced by file to master list. */
                 games.addAll(boxReader.getGameAccounts());
+                centralizedErrorMessages.addAll(boxReader.getErrorMessages());
             }
         } catch (Exception e) {
 
@@ -307,6 +309,21 @@ public class TerminalDriver {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
+        if (!centralizedErrorMessages.isEmpty()) {
+            System.out.println(
+                "One or more game accounts were excluded from the program's output\n" +
+                "due to runtime errors that occured while those games were being processed.\n" +
+                "Rather than terminating the entire program, those game accounts have been\n" +
+                "catalogued here:\n");
+            
+            i = 1;
+            for (String s : centralizedErrorMessages) {
+                System.out.println(String.format("%-5s", i + ". ") + s);
+                i++;
+            }
+            System.out.println("\n");
         }
 
         /* Finish program. */

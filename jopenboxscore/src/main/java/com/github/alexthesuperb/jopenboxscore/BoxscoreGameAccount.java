@@ -242,7 +242,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
      *         format.
      */
     public void addLine(String pbpLine, int lineNum) throws FileNotFoundException,
-            IOException, IllegalArgumentException {
+            IOException, IllegalArgumentException, IndexOutOfBoundsException {
         /* 
          * Save the value of pbpLine so that it be retrieved if an 
          * exception is thrown.
@@ -272,7 +272,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
             /* Check that line is valid input */
             if (infoLineArr.length != 3) {
                 throw new IllegalArgumentException("Info lines must contain " +
-                    "2 fields. File  " + eveFileName + ", line " + 
+                    "2 fields. File  " + eveFileName + ", id " + gameID + ", line " + 
                     lineNum + ": " + currentLine);
             }
             // setInfo(pbpLine.split(",")[1], pbpLine.split(",")[2]);
@@ -288,7 +288,8 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
             /* Check that line is valid input */
             if (idLineArr.length != 6) {
                 throw new IllegalArgumentException("Start/sub lines must " +
-                    "contain 5 fields. File " + eveFileName + ", line " + lineNum + ": " + currentLine);
+                    "contain 5 fields. File " + eveFileName +
+                    ", id " + gameID + ", line " + lineNum + ": " + currentLine);
             }
 
             /* Make roster move. */
@@ -310,7 +311,8 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
                 /* Check that line is valid input */
                 if (playLineArr.length != 7) {
                     throw new IllegalArgumentException("Play lines must " +
-                    "consist of 6 fields. File " + eveFileName + ", line " + lineNum + ": " + currentLine);
+                    "consist of 6 fields. File " + eveFileName + 
+                    ", id " + gameID + ", line " + lineNum + ": " + currentLine);
                 }
                 readPlay(playLineArr[3], playLineArr[6]);
             }
@@ -327,7 +329,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
             if (dataLineArr.length != 4) {
                 throw new IllegalArgumentException("Data lines must " +
                     "contain 3 fields (type, player ID, and value). File " + eveFileName + 
-                    ", line " + lineNum + ": " + pbpLine);
+                    ", id " + gameID + ", line " + lineNum + ": " + pbpLine);
             }
             setData(dataLineArr[1], dataLineArr[2], dataLineArr[3]);
         }
@@ -378,7 +380,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
      * @param event The event, containing both action at the plate and 
      *        (sometimes) baserunning information.
      */
-    private void readPlay(String playerID, String event) {
+    private void readPlay(String playerID, String event) throws IndexOutOfBoundsException {
         String plateEve;
         String bsrEve;
 
@@ -395,11 +397,17 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
             bsrEve = "";
         }
 
-        /* If home team is batting, then visitor is on defense. */
-        if (homeBatting) {
-            readPlateEvent(home, visitor, plateEve, bsrEve);
-        } else {
-            readPlateEvent(visitor, home, plateEve, bsrEve);
+        try {
+            /* If home team is batting, then visitor is on defense. */
+            if (homeBatting) {
+                readPlateEvent(home, visitor, plateEve, bsrEve);
+            } else {
+                readPlateEvent(visitor, home, plateEve, bsrEve);
+            }
+        } catch (IndexOutOfBoundsException bo) {
+            throw new IndexOutOfBoundsException(bo.getMessage() + ". " + 
+                    "File " + eveFileName + ", id " + gameID + 
+                    ", line " + lineNum + ": " + currentLine);
         }
     }
 
@@ -413,7 +421,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
      * @param bsrEvent Event involving baserunners, occuring after <code>plateEvent</code>.
      */
     private void readPlateEvent(SingleGameTeam batTeam, SingleGameTeam pitTeam, String plateEvent, 
-            String bsrEvent) { 
+            String bsrEvent) throws IndexOutOfBoundsException { 
         int spot = (homeBatting) ? homeSpot : visSpot;
         SingleGamePitcher pitcher = pitTeam.getCurrentPitcher();
         SingleGamePositionPlayer batter = batTeam.getLineupSpot(spot); 
@@ -740,8 +748,8 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
     }
 
     private void readBaserunning(SingleGameTeam battingTeam, SingleGameTeam pitchingTeam, 
-        SingleGamePositionPlayer batter, SingleGamePitcher pitcher, String bsrEvent, int bAdvance)
-    {
+            SingleGamePositionPlayer batter, SingleGamePitcher pitcher, String bsrEvent, 
+            int bAdvance) throws IndexOutOfBoundsException {
         if (bsrEvent.equals("")) {
             if (bAdvance == 4) {
                 batter.incrementStats(BaseballPlayer.KEY_R);
@@ -775,11 +783,12 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
             } else { //All other runners (1-, 2-, 3-)
                 int startBase = Integer.parseInt(String.valueOf(s.charAt(0)))-1;
                 SingleGamePositionPlayer r;
-                try{ //TEMPORARY FIX.
-                    r  = battingTeam.getLineupSpot(baserunnerSpots[startBase]);
-                } catch (IndexOutOfBoundsException e) {
-                    r = battingTeam.getLineupSpot(0);
-                }
+                // try{ //TEMPORARY FIX.
+                //     r  = battingTeam.getLineupSpot(baserunnerSpots[startBase]);
+                // } catch (IndexOutOfBoundsException e) {
+                //     r = battingTeam.getLineupSpot(0);
+                // }
+                r  = battingTeam.getLineupSpot(baserunnerSpots[startBase]);
                 if (s.contains("-")) { //Runner movement
                     if (s.charAt(2) == 'H') { //Runner scores
                         baserunnerSpots[startBase] = -1;
@@ -858,7 +867,8 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
             valueInt = Integer.parseInt(value);
         } catch (NumberFormatException nfe) {
             throw new IllegalArgumentException("Data lines must end with an integer " +
-                "value. File " + eveFileName + ", line " + lineNum + ": " + currentLine);
+                "value. File " + eveFileName + ", id " + gameID +
+                 ", line " + lineNum + ": " + currentLine);
         }
         
         if (key.equals("er")) {
@@ -1031,7 +1041,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
         if (!playerTeam.equals("0") && !playerTeam.equals("1")) {
             throw new IllegalArgumentException("Illegal argument in start/sub line. " +
                 "Team field must be either 0 (visitor) or 1 (home). File " + eveFileName + 
-                ", line " + lineNum + ": " + currentLine);
+                ", id " + gameID + ", line " + lineNum + ": " + currentLine);
         }
 
         /* Check if batSpot is a valid number between 0 and 9. */
@@ -1044,7 +1054,8 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
             throw new IllegalArgumentException("Illegal argument in start/sub line. " +
                 "Player's batting order spot must be an integer between 1-9 for " + 
                 "position players, or 0 for pitchers in games using the DH rule. " + 
-                "File " + eveFileName + ", line " + lineNum + ": " + currentLine);
+                "File " + eveFileName + ", id" + gameID + 
+                ", line " + lineNum + ": " + currentLine);
         }
 
         /* Check if position is a valid number between 1 and 12. */
@@ -1056,30 +1067,9 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
         } catch (NumberFormatException nfe) {
             throw new IllegalArgumentException("Illegal argument in start/sub line. " +
                 "Player's position must be an integer between 1 and 12. " + 
-                "File " + eveFileName + ", line " + lineNum + ": " + currentLine);
+                "File " + eveFileName + ", id " + gameID + 
+                ", line " + lineNum + ": " + currentLine);
         }
-
-        /* Get player's name. */
-        // String[] firstLast = {"",""};
-        // try {
-        //     if (playerTeam.equals("0")) { 
-        //         firstLast = getPlayerName(false, playerID);
-        //     } else {
-        //         firstLast = getPlayerName(true, playerID);
-        //     }
-        // } catch (IOException ioe) {
-        //     /* If isn't found in roster file, parse the name provided. */
-        //     String nameArr[] = playerName.split(" ");
-        //     if (nameArr.length == 2) {
-        //         firstLast[0] = nameArr[0];
-        //         firstLast[1] = nameArr[1];
-        //     } else {
-        //         firstLast[1] = nameArr[nameArr.length - 1];
-        //         for (int i = 0; i < nameArr.length - 1; i++) {
-        //             firstLast[0] += nameArr[i];
-        //         }
-        //     }
-        // }
 
         /* Check roster file for player's name, then add to team. */
         if (playerTeam.equals("0")) {
@@ -1157,7 +1147,8 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
             }
         }
         throw new IOException("Team " + teamID + " could not be found in file " +
-        "TEAM" + year + "File " + eveFileName + ",  line " + lineNum + ": " + currentLine);
+        "TEAM" + year + "File " + eveFileName + ", id " + gameID + 
+        ", line " + lineNum + ": " + currentLine);
     }
 
     /** @return game's attendance. */
