@@ -55,6 +55,12 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
     private int inngPA;
     private int[] baserunnerSpots;
 
+    /** 
+     * Total number of outs recorded in the game, between both teams. 
+     * For a full 9-inning game, this should be <code>54</code>.
+     */
+    private int totalOuts;
+
     /**
      * Summarize the events of this game account in a concise, human-readable
      * boxscore format.
@@ -182,6 +188,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
      * make sure to call this after all lines have been read.
      */
     public void finalize() {
+        totalOuts += outs;
         /*
          * Update linescore, LOB, and final game's pitcher with 
          * information from last inning played.
@@ -342,6 +349,9 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
     private void newInning() {
         /* If third out was previously made, new inning has begun. */
         if (outs == 3) {
+
+            /* Increment totalOuts */
+            totalOuts += outs;
 
             /* Add previous inning's stats to batting team object. */
             if (homeBatting) {
@@ -661,6 +671,11 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
                     pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
                 }
             } else if (s.startsWith("FC")) {                        //Fielder's choice
+                /*
+                 * Unlike force outs (a specific type of fielder's choice), an explicit
+                 * fielder's choice play begins with the indicator "FC", and all outs are
+                 * stated in the baserunning string. Batter implicitly reaches first base.
+                 */
                 batter.incrementStats(BaseballPlayer.KEY_AB);
                 batter.setPitcherCharged(pitcher);
                 bAdvance = 1;
@@ -692,22 +707,47 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
             } else if (Character.isDigit(s.charAt(0))) {            //Fielded out
                 batter.incrementStats(BaseballPlayer.KEY_AB);
                 
-                if (s.contains("GDP") || s.contains("GTP") || s.contains("/G/DP/")) {    
+                // if (Pattern.matches("(?=\\/G)(.*)(DP)", s)) {
+                if (s.contains("GDP") || s.contains("GTP") || 
+                        s.contains("/G/DP/") || s.contains("/G-/DP") || s.contains("/G+/DP")) {
+                    int outsOnPlay = 0;   
                     //THIS WHOLE THING COULD USE SOME WORK!
                     for (int i = 0; i < s.length()-2; i++) {
                         if (s.charAt(i) == '(' && s.charAt(i+2) == ')') {
+                            /* 
+                             * If the runner in the parenthesis is not the batter, 
+                             * remove that player from his base.
+                             */
                             if (s.charAt(i+1) != 'B') {
                                 int oldBase = Integer.parseInt(String.valueOf(s.charAt(i+1)))-1;
                                 baserunnerSpots[oldBase] = -1;
                             }
-                            outs++;
-                            pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
+                            outsOnPlay++;
+                            // pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
                         }
                     }
-                    if (!s.contains("(B)")) {
-                        outs++; //batter
-                        pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
+                    /* 
+                     * If 2 outs were made on the play and neither of them were the batter,
+                     * then the batter implicitly reaches base. 
+                     */
+                    if (outsOnPlay == 2 && !s.contains("(B)")) {
+                        bAdvance = 1;
                     }
+                    /* 
+                     * If only one out was made on the play so far, then the batter is 
+                     * implicitly out. 
+                     */
+                    if (outsOnPlay == 1) {
+                        outsOnPlay++;
+                        bAdvance = 0;
+                    }
+                    pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED, outsOnPlay);
+                    outs += outsOnPlay;
+
+                    // if (!s.contains("(B)")) {
+                    //     outs++; //batter
+                    //     pitcher.incrementStats(BaseballPlayer.KEY_BATTERS_RETIRED);
+                    // }
                 } else if (s.contains("LDP") || s.contains("LTP")) {
                     int outs_on_play = 0;
                     for (int i = 0; i < s.length()-2; i++) {
@@ -750,6 +790,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
     private void readBaserunning(SingleGameTeam battingTeam, SingleGameTeam pitchingTeam, 
             SingleGamePositionPlayer batter, SingleGamePitcher pitcher, String bsrEvent, 
             int bAdvance) throws IndexOutOfBoundsException {
+        
         if (bsrEvent.equals("")) {
             if (bAdvance == 4) {
                 batter.incrementStats(BaseballPlayer.KEY_R);
@@ -760,6 +801,10 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
             }
             return;
         }
+
+        //TODO: bsrEvent should be split and ordered such that runner on third base's
+        //movement is read first, then runner on second, then runner on first, then
+        //batter.
 
         for (String s : bsrEvent.split(";")) {
             if (s.startsWith("B")) {
@@ -1151,6 +1196,38 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
         ", line " + lineNum + ": " + currentLine);
     }
 
+    public String getHomeTeamId() {
+        return home.getTeamId();
+    }
+
+    public String getVisitingTeamId() {
+        return visitor.getTeamId();
+    }
+
+    public int getHomeScore() {
+        return home.getTotalRunsScored();
+    }
+
+    public int getVisitorScore() {
+        return visitor.getTotalRunsScored();
+    }
+
+    public int[] getVisitorStats(String[] keys) {
+        return visitor.getStats(keys);
+    }
+
+    public int getVisitorStat(String key) {
+        return visitor.getStat(key);
+    }
+
+    public int[] getHomeStats(String[] keys) {
+        return home.getStats(keys);
+    }
+
+    public int getHomeStat(String key) {
+        return home.getStat(key);
+    }
+
     /** @return game's attendance. */
     public int getAttendance() {
         return attendance;
@@ -1182,6 +1259,7 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
         return usaDateString;
     }
 
+    /** @return date code (YYYYMMDD) for game. */
     public String getStdDateString() {
         return stdDateString;
     }
@@ -1196,8 +1274,31 @@ public class BoxscoreGameAccount implements GameAccount, Comparable<BoxscoreGame
         return currentLine;
     }
 
-    public int getOuts() {
+    /**
+     * @return the number of outs in the current inning when the
+     * game ended. If a game ended prematurely (as in a walkoff or
+     * rainout), this number should be less than 3.
+     */
+    public int getCurrentOuts() {
         return outs;
+    }
+
+    /**
+     * @return the total number of outs recorded in the game. For a 
+     * full 9-inning game, this should be 54.
+     */
+    public int getTotalOuts() {
+        return totalOuts;
+    }
+
+    /**
+     * Get a Retrosheet game log row for this game.
+     */
+    @Override
+    public String toString() {
+        //TODO: Return a String containing all pertinent information
+        //about this game.
+        return super.toString();
     }
 
 }

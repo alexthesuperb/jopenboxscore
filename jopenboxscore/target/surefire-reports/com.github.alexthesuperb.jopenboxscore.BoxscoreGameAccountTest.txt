@@ -1,0 +1,452 @@
+-------------------------------------------------------------------------------
+Test set: com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest
+-------------------------------------------------------------------------------
+Tests run: 2431, Failures: 112, Errors: 0, Skipped: 0, Time elapsed: 123.404 s <<< FAILURE! - in com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest
+testGame[0: ANA201804020](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.011 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [10]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[30: ANA201806020](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[44: ANA201807100](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<35> but was:<36>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[49: ANA201807220](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [3]; expected:<51> but was:<50>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[112: ARI201806030](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[127: ARI201807060](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [10]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[142: ARI201808210](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<30> but was:<31>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[173: ATL201804210](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[177: ATL201805150](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[180: ATL201805190](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<28> but was:<29>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[203: ATL201807110](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.007 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<36> but was:<37>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[212: ATL201807310](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[218: ATL201808140](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[224: ATL201808280](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[244: BAL201803310](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [10]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[257: BAL201804290](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.002 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [6]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[358: BOS201806220](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[429: CHA201805230](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[439: CHA201806160](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[457: CHA201808010](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[497: CHN201804300](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[506: CHN201805140](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<36> but was:<37>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[543: CHN201808110](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [10]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[552: CHN201808280](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [5]; expected:<221> but was:<8>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[588: CIN201805090](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<34> but was:<33>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[613: CIN201807030](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[622: CIN201807270](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<28> but was:<29>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[648: CIN201809300](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [6]; expected:<2> but was:<3>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[653: CLE201804100](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [10]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[656: CLE201804130](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.002 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<36> but was:<37>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[672: CLE201805250](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.002 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<42> but was:<43>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[695: CLE201807120](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<34> but was:<35>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[715: CLE201808310](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[738: COL201804220](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<40> but was:<41>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[753: COL201805300](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.003 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<36> but was:<37>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[764: COL201806220](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<37> but was:<38>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[785: COL201808100](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[791: COL201808240](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[851: DET201806250](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[866: DET201808010](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[879: DET201809070](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[881: DET201809090](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[906: HOU201804290](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [6]; expected:<4> but was:<5>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[925: HOU201806180](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [6]; expected:<3> but was:<4>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[945: HOU201807270](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<41> but was:<42>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[970: HOU201809210](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<35> but was:<36>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[982: KCA201804250](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1005: KCA201806130](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<36> but was:<37>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1013: KCA201807020](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1015: KCA201807040](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [8]; expected:<2> but was:<1>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1043: KCA201809100](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<33> but was:<34>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1053: KCA201809300](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [6]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1071: LAN201805100](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<31> but was:<32>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1083: LAN201805300](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1108: LAN201808010](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<35> but was:<36>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1177: MIA201807010](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [10]; expected:<2> but was:<3>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1238: MIL201805230](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1245: MIL201805300](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<31> but was:<32>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1248: MIL201806130](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [6]; expected:<0> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1258: MIL201807020](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1317: MIN201805200](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [6]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1358: MIN201808170](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [3]; expected:<51> but was:<52>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1373: MIN201809260](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1382: NYA201804060](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1384: NYA201804080](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1405: NYA201805260](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.002 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [6]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1440: NYA201808160](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1456: NYA201809200](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [10]; expected:<2> but was:<3>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1457: NYA201809210](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [10]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1468: NYN201804160](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1483: NYN201805220](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1495: NYN201806230](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<36> but was:<37>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1534: NYN201809132](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [10]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1549: OAK201804160](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1582: OAK201806300](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [6]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1621: OAK201809230](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<34> but was:<35>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1652: PHI201806100](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<28> but was:<29>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1707: PIT201804070](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.046 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1725: PIT201805190](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [3]; expected:<54> but was:<53>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1726: PIT201805200](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<37> but was:<38>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1757: PIT201807270](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1789: SDN201804050](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1837: SDN201807300](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1841: SDN201808120](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<31> but was:<32>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1873: SEA201804190](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1895: SEA201806030](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1898: SEA201806130](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [3]; expected:<52> but was:<53>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1907: SEA201807040](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1950: SFN201804100](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[1973: SFN201806050](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [10]; expected:<2> but was:<3>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2016: SFN201809120](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2036: SLN201804250](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2041: SLN201805050](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [7]; expected:<42> but was:<43>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2046: SLN201805180](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2050: SLN201805220](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [8]; expected:<1> but was:<0>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2051: SLN201805230](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2072: SLN201807140](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2080: SLN201808020](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [6]; expected:<1> but was:<2>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2103: SLN201809230](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<34> but was:<35>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2106: SLN201809260](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2121: TBA201805050](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2144: TBA201806290](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2173: TBA201809080](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [11]; expected:<35> but was:<36>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2198: TEX201804200](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2226: TEX201806170](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2227: TEX201806250](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [3]; expected:<51> but was:<52>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2257: TEX201808310](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [3]; expected:<54> but was:<55>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2288: TOR201805110](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [10]; expected:<2> but was:<3>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2294: TOR201805200](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [3]; expected:<54> but was:<55>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2365: WAS201805020](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2370: WAS201805150](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.internal.ArrayComparisonFailure: arrays first differed at element [5]; expected:<175> but was:<9>
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+
+testGame[2407: WAS201808090](com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: actual array was null
+	at com.github.alexthesuperb.jopenboxscore.BoxscoreGameAccountTest.testGame(BoxscoreGameAccountTest.java:181)
+

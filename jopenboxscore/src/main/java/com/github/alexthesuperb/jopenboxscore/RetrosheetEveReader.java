@@ -45,8 +45,10 @@ public class RetrosheetEveReader {
         lineNum = 0;
         errorMessages = new LinkedList<String>();
 
-        /* Check if file with name fileName exists. If it does not, throw
-        a new FileNotFoundException. */
+        /* 
+         * Check if file with name fileName exists. If it does not, throw
+         * a new FileNotFoundException. 
+         */
         File tempFile = new File(eveFileName);
         if (tempFile.exists()) {
             pbpReader = new BufferedReader(new FileReader(eveFileName));

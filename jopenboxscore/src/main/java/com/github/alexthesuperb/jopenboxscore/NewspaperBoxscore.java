@@ -44,7 +44,7 @@ public class NewspaperBoxscore implements BaseballBoxscore {
         gameNumber = game.getGameNumber();
         timeOfGame = game.getTimeOfGame();
         attendance = game.getAttendance();
-        outs = game.getOuts();
+        outs = game.getCurrentOuts();
         symbols = new LinkedList<Character>();
         pitcherRemovedStrings = new LinkedList<String>();
 
